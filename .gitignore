@@ -1,0 +1,3 @@
+Dataset/images/*
+Dataset/labels/*
+Dataset/depth/*
