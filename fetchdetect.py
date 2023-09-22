@@ -139,8 +139,8 @@ class ros_image_reader:
         (save_dir / 'labels' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 
         # Load model
-        self.device = select_device(device)
-        self.model = DetectMultiBackend(weights, device=device, dnn=dnn, data=data, fp16=half)
+        self.device = select_device(self.device)
+        self.model = DetectMultiBackend(weights, device=self.device, dnn=dnn, data=data, fp16=half)
         self.stride, self.names, self.pt = self.model.stride, self.model.names, self.model.pt
         self.imgsz = check_img_size(imgsz, s=self.stride)  # check image size
 
@@ -151,7 +151,7 @@ class ros_image_reader:
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
         except Exception as e:
             print(e)
-		
+        print("Image Received")
         self.run(cv_image)
 
     def run(self, cv_image):
@@ -316,7 +316,6 @@ def parse_opt():
     parser.add_argument('--hide-conf', default=False, action='store_true', help='hide confidences')
     parser.add_argument('--half', action='store_true', help='use FP16 half-precision inference')
     parser.add_argument('--dnn', action='store_true', help='use OpenCV DNN for ONNX inference')
-    parser.add_argument('--vid-stride', type=int, default=1, help='video frame-rate stride')
     opt = parser.parse_args()
     opt.imgsz *= 2 if len(opt.imgsz) == 1 else 1  # expand
     print_args(vars(opt))
@@ -326,9 +325,11 @@ def parse_opt():
 def main(opt):
     check_requirements(ROOT / 'requirements.txt', exclude=('tensorboard', 'thop'))
     detect_object = ros_image_reader(**vars(opt))
-    detect_object.run()
+    
 
 
 if __name__ == '__main__':
     opt = parse_opt()
+    rospy.init_node("yolov5_labeller")
     main(opt)
+    rospy.spin()
