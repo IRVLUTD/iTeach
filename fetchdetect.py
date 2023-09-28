@@ -128,15 +128,13 @@ class ros_image_reader:
 
 
 
-        self.bridge = CvBridge()
-        self.image_sub = rospy.Subscriber("/head_camera/rgb/image_raw",Image,self.callback)
-        self.image_pub = rospy.Publisher("Cole/AutoLabeledImage", Image, queue_size=2)
+        
         
         source = str(source)
 
         # Directories
-        save_dir = increment_path(Path(project) / name, exist_ok=exist_ok)  # increment run
-        (save_dir / 'labels' if save_txt else save_dir).mkdir(parents=True, exist_ok=True)  # make dir
+        self.save_dir = increment_path(Path(project) / name, exist_ok=exist_ok)  # increment run
+        (self.save_dir / 'labels' if self.save_txt else self.save_dir).mkdir(parents=True, exist_ok=True)  # make dir
 
         # Load model
         self.device = select_device(self.device)
@@ -146,18 +144,21 @@ class ros_image_reader:
 
         self.bs=1 # batch size
 
+        self.bridge = CvBridge()
+        self.image_sub = rospy.Subscriber("/head_camera/rgb/image_raw",Image,self.callback)
+        self.image_pub = rospy.Publisher("Cole/AutoLabeledImage", Image, queue_size=2)
+
     def callback(self,data):
         try:
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
         except Exception as e:
             print(e)
-        print("Image Received")
         self.run(cv_image)
 
     def run(self, cv_image):
         # Run inference
         self.model.warmup(imgsz=(1 if self.pt or self.model.triton else self.bs, 3, *self.imgsz))  # warmup
-        windows, dt = 0, [], (Profile(), Profile(), Profile())
+        windows, dt = [], (Profile(), Profile(), Profile())
 
 
         # for path, im, im0s, vid_cap, s in dataset:
@@ -191,8 +192,8 @@ class ros_image_reader:
 
         # Inference
         with dt[1]:
-            visualize = increment_path(self.save_dir / Path(path).stem, mkdir=True) if visualize else False
-            pred = self.model(im, augment=self.augment, visualize=visualize)
+            self.visualize = increment_path(self.save_dir / Path(path).stem, mkdir=True) if self.visualize else False
+            pred = self.model(im, augment=self.augment, visualize=self.visualize)
 
         # NMS
         with dt[2]:
@@ -216,7 +217,7 @@ class ros_image_reader:
         # Process predictions
         for i, det in enumerate(pred):  # per image
             
-            
+            p, im0= path, im0s.copy()
             
 
             p = Path(p)  # to Path
@@ -251,7 +252,7 @@ class ros_image_reader:
                         with open(f'{txt_path}.txt', 'a') as f:
                             f.write(('%g ' * len(line)).rstrip() % line + '\n')
 
-                    if self.save_img or self.save_crop or self.view_img:  # Add bbox to image
+                    if self.save_img or self.save_crop or self.view_img or self.send_ros:  # Add bbox to image
                         c = int(cls)  # integer class
                         label = None if self.hide_labels else (self.names[c] if self.hide_conf else f'{self.names[c]} {conf:.2f}')
                         annotator.box_label(xyxy, label, color=colors(c, True))
@@ -276,7 +277,8 @@ class ros_image_reader:
                 
 
         # Print time (inference-only)
-        LOGGER.info(f"{s}{'' if len(det) else '(no detections), '}{dt[1].dt * 1E3:.1f}ms")
+        if self.view_img:
+            LOGGER.info(f"{s}{'' if len(det) else '(no detections), '}{dt[1].dt * 1E3:.1f}ms")
 
         # Print results
         
