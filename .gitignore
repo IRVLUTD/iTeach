@@ -1,3 +1,10 @@
 Dataset/images/*
 Dataset/labels/*
 Dataset/depth/*
+IRVLImageLabelling/Temp
+IRVLImageLabelling/.vsconfig
+IRVLImageLabelling/Assembly-CSharp.csproj
+IRVLImageLabelling/.vs
+IRVLImageLabelling/Library
+IRVLImageLabelling/IRVLImageLabelling.sln
+IRVLImageLabelling/UserSettings/*
