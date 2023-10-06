@@ -12,6 +12,11 @@ This folder contains the images published by [publishimage.py](publishimage.py).
 
 In this folder one will find the labels, rgb, and 3d images of things labeled through the hololens. [receiveData.py](receiveData.py) publishes to this folder in real time and the images should already be properly formatted for a YOLO machine learning algorithm, this has been tested on [yolov5](https://github.com/ultralytics/yolov5).
 
+### [IRVLImageLabelling](IRVLImageLabelling)
+
+This is the subproject for the Unity/Hololens component of the pipeline. This folder is what should be opened when attempting to rebuild the project, not the root folder of this project. Further explanation is given in its own section.
+
+
 ## Files
 
 ### [execSupport.py](execSupport.py)
@@ -29,6 +34,28 @@ As the name suggests and as is described in the Dataset section, this file recie
 ### [publishimage.py](publishimage.py)
 
 This file is a stand-in for a fetch robot for when one is not available. It publishes the files explained in the PublishImages folder section under the same name as the robot would, and is therefore indistinguishable other than the lack of change in images. This can only be executed on its own and takes no arguments.
+
+## Hololens Component
+
+### Overview
+
+In order for the user to label images on the move, there must be an application to facilitate it. 
+
+* **Summon:** Bring up the most recent image taken in front of the user. drag the spheres on the edges of the frame to rotate it and drag the cubes on the corners to resize it. If the button is pressed again, the frame will be brought to the user's position without clearing existing labels.
+
+* **Cancel:** Dismiss the window and clear all labels present.
+
+* **Save:** Send all images and detections back to the Yolo component and dismiss the frame.
+
+* **Cabinet:**
+
+* **Handle:**
+
+* **Undo:** If an unwanted bounding box is drawn or is drawn wrong, this will remove the most recently placed box.
+
+### Installation
+
+It is recommended that a Windows devide is used to compile this part of the project, and has not been tested on other platforms. A Unity version newer or equivalent to a 2022 release and at least Microsoft Visual Studio 2022 are required. Due to technical constraints, this project can only run on a Hololens 2. To deploy the project after building to your local machine, follow the optional steps of [the Hololens 2 tutorial](https://learn.microsoft.com/en-us/training/modules/learn-mrtk-tutorials/1-7-exercise-hand-interaction-with-objectmanipulator) and build the project with the release version; it will lose considerable amounts of FPS when built with a debug target.
 
 ## Troubleshooting
 
