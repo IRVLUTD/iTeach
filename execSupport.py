@@ -13,8 +13,6 @@ if __name__ == "__main__":
         conf_thres=0.25,
         iou_thres=0.45
     )
-
-    imgpro = fetchdetect.ros_image_reader(weights="Model/weights/last.pt", source="data/doordetect.yaml")
     print("Publisher online")
     imgsub = receiveData.ImageSubscriber(False)
     print("Subscriber online")
