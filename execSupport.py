@@ -10,9 +10,10 @@ if __name__ == "__main__":
         weights = "Model/weights/last.pt",
         nosave = True,
         send_ros = True,
-        conf_thres=0.25,
-        iou_thres=0.45
+        conf_thres=0.01,
+        iou_thres=0.025
     )
+    print("Labeller Online")
     imgsub = receiveData.ImageSubscriber(False)
     print("Subscriber online")
     imgreb = rebroadcastData.ImageRebradcaster(False)

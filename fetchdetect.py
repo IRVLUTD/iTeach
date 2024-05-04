@@ -269,7 +269,8 @@ class ros_image_reader:
                 cv2.imshow(str(p), im0)
                 cv2.waitKey(1)  # 1 millisecond
             if self.send_ros:
-                self.image_pub.publish(self.bridge.cv2_to_imgmsg(im0))
+                sendimg = im0[::-1, :, ::-1]
+                self.image_pub.publish(self.bridge.cv2_to_imgmsg(sendimg))
             
             # Save results (image with detections)
             if self.save_img:

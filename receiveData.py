@@ -5,6 +5,7 @@ from std_msgs.msg import String
 import cv2
 from datetime import datetime
 import os
+from train import run
 
 
 
@@ -36,7 +37,7 @@ class ImageSubscriber:
         img = self.bridge.imgmsg_to_cv2(rosImage, desired_encoding='passthrough')
         self.image = img[:,:,::-1]
         self.imageReceived = True
-        #print("Received image")
+        print("Received image")
         if(self.imageReceived and self.labelReceived and self.depthReceived):
             self.saveResults(self.image, self.label, self.depth)
 
@@ -44,7 +45,7 @@ class ImageSubscriber:
     def labelSub(self, Text):
         self.label = Text.data
         self.labelReceived = True
-        #print("Received label")
+        print("Received label")
         if(self.imageReceived and self.labelReceived and self.depthReceived):
             self.saveResults(self.image, self.label, self.depth)
             
@@ -53,7 +54,7 @@ class ImageSubscriber:
         dep = self.bridge.imgmsg_to_cv2(dep, desired_encoding='passthrough')
         self.depth = dep[:,:]
         self.depthReceived = True
-        #print("Received depth")
+        print("Received depth")
         if(self.imageReceived and self.labelReceived and self.depthReceived):
             self.saveResults(self.image, self.label, self.depth)
         
@@ -74,7 +75,7 @@ class ImageSubscriber:
         os.chdir("./../..")
         
         try:
-            train.run(
+            run(
                 data = "doordetect.yaml", 
                 imgsz = 640, 
                 weights = "Model/weights/last.pt", 
@@ -87,7 +88,7 @@ class ImageSubscriber:
                 exist_ok=True
             )
         except:
-            train.run(
+            run(
                 data = "doordetect.yaml", 
                 imgsz = 640, 
                 weights = "yolov5m.pt", 

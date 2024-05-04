@@ -1,3 +1,20 @@
 Dataset/images/*
 Dataset/labels/*
 Dataset/depth/*
+IRVLImageLabelling/Temp
+IRVLImageLabelling/.vsconfig
+IRVLImageLabelling/Assembly-CSharp.csproj
+IRVLImageLabelling/.vs
+IRVLImageLabelling/Library
+IRVLImageLabelling/IRVLImageLabelling.sln
+IRVLImageLabelling/UserSettings/*
+Dataset/labels.cache
+Model(reference)/*
+
+__pycache__
+models/__pycache__
+utils/__pycache__
+utils/loggers
+yolov5m.pt
+yolov5s.pt
+Model (reference)
