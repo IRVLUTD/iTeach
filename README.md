@@ -39,7 +39,7 @@ This file is a stand-in for a fetch robot for when one is not available. It publ
 
 ### Overview
 
-In order for the user to label images on the move, there must be an application to facilitate it. 
+In order for the user to label images on the move, there must be an application to facilitate it. The Root folder of the project to open is [IRVLImageLabelling](IRVLImageLabelling).
 
 * **Summon:** Bring up the most recent image taken in front of the user. drag the spheres on the edges of the frame to rotate it and drag the cubes on the corners to resize it. If the button is pressed again, the frame will be brought to the user's position without clearing existing labels.
 
@@ -48,16 +48,51 @@ In order for the user to label images on the move, there must be an application 
 * **Save:** Send all images and detections back to the Yolo component and dismiss the frame.
 
 * **Cabinet:**
-
+    Switch the labelling mode of the program to lebelling doors. 
 * **Handle:**
-
+    Switch the labelling mode of the program to lebelling handles. 
 * **Undo:** If an unwanted bounding box is drawn or is drawn wrong, this will remove the most recently placed box.
 
 ### Installation
 
-It is recommended that a Windows devide is used to compile this part of the project, and has not been tested on other platforms. A Unity version newer or equivalent to a 2022 release and at least Microsoft Visual Studio 2022 are required. Due to technical constraints, this project can only run on a Hololens 2. To deploy the project after building to your local machine, follow the optional steps of [the Hololens 2 tutorial](https://learn.microsoft.com/en-us/training/modules/learn-mrtk-tutorials/1-7-exercise-hand-interaction-with-objectmanipulator) and build the project with the release version; it will lose considerable amounts of FPS when built with a debug target.
+It is recommended that a Windows device is used to compile this part of the project, and has not been tested on other platforms. A Unity version newer or equivalent to a 2022 release and at least Microsoft Visual Studio 2022 are required. Due to technical constraints, this project can only run on a Hololens 2. To deploy the project after building to your local machine, follow the optional steps of [the Hololens 2 tutorial](https://learn.microsoft.com/en-us/training/modules/learn-mrtk-tutorials/1-7-exercise-hand-interaction-with-objectmanipulator) and build the project with the release version; it will lose considerable amounts of FPS when built with a debug target.
+
+## Execution
+
+### PC
+On a linux computer, set the ROS_IP and ROS_MASTER_URI (and not ROS_HOSTNAME), then run [execsupport.py](execsupport.py). See [execsupport](#execsupportpy) for individual usage and expectations.
+
+### Server
+The server needs to be running [ROS-TCP-Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint) to connect to the Hololens. See the link for installation instructions.
+
+Once it has been setup, the commands should look approximately as follows:
+
+```
+source devel/setup.bash
+
+rosrun ROS-TCP-Endppoint endpoint.launch tcp_ip:=<The server's ip> tcp_port:=10000
+```
+
+### Hololens
+After setting the IP of the server in Unity, the project needs to be built and deployed to the hololens. Further details are provided in [Hololens Installation](#installation). Once it's deployed, just open the app from the start menu.
 
 ## Troubleshooting
+
+### Rviz
+
+For many of these troubleshooting steps, it is required to be able to see the images being passed through ROS. Rviz is recommended for this.
+
+### PC is not receiving images from the server
+
+Check the ROS_IP and ROS_MASTER_URI environment variables on both the server and the PC.
+
+### Hololens is not receiving images
+
+Firstly, check that execsupport is running. If the server is receiving processed images then check that the endpoint launched properly. If both of these are true, check that the ip is set correctly in the Hololens.
+
+### PC is not receiving relabeled images & labels
+
+In this case, it's likely that the PC or server's ROS_HOSTNAME is set to a non-null value. Set these to ```0.0.0.0```.
 
 ### OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already initialized.
 
