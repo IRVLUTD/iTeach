@@ -1,8 +1,14 @@
+"""
+Makes sure that all of the outputs are in sync
+ - Depth and the labelled RGB
+ - Depth is not used as of now
+"""
+
 import rospy
 from sensor_msgs.msg import Image
+import cv2
 
-
-class ImageRebradcaster:
+class ImageRebroadcaster:
 
     onceper = 10
 
@@ -23,7 +29,7 @@ class ImageRebradcaster:
 
         self.imgPub = rospy.Publisher("InfrequentImage", Image, queue_size = 2)
         self.depPub = rospy.Publisher("InfrequentDepth", Image, queue_size = 2)
-        self.lblPub = rospy.Publisher("Cole/InfrequentAutoLabeledImage", Image, queue_size=2)
+        self.lblPub = rospy.Publisher("Cole/InfrequentAutoLabeledImage", Image, queue_size=2) # input to hololens
 
         self.onceper *= 3
         
@@ -61,6 +67,6 @@ class ImageRebradcaster:
 
 if __name__ == "__main__":
     
-    reb = ImageRebradcaster()
+    reb = ImageRebroadcaster()
     print("Running")
     rospy.spin()

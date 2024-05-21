@@ -10,13 +10,15 @@ if __name__ == "__main__":
         weights = "Model/weights/last.pt",
         nosave = True,
         send_ros = True,
-        conf_thres=0.01,
-        iou_thres=0.025
+        #conf_thres=0.01,
+        conf_thres=0.5,
+        #iou_thres=0.025
+        iou_thres=0.7
     )
     print("Labeller Online")
     imgsub = receiveData.ImageSubscriber(False)
     print("Subscriber online")
-    imgreb = rebroadcastData.ImageRebradcaster(False)
+    imgreb = rebroadcastData.ImageRebroadcaster(False)
     print("Rebroadcaster online")
     try:
         rospy.spin()

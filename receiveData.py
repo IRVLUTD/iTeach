@@ -1,3 +1,7 @@
+"""
+To receive data from the hololens
+"""
+
 import rospy
 from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
@@ -26,7 +30,7 @@ class ImageSubscriber:
 
 
 
-        self.imgsub = rospy.Subscriber("Cole/RawLabeledImage", Image, self.imageSub)
+        self.imgsub = rospy.Subscriber("Cole/RawLabeledImage", Image, self.imageSub) # output of the hololens indirectly
         self.depSub = rospy.Subscriber("LabeledDepth", Image, self.depthSub)
         self.texsub = rospy.Subscriber("ImageLabels", String, self.labelSub)
         self.bridge = CvBridge()
@@ -34,8 +38,8 @@ class ImageSubscriber:
     
 
     def imageSub(self, rosImage):
-        img = self.bridge.imgmsg_to_cv2(rosImage, desired_encoding='passthrough')
-        self.image = img[:,:,::-1]
+        img = self.bridge.imgmsg_to_cv2(rosImage, 'rgb8')
+        self.image = img
         self.imageReceived = True
         print("Received image")
         if(self.imageReceived and self.labelReceived and self.depthReceived):

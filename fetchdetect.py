@@ -146,7 +146,8 @@ class ros_image_reader:
 
         self.bridge = CvBridge()
         self.image_sub = rospy.Subscriber("/head_camera/rgb/image_raw",Image,self.callback)
-        self.image_pub = rospy.Publisher("Cole/AutoLabeledImage", Image, queue_size=2)
+        self.image_rviz_pub = rospy.Publisher("Cole/YOLOPredictions", Image, queue_size=2)
+        self.image2hololens_pub = rospy.Publisher("Cole/AutoLabeledImage", Image, queue_size=2)
 
     def callback(self,data):
         try:
@@ -269,8 +270,14 @@ class ros_image_reader:
                 cv2.imshow(str(p), im0)
                 cv2.waitKey(1)  # 1 millisecond
             if self.send_ros:
-                sendimg = im0[::-1, :, ::-1]
-                self.image_pub.publish(self.bridge.cv2_to_imgmsg(sendimg))
+                
+                # 1. flip vertically because of some rviz <-> unity stuff; quick hack as we don't know why
+                # 2. then do BGR -> RGB
+                img_to_hololens = im0[::-1, :, ::-1]
+                self.image2hololens_pub.publish(self.bridge.cv2_to_imgmsg(img_to_hololens))
+
+                img_for_rviz_yolo = im0
+                self.image_rviz_pub.publish(self.bridge.cv2_to_imgmsg(img_for_rviz_yolo))
             
             # Save results (image with detections)
             if self.save_img:
