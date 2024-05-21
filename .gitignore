@@ -6,7 +6,9 @@ IRVLImageLabelling/.vsconfig
 IRVLImageLabelling/Assembly-CSharp.csproj
 IRVLImageLabelling/.vs
 IRVLImageLabelling/Library
+IRVLImageLabelling/Logs
 IRVLImageLabelling/IRVLImageLabelling.sln
+IRVLImageLabelling/UserSettings
 Dataset/labels.cache
 Model(reference)/*
 
