@@ -17,3 +17,5 @@ utils/loggers
 yolov5m.pt
 yolov5s.pt
 Model (reference)
+Model/*
+Dataset/

@@ -1,6 +1,6 @@
 weights: yolov5m.pt
 cfg: ''
-data: data/traindoordetectreal.yaml
+data: /home/coles/Desktop/IRVLImageLabellingSupport/data/doordetect.yaml
 hyp:
   lr0: 0.01
   lrf: 0.01
@@ -30,15 +30,15 @@ hyp:
   mosaic: 1.0
   mixup: 0.0
   copy_paste: 0.0
-epochs: 25
+epochs: 1
 batch_size: 16
 imgsz: 640
 rect: false
 resume: false
-nosave: false
-noval: false
+nosave: true
+noval: true
 noautoanchor: false
-noplots: false
+noplots: true
 evolve: null
 bucket: ''
 cache: null
@@ -49,8 +49,8 @@ single_cls: false
 optimizer: SGD
 sync_bn: false
 workers: 8
-project: /home/coles/Public/FullReal/trained
-name: 25epo-10-13-2023
+project: .
+name: Model
 exist_ok: true
 quad: false
 cos_lr: false
@@ -58,11 +58,11 @@ label_smoothing: 0.0
 patience: 100
 freeze:
 - 0
-save_period: 5
+save_period: -1
 seed: 0
 local_rank: -1
 entity: null
 upload_dataset: false
 bbox_interval: -1
 artifact_alias: latest
-save_dir: /home/coles/Public/FullReal/trained/25epo-10-13-2023
+save_dir: Model
