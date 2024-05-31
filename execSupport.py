@@ -11,7 +11,7 @@ if __name__ == "__main__":
         nosave = True,
         send_ros = True,
         #conf_thres=0.01,
-        conf_thres=0.5,
+        conf_thres=0.7,
         #iou_thres=0.025
         iou_thres=0.7
     )

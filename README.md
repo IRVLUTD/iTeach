@@ -12,7 +12,7 @@ This folder contains the images published by [publishimage.py](publishimage.py).
 
 In this folder one will find the labels, rgb, and 3d images of things labeled through the hololens. [receiveData.py](receiveData.py) publishes to this folder in real time and the images should already be properly formatted for a YOLO machine learning algorithm, this has been tested on [yolov5](https://github.com/ultralytics/yolov5).
 
-### [IRVLImageLabelling](IRVLImageLabelling)
+### [HoloLensImageLabellingApp](HoloLensImageLabellingApp)
 
 This is the subproject for the Unity/Hololens component of the pipeline. This folder is what should be opened when attempting to rebuild the project, not the root folder of this project. Further explanation is given in its own section.
 
@@ -39,7 +39,7 @@ This file is a stand-in for a fetch robot for when one is not available. It publ
 
 ### Overview
 
-In order for the user to label images on the move, there must be an application to facilitate it. The Root folder of the project to open is [IRVLImageLabelling](IRVLImageLabelling).
+In order for the user to label images on the move, there must be an application to facilitate it. The Root folder of the project to open is [HoloLensImageLabellingApp](HoloLensImageLabellingApp).
 
 * **Summon:** Bring up the most recent image taken in front of the user. drag the spheres on the edges of the frame to rotate it and drag the cubes on the corners to resize it. If the button is pressed again, the frame will be brought to the user's position without clearing existing labels.
 

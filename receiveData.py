@@ -1,20 +1,12 @@
-"""
-To receive data from the hololens
-"""
-
+import os
+import cv2
 import rospy
 from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 from std_msgs.msg import String
-import cv2
 from datetime import datetime
-import os
 from train import run
 
-
-
-from train import train
-import numpy as np
 
 class ImageSubscriber:
     imageReceived = False
@@ -30,7 +22,7 @@ class ImageSubscriber:
 
 
 
-        self.imgsub = rospy.Subscriber("Cole/RawLabeledImage", Image, self.imageSub) # output of the hololens indirectly
+        self.imgsub = rospy.Subscriber("Cole/RawLabeledImage", Image, self.imageSub)
         self.depSub = rospy.Subscriber("LabeledDepth", Image, self.depthSub)
         self.texsub = rospy.Subscriber("ImageLabels", String, self.labelSub)
         self.bridge = CvBridge()
@@ -38,8 +30,8 @@ class ImageSubscriber:
     
 
     def imageSub(self, rosImage):
-        img = self.bridge.imgmsg_to_cv2(rosImage, 'rgb8')
-        self.image = img
+        img = self.bridge.imgmsg_to_cv2(rosImage, desired_encoding='passthrough')
+        self.image = img[:,:,::-1]
         self.imageReceived = True
         print("Received image")
         if(self.imageReceived and self.labelReceived and self.depthReceived):
@@ -77,45 +69,48 @@ class ImageSubscriber:
         file.write(str(lbl))
         file.close()
         os.chdir("./../..")
+
+        model_name = "YOLOv5_iTeachModel"
         
         try:
+            print(f"case-1: {model_name}/weights/last.pt")
             run(
                 data = "doordetect.yaml", 
                 imgsz = 640, 
-                weights = "Model/weights/last.pt", 
-                epochs=1, 
+                weights = f"{model_name}/weights/last.pt", 
+                epochs=4,
                 nosave=True, 
                 noplots=False, 
                 noval=True,
                 project=".",
-                name="Model",
+                name=model_name,
                 exist_ok=True
             )
         except:
+            print("case-2: yolov5m.pt")
             run(
                 data = "doordetect.yaml", 
                 imgsz = 640, 
-                weights = "yolov5m.pt", 
-                epochs=1, 
+                weights = "pretrained_best.pt", 
+                epochs=4,
                 nosave=True, 
                 noplots=True, 
                 noval=True,
                 project=".",
-                name="Model",
+                name=model_name,
                 exist_ok=True
             )
         
         # train.run(resume = True, epochs = 1)
 
+        """
+        Run val.py with the recent checkpoint
+        """
+        os.system(f'echo Running {model_name}; python val.py --data data/doordetect.yaml --weights {model_name}/weights/last.pt --conf-thres 0.7 --iou-thres 0.7')
+
         self.imageReceived = False
         self.labelReceived = False
         self.depthReceived = False
-
-        
-
-
-
-    
 
 
 if __name__ == "__main__":
