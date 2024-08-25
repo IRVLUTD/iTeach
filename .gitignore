@@ -1,3 +1,4 @@
+test_ecss-4f-dh-dataset.py
 coco8/
 configs/
 datasets/
@@ -20,7 +21,9 @@ IRVLImageLabelling/.vsconfig
 IRVLImageLabelling/Assembly-CSharp.csproj
 IRVLImageLabelling/.vs
 IRVLImageLabelling/Library
+IRVLImageLabelling/Logs
 IRVLImageLabelling/IRVLImageLabelling.sln
+IRVLImageLabelling/UserSettings
 Dataset/labels.cache
 Model(reference)/*
 
@@ -31,4 +34,5 @@ utils/loggers
 yolov5m.pt
 yolov5s.pt
 Model (reference)
-IRVLImageLabelling/UserSettings
+Model/*
+Dataset/

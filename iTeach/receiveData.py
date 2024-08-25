@@ -74,7 +74,7 @@ class HololensUserDataSubscriber:
         # todo: implement finetuning logic here
         # metrics
         # as soon as the finetuning is complete; send an ack with metrics of curr model and prev best model performance
-        self.ft_ack_pub.publish(f"Finished finetune iter: {self.dh_model} with <num> samples.\nfinetuning complete. Metrics")
+        self.ft_ack_pub.publish(f"Finished finetune iter: {self.dh_model.} with <num> samples.\nfinetuning complete. Metrics")
 
         # thorough a topic
 

@@ -177,6 +177,8 @@ def run(
                                        batch_size,
                                        stride,
                                        single_cls,
+                                       shuffle=False,
+                                       seed=1,
                                        pad=pad,
                                        rect=rect,
                                        workers=workers,

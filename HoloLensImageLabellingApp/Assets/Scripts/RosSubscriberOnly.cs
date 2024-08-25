@@ -46,7 +46,7 @@ public class RosSubscriberOnly : MonoBehaviour
         ros.RegisterPublisher<imgMsg>(outgoingImageTopicName);
         ros.RegisterPublisher<imgMsg>(outgoing3DTopicName);
         ros.RegisterPublisher<strMsg>(outgoingTextTopicName);
-        ros.RegisterPublisher<strMsg>(outgoingRawTopicName);
+        ros.RegisterPublisher<imgMsg>(outgoingRawTopicName);
         
     }
 

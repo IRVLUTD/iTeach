@@ -1,6 +1,12 @@
+"""
+Makes sure that all of the outputs are in sync
+ - Depth and the labelled RGB
+ - Depth is not used as of now
+"""
+
 import rospy
 from sensor_msgs.msg import Image
-
+import cv2
 
 class ImageRebroadcaster:
 
