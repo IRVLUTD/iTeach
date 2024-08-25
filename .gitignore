@@ -9,7 +9,6 @@ test_datasets/
 hl2ss/
 rec_vids/
 runs/
-data/
 test_dataset.257/
 Dataset/images/*
 Dataset/labels/*
