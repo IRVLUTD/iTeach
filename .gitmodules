@@ -1,0 +1,6 @@
+[submodule "gscam"]
+	path = gscam
+	url = https://github.com/ros-drivers/gscam.git
+[submodule "hl2ss"]
+	path = hl2ss
+	url = https://github.com/jdibenes/hl2ss

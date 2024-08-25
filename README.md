@@ -1,3 +1,32 @@
+# Setup
+#### iTeach Labelling app
+- Install UnityHub and select a Unity version
+	- Install mrtk
+	- Install ros connector
+- Install Visual Studio
+
+
+#### Show how to compile using screenshots
+- Build in Unity
+- Open .sln file in Visual Studio
+- Create Package
+- Use Windows device portal to install the msix file
+- Stream record using hololens portal
+
+
+#### To stream webcam to ROS Server
+- Install `usb_cam` [[wiki](https://wiki.ros.org/usb_cam) | [github](https://github.com/ros-drivers/usb_cam)]
+- Following will publish to `/usb_cam/image_raw`
+```sh
+# For ros1
+sudo apt install ros-<ROS-DISTRO>-usb-cam
+v4l2-ctl --list-devices # list available devices; check which one is webcam
+rosrun usb_cam usb_cam_node  _video_device:=/dev/video0 _camera_name:='usb_cam' _camera_frame_id:='usb_cam' # assuming /dev/video0 as the webcam
+```
+
+
+
+
 # IRVL Image Labelling Support
 
 This is a selection of files based around the testing and smooth operation of the IRVL Image Labelling project.
@@ -19,7 +48,7 @@ This is the subproject for the Unity/Hololens component of the pipeline. This fo
 
 ## Files
 
-### [execSupport.py](execSupport.py)
+### [run_finetuning_node.py](run_finetuning_node.py)
 
 This is a container class to run both rebroadcastData and receiveData without needing to open another command window. It requires that rospy be installed and accepts no command line arguments.
 
@@ -41,15 +70,15 @@ This file is a stand-in for a fetch robot for when one is not available. It publ
 
 In order for the user to label images on the move, there must be an application to facilitate it. 
 
-* **Summon:** Bring up the most recent image taken in front of the user. drag the spheres on the edges of the frame to rotate it and drag the cubes on the corners to resize it. If the button is pressed again, the frame will be brought to the user's position without clearing existing labels.
+* **Robot POV:** Bring up the most recent image taken in front of the user. drag the spheres on the edges of the frame to rotate it and drag the cubes on the corners to resize it. If the button is pressed again, the frame will be brought to the user's position without clearing existing labels.
 
-* **Cancel:** Dismiss the window and clear all labels present.
+* **Discard Sample:** Dismiss the window and clear all labels present.
 
-* **Save:** Send all images and detections back to the Yolo component and dismiss the frame.
+* **Save Sample:** Send all images and detections back to the Yolo component and dismiss the frame.
 
-* **Cabinet:**
+* **Label Door:**
 
-* **Handle:**
+* **Label Handle:**
 
 * **Undo:** If an unwanted bounding box is drawn or is drawn wrong, this will remove the most recently placed box.
 
@@ -61,7 +90,7 @@ It is recommended that a Windows devide is used to compile this part of the proj
 
 ### OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already initialized.
 
-This error might show up in execSupport.py & receiveData.py. In a terminal in the environment that the program is running in run:
+This error might show up in run_finetuning_node.py & receiveData.py. In a terminal in the environment that the program is running in run:
 
 ```conda install nomkl --channel conda-forge```
 

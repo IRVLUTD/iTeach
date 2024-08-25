@@ -1,3 +1,8 @@
+rec_vids/
+runs/
+data/
+test_dataset.257/
+pretrained_ckpt.pt
 Dataset/images/*
 Dataset/labels/*
 Dataset/depth/*
