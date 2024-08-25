@@ -177,9 +177,9 @@ class DoorHandleModelFinetuner:
         })
 
         curr_mAP50, overall_best_mAP50_ft_iter = results[2], self.db_manager.get_best_mAP50_value()
-        logger.info("Current mAP50: %f, Overall best mAP50: %f", curr_mAP50, overall_best_mAP50_ft_iter)
-
         self.increment_finetune_iter_num()
+        
+        return curr_mAP50, overall_best_mAP50_ft_iter
 
 if __name__ == "__main__":
     model = DoorHandleModelFinetuner(sys.argv[1])

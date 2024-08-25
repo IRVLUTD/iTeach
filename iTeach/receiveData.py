@@ -1,11 +1,11 @@
 import os
 import cv2
+import json
 import rospy
 from cv_bridge import CvBridge
 from sensor_msgs.msg import Image
 from std_msgs.msg import (String, Bool)
 from datetime import datetime
-from iTeach.train import run
 
 
 class HololensUserDataSubscriber:
@@ -66,17 +66,39 @@ class HololensUserDataSubscriber:
         if self.finetuneSignalReceived:
             print(f"Received finetune cmd...: {ft_sig_msg.data}")
 
-        # perform finetuning
-        results = self.dh_model.train_model()
         
-        print()
-
         # todo: implement finetuning logic here
-        # metrics
-        # as soon as the finetuning is complete; send an ack with metrics of curr model and prev best model performance
-        self.ft_ack_pub.publish(f"Finished finetune iter: {self.dh_model.} with <num> samples.\nfinetuning complete. Metrics")
+        # perform finetuning
+        curr_mAP50, overall_best_mAP50_ft_iter = self.dh_model.train_model()        
+        print("Current mAP50: %f, Overall best mAP50: %f", curr_mAP50, overall_best_mAP50_ft_iter)
 
-        # thorough a topic
+        pub_data = {
+            'curr_ft_iter_num': self.dh_model.get_finetune_iter_num(),
+            'curr_mAP50': curr_mAP50,
+            'overall_best_mAP50_ft_iter': overall_best_mAP50_ft_iter
+        }
+
+        # as soon as the finetuning is complete; send an ack with metrics of curr model and prev best model performance
+        self.ft_ack_pub.publish(self.stringify_json(pub_data))
+
+        print("Published ACK")
+
+
+    def stringify_json(self, data, indent=None):
+        """
+        Convert a Python dictionary or other serializable object to a JSON string.
+
+        :param data: The Python object to be converted into a JSON string.
+        :param indent: Optional. If specified, the JSON string will be pretty-printed with the given number of spaces.
+        :return: A JSON string representation of the input data.
+        :raises TypeError: If the input data is not serializable to JSON.
+        """
+        try:
+            json_string = json.dumps(data, indent=indent)
+            return json_string
+        except TypeError as e:
+            raise ValueError(f"Data provided is not serializable to JSON: {str(e)}")
+
 
 
     def saveResults(self, img, lbl, dep):
