@@ -1,0 +1,25 @@
+#  YOLO data params
+path: 'datasets'
+train: train.524/fetch.on.utd.campus.train.dataset.524/images 
+val: test_dataset.256/images
+test:
+nc: 2
+names: [door, handle]
+
+
+
+# Extra params
+PRETRAINED_CKPT_PATH: /home/jishnu/Projects/IRVLImageLabellingSupport/pretrained_ckpt.pt
+TRAIN_RESULTS_DIR: ~/Projects/IRVLImageLabellingSupport/  # Folder path where training results get saved
+
+RESUME: True # resume from previous 
+
+EPOCHS: 2 #20                 # epochs for finetuning 
+BATCH:                     # Batch Size, default value 16
+BOX_LOSS_WEIGHT:           # Weight of bounding box loss component in loss function, default value 7.5
+CLS_LOSS_WEIGHT:           # Weight of classification loss in the total loss function, default value 0.5
+DROPOUT: 0.1               # Default value 0.0
+
+# detection post processing params
+CONF_THRES: 0.7 # 0.7 has been used for the experiments
+IOU_THRES: 0.7 # 0.7 has been used for the experiments
