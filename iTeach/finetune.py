@@ -21,7 +21,7 @@ import torch
 import logging
 from ultralytics import YOLO
 from easydict import EasyDict as edict
-from iTeach.train import run as train_run
+from train import run as train_run
 from sqlite_manager import SQLiteManager
 
 # Import the classes
@@ -178,7 +178,7 @@ class DoorHandleModelFinetuner:
 
         curr_mAP50, overall_best_mAP50_ft_iter = results[2], self.db_manager.get_best_mAP50_value()
         self.increment_finetune_iter_num()
-        
+
         return curr_mAP50, overall_best_mAP50_ft_iter
 
 if __name__ == "__main__":
