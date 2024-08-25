@@ -1,6 +1,5 @@
 test_ecss-4f-dh-dataset.py
 coco8/
-configs/
 datasets/
 finetune.yolov8.py
 *.db
