@@ -21,7 +21,7 @@ import torch
 import logging
 from ultralytics import YOLO
 from easydict import EasyDict as edict
-from train import run as train_run
+from iTeach.train import run as train_run
 from sqlite_manager import SQLiteManager
 
 # Import the classes
@@ -45,8 +45,8 @@ class DoorHandleModelFinetuner:
         self.model_name = "iTeachModels"
         self.cfg_path = cfg_path
         self.finetune_iter_num = 0
-        self.cfg = self.load_yaml(self.cfg_path)
-        self.model_ckpt = self.cfg.PRETRAINED_CKPT_PATH
+        self._cfg = self.load_yaml(self.cfg_path)
+        self.model_ckpt = self._cfg.PRETRAINED_CKPT_PATH
         self.db_manager = SQLiteManager('finetune_val_results.db')
 
     def set_model_ckpt(self, model_ckpt):
@@ -56,21 +56,21 @@ class DoorHandleModelFinetuner:
         return self.model_ckpt
 
     def select_model_ckpt(self):
-        if (self.cfg.RESUME and os.path.exists(self.model_name)) or self.finetune_iter_num > 0:
+        if (self._cfg.RESUME and os.path.exists(self.model_name)) or self.finetune_iter_num > 0:
             best_ckpt_from_ft_iters = self.get_latest_best_model(self.model_name, sort_wrt_mAP50=True)
             self.set_model_ckpt(best_ckpt_from_ft_iters)
         else:
-            logger.info(f"Getting pretrained ckpt from: {self.cfg.PRETRAINED_CKPT_PATH}")
-            self.set_model_ckpt(self.cfg.PRETRAINED_CKPT_PATH)
+            logger.info(f"Getting pretrained ckpt from: {self._cfg.PRETRAINED_CKPT_PATH}")
+            self.set_model_ckpt(self._cfg.PRETRAINED_CKPT_PATH)
 
     def get_finetune_args(self):
         args = {
             'data': self.cfg_path,
-            'epochs': self.cfg.EPOCHS if self.cfg.EPOCHS else 20,
-            'batch': self.cfg.BATCH if self.cfg.BATCH else 16,
-            'box': self.cfg.BOX_LOSS_WEIGHT if self.cfg.BOX_LOSS_WEIGHT else 7.5,
-            'cls': self.cfg.CLS_LOSS_WEIGHT if self.cfg.CLS_LOSS_WEIGHT else 0.5,
-            'dropout': self.cfg.DROPOUT if self.cfg.DROPOUT else 0.0,
+            'epochs': self._cfg.EPOCHS if self._cfg.EPOCHS else 20,
+            'batch': self._cfg.BATCH if self._cfg.BATCH else 16,
+            'box': self._cfg.BOX_LOSS_WEIGHT if self._cfg.BOX_LOSS_WEIGHT else 7.5,
+            'cls': self._cfg.CLS_LOSS_WEIGHT if self._cfg.CLS_LOSS_WEIGHT else 0.5,
+            'dropout': self._cfg.DROPOUT if self._cfg.DROPOUT else 0.0,
             'imgsz': 640,
             'weights': self.get_model_ckpt(),
             'nosave': False,
@@ -79,6 +79,7 @@ class DoorHandleModelFinetuner:
             'project': self.model_name,
             'name': 'ft',
             'exist_ok': False,
+            # 'cfg': './models/yolov5m.yaml'
         }
         return args
 

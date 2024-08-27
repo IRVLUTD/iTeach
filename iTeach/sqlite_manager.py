@@ -14,7 +14,7 @@ from typing import Dict, Optional
 class SQLiteManager:
     def __init__(self, db_path: str):
         self.db_path = db_path
-        self.conn = sqlite3.connect(self.db_path)
+        self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
         self.cursor = self.conn.cursor()
         self._create_table()
 

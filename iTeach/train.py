@@ -394,9 +394,9 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
                 
                 # to save every model based on timestamp to use for finegrained analysis later on
                 # Real-world testing for 
-                local_time = datetime.now()
-                last_ts= f"last_{local_time.strftime('%Y-%m-%d_%H-%M-%S')}.pt"
-                torch.save(ckpt, last_ts)
+                # local_time = datetime.now()
+                # last_ts= f"last_{local_time.strftime('%Y-%m-%d_%H-%M-%S')}.pt"
+                # torch.save(ckpt, last_ts)
                 #os.symlink(last_ts, last)
 
                 

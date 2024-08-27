@@ -15,7 +15,7 @@ class HololensUserDataSubscriber:
             rospy.init_node("HololensOutDataSubscriber")
 
         self.dh_model = model
-        self.cfg = self.dh_model.cfg
+        self.cfg = self.dh_model._cfg
         self.bridge = CvBridge()
         
         self.image = None
@@ -31,7 +31,7 @@ class HololensUserDataSubscriber:
         self.depsub = rospy.Subscriber("hololens/out/user_labelled/depth", Image, self.depthSub)
         self.texsub = rospy.Subscriber("hololens/out/user_labelled/labels", String, self.labelSub)
         self.ftsub = rospy.Subscriber("hololens/out/finetune_signal", Bool, self.finetuneSigSub)
-        self.ft_ack_pub = rospy.Publisher("/finetune/ack_with_metrics", String, queue_size=5)
+        self.ft_ack_pub = rospy.Publisher("finetune/ack_with_metrics", String, queue_size=5)
         
         # todo: create a publisher to send the finetuning details    
 
@@ -70,7 +70,6 @@ class HololensUserDataSubscriber:
         # todo: implement finetuning logic here
         # perform finetuning
         curr_mAP50, overall_best_mAP50_ft_iter = self.dh_model.train_model()        
-        print("Current mAP50: %f, Overall best mAP50: %f", curr_mAP50, overall_best_mAP50_ft_iter)
 
         pub_data = {
             'curr_ft_iter_num': self.dh_model.get_finetune_iter_num(),
@@ -78,9 +77,11 @@ class HololensUserDataSubscriber:
             'overall_best_mAP50_ft_iter': overall_best_mAP50_ft_iter
         }
 
+
         # as soon as the finetuning is complete; send an ack with metrics of curr model and prev best model performance
         self.ft_ack_pub.publish(self.stringify_json(pub_data))
 
+        print(f"PUB_DATA: {pub_data}")
         print("Published ACK")
 
 

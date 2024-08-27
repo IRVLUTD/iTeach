@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 
 def parse_opt():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--cfg', type=str, default='cfg.yml', help='config file path', required=True)
+    parser.add_argument('--config', type=str, default='cfg.yml', help='config file path', required=True)
     return parser.parse_args()
 
 
@@ -22,10 +22,10 @@ if __name__ == "__main__":
     rospy.init_node("YOLOFinetuningNode")
 
     args = parse_opt()
-    dh_model = finetune.DoorHandleModelFinetuner(args.cfg)
+    dh_model = finetune.DoorHandleModelFinetuner(args.config)
 
-    conf_thres = dh_model.cfg.CONF_THRES if dh_model.cfg.CONF_THRES else 0.7
-    iou_thres = dh_model.cfg.IOU_THRES if dh_model.cfg.IOU_THRES else 0.7        
+    conf_thres = dh_model._cfg.CONF_THRES if dh_model._cfg.CONF_THRES else 0.7
+    iou_thres = dh_model._cfg.IOU_THRES if dh_model._cfg.IOU_THRES else 0.7        
 
     # do yolo predictions on the incoming fetch pov image
     img_broadcaster = fetchdetect.ros_image_reader(
