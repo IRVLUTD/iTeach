@@ -7,7 +7,6 @@ finetune.yolov8.py
 fused
 iTeachModels/
 test_datasets/
-hl2ss/
 rec_vids/
 runs/
 test_dataset.257/

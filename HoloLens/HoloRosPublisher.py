@@ -1,6 +1,6 @@
-import numpy as np
 import cv2
 import threading
+import numpy as np
 import rospy, cv_bridge, tf2_ros
 from sensor_msgs.msg import Image, CameraInfo
 from geometry_msgs.msg import TransformStamped
@@ -8,6 +8,21 @@ from .hl2ss import hl2ss, hl2ss_lnm
 
 
 class HoloRosPublisher:
+    """
+    HoloRosPublisher Class: This class is responsible for setting up and managing the ROS publishers for the HoloLens device.
+    Args:
+        host: IP address of the HoloLens device.
+        enable_pv: Enable publishing of personal video (PV) data (default: True).
+        pv_res: Resolution of the PV data ("720P" or "1080P").
+        enable_depth: Enable publishing of depth camera data (default: False).
+        debug: Enable debug output (default: False).
+    
+    Main Function:
+        Reads the HoloLens IP from the environment variable.
+        Initializes the HoloRosPublisher class with configuration options.
+        Starts publishing data from the HoloLens device.
+    """
+
     def __init__(
         self, host, enable_pv=True, pv_res="720P", enable_depth=False, debug=False
     ):
@@ -35,11 +50,11 @@ class HoloRosPublisher:
         self._node_id = "hololens2_publisher"
 
         self._pv_frame_id = f"holo_pv_optical_frame"
-        self._pv_imageTopic = "/hololens2/pv_camera/image_raw"
-        self._pv_camInfoTopic = "/hololens2/pv_camera/camera_info"
+        self._pv_imageTopic = "/hololens/pv_camera/image_raw"
+        self._pv_camInfoTopic = "/hololens/pv_camera/camera_info"
 
         self._depth_frame_id = f"holo_depth_optical_frame"
-        self._depth_imageTopic = "/hololens2/depth_camera/image_raw"
+        self._depth_imageTopic = "/hololens/depth_camera/image_raw"
 
     def _pv_publisher(self, enable_mrc=False):
         prev_timestamp = 0

@@ -25,6 +25,20 @@ rosrun usb_cam usb_cam_node  _video_device:=/dev/video0 _camera_name:='usb_cam' 
 ```
 
 
+#### To stream hololens pov to ROS Server
+1. Set env vars in `~/.bashrc` file
+```
+export HOLO_DEVICE_IP="10.42.0.150" # hololens ip address
+export HOLO_DEVICE_USERNAME="admin" # hololens username
+export HOLO_DEVICE_PASSWORD="123456789" # hololens password
+```
+2. Run the following command to stream the hololens pov to ROS Server
+```sh
+python publish_hlpov2ros.py
+# This will show as follows: If IP addr is read correctly then the script is running fine given hololens device is ON
+Read HoloLens IP: 10.42.0.150 from ENV
+```
+
 
 
 # IRVL Image Labelling Support

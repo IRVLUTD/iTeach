@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 from urllib import request, parse
 import base64
@@ -236,9 +237,11 @@ class HoloDevicePortal:
 if __name__ == "__main__":
     PROJ_ROOT = Path(__file__).resolve().parents[2]
 
-    host = "192.168.50.220"
-    user = "admin"
-    pwd = "123456789"
+    # Read environment variables
+    host = os.getenv("HOLO_DEVICE_IP")
+    user = os.getenv("HOLO_DEVICE_USERNAME")
+    pwd = os.getenv("HOLO_DEVICE_PASSWORD")
+
 
     portal = HoloDevicePortal(host, user, pwd, debug=True)
 
@@ -291,6 +294,6 @@ if __name__ == "__main__":
     download_file_path = f"{sub_directory}/file_upload_test.json"
     save_path = PROJ_ROOT / "file_download_test.json"
 
-    portal.upload_file_to_app(app_name, sub_directory, file_path)
-    portal.download_file_from_app(app_name, download_file_path, save_path)
-    portal.delete_file_from_app(app_name, download_file_path)
+    #portal.upload_file_to_app(app_name, sub_directory, file_path)
+    #portal.download_file_from_app(app_name, download_file_path, save_path)
+    #portal.delete_file_from_app(app_name, download_file_path)
