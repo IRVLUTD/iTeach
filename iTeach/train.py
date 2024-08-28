@@ -392,7 +392,7 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
                 # Save last, best and delete
                 torch.save(ckpt, last)
                 
-                # to save every model based on timestamp to use for finegrained analysis later on
+                # todo: (rminn) to save every model based on timestamp to use for finegrained analysis later on
                 # Real-world testing for 
                 # local_time = datetime.now()
                 # last_ts= f"last_{local_time.strftime('%Y-%m-%d_%H-%M-%S')}.pt"
