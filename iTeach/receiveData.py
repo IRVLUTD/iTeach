@@ -69,12 +69,14 @@ class HololensUserDataSubscriber:
         
         # todo: implement finetuning logic here
         # perform finetuning
-        curr_mAP50, overall_best_mAP50_ft_iter = self.dh_model.train_model()        
+        curr_mAP50, overall_best_mAP50_info = self.dh_model.train_model()        
+        print("Current mAP50: %f, Overall best mAP50: %f", curr_mAP50, overall_best_mAP50_info)
 
         pub_data = {
             'curr_ft_iter_num': self.dh_model.get_finetune_iter_num(),
             'curr_mAP50': curr_mAP50,
-            'overall_best_mAP50_ft_iter': overall_best_mAP50_ft_iter
+            'overall_best_mAP50_ft_iter': overall_best_mAP50_info['mAP50'],
+            'overall_best_mAP50': overall_best_mAP50_info['finetune_iter_num'],
         }
 
 
