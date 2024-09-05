@@ -64,8 +64,6 @@ from sensor_msgs.msg import Image
 
 class ros_image_reader:
 
-
-
     @smart_inference_mode()
     def __init__(self,
             weights=ROOT / 'yolov5s.pt',  # model path or triton URL
@@ -335,6 +333,6 @@ def main(opt):
 
 if __name__ == '__main__':
     opt = parse_opt()
-    rospy.init_node("yolov5_labeller")
+    rospy.init_node("DoorHandle_labeller")
     main(opt)
     rospy.spin()

@@ -45,8 +45,7 @@ if __name__ == "__main__":
     # here only do subscription from hololens
     # get the labelled samples and save
     # trigger finetuning when received true from /hololens/out/finetune_signal
-    
-    imgsub = receiveData.HololensUserDataSubscriber(dh_model, False)
+    imgsub = receiveData.HololensUserDataSubscriber(dh_model, ros_image_reader=img_broadcaster)
     logging.info("Hololens user data subscriber online...")
 
 
