@@ -60,7 +60,9 @@ from utils.augmentations import letterbox
 import numpy as np
 from cv_bridge import CvBridge
 import rospy
+from std_msgs.msg import String
 from sensor_msgs.msg import Image
+
 
 class ros_image_reader:
 
@@ -145,14 +147,22 @@ class ros_image_reader:
 
         self.bridge = CvBridge()
         self.image_sub = rospy.Subscriber("/head_camera/rgb/image_raw",Image,self.callback)
+        self.ft_ckpt_sub = rospy.Subscriber("finetune/overall_best_ckpt",String,self.update_model_weights_after_finetuning_callback)
         self.image_pub = rospy.Publisher("pc/detections/bbox_overlayed_rgb", Image, queue_size=2)
 
     def callback(self,data):
         try:
+            print(f"Current model: {self.model.weights}")
             cv_image = self.bridge.imgmsg_to_cv2(data, "rgb8")
             self.run(cv_image)
         except Exception as e:
             print(f"exception: {e}")
+
+    def update_model_weights_after_finetuning_callback(self, ros_str_msg):
+        overall_best_model_ckpt = ros_str_msg.data
+        self.model = DetectMultiBackend(overall_best_model_ckpt, device=self.device, dnn=self.dnn, data=self.data, fp16=self.half)
+        print(f"New model: {self.model.weights}")
+
 
     def run(self, cv_image):
         # Run inference
@@ -330,7 +340,7 @@ def parse_opt():
 def main(opt):
     check_requirements(ROOT / 'requirements.txt', exclude=('tensorboard', 'thop'))
     detect_object = ros_image_reader(**vars(opt))
-    
+    print(detect_object)
 
 
 if __name__ == '__main__':

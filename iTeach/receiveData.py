@@ -31,6 +31,7 @@ class HololensUserDataSubscriber:
         self.depsub = rospy.Subscriber("hololens/out/user_labelled/depth", Image, self.depthSub)
         self.texsub = rospy.Subscriber("hololens/out/user_labelled/labels", String, self.labelSub)
         self.ftsub = rospy.Subscriber("hololens/out/finetune_signal", Bool, self.finetuneSigSub)
+        self.ft_ckpt_pub = rospy.Publisher("finetune/overall_best_ckpt", String, queue_size=5)
         self.ft_ack_pub = rospy.Publisher("finetune/ack_with_metrics", String, queue_size=5)
         
         # todo: create a publisher to send the finetuning details    
@@ -82,6 +83,8 @@ class HololensUserDataSubscriber:
 
         # as soon as the finetuning is complete; send an ack with metrics of curr model and prev best model performance
         self.ft_ack_pub.publish(self.stringify_json(pub_data))
+
+        self.ft_ckpt_pub.publish("/home/hololens/Projects/hololens/IRVLImageLabellingSupport/iTeachModels/ft5/weights/best.pt") #todo: best model ckpt path
 
         print(f"PUB_DATA: {pub_data}")
         print("Published ACK")

@@ -1,5 +1,5 @@
 #  YOLO data params
-path: './datasets'
+path: '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets'
 train: train.524/images 
 val: test_dataset.256/images
 test:
@@ -14,7 +14,7 @@ TRAIN_RESULTS_DIR: ~/Projects/IRVLImageLabellingSupport/  # Folder path where tr
 
 RESUME: True # resume from previous 
 
-EPOCHS: 20                 # epochs for finetuning 
+EPOCHS: 1                 # epochs for finetuning 
 BATCH:                     # Batch Size, default value 16
 BOX_LOSS_WEIGHT:           # Weight of bounding box loss component in loss function, default value 7.5
 CLS_LOSS_WEIGHT:           # Weight of classification loss in the total loss function, default value 0.5
