@@ -57,7 +57,7 @@ class DoorHandleModelFinetuner:
 
     def select_model_ckpt(self):
         if (self._cfg.RESUME and os.path.exists(self.model_name)) or self.finetune_iter_num > 0:
-            best_ckpt_from_ft_iters = self.get_latest_best_model(self.model_name, sort_wrt_mAP50=True)
+            best_ckpt_from_ft_iters = self.get_overall_best_model(self.model_name, sort_wrt_mAP50=True)
             self.set_model_ckpt(best_ckpt_from_ft_iters)
         else:
             logger.info(f"Getting pretrained ckpt from: {self._cfg.PRETRAINED_CKPT_PATH}")
@@ -107,7 +107,7 @@ class DoorHandleModelFinetuner:
             logger.error(f"Error parsing YAML file: {e}")
             raise e
 
-    def get_latest_best_model(self, directory, sort_wrt_mAP50=False):
+    def get_overall_best_model(self, directory, sort_wrt_mAP50=False):
         if sort_wrt_mAP50:
             all_results = self.db_manager.get_all_results()
             logger.info("All results: %s", all_results)
@@ -150,6 +150,31 @@ class DoorHandleModelFinetuner:
         self.sampled_filenames = list(set(sampled_filenames))
         logger.info(f"Updated sampled filenames: {self.sampled_filenames}")
 
+
+    def get_latest_model_checkpoint(self, project_dir):
+        """
+        Find the latest 'best.pt' file in the given project directory structure.
+        
+        Args:
+            project_dir (str): The base directory where the project subfolders are located.
+        
+        Returns:
+            str: The path to the latest 'best.pt' file based on the most recent modification time.
+        """
+        # Create the pattern to search for the best.pt file across all subdirectories
+        checkpoint_pattern = os.path.expanduser(os.path.join(project_dir, '*/*/best.pt'))
+        
+        # Use glob to find all matching files
+        checkpoints = glob.glob(checkpoint_pattern)
+        
+        if not checkpoints:
+            raise FileNotFoundError(f"No 'best.pt' file found in {project_dir}.")
+        
+        # Get the latest file based on modification time
+        latest_checkpoint = max(checkpoints, key=os.path.getmtime)
+        
+        return latest_checkpoint
+
     def train_model(self):
         """
         Train the model using the specified parameters.
@@ -162,8 +187,7 @@ class DoorHandleModelFinetuner:
         args = self.get_finetune_args()
         opt, results = train_run(**args)
 
-        p = os.path.expanduser(os.path.join(opt.project, '*/*/best.pt'))
-        latest_train_dir_path = max(glob.glob(p), key=os.path.getmtime)
+        latest_train_dir_path = self.get_latest_model_checkpoint(opt.project)
 
         self.db_manager.insert_data({
             "finetune_iter_num": self.get_finetune_iter_num(),
