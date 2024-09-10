@@ -7,6 +7,8 @@ from geometry_msgs.msg import TransformStamped
 from .hl2ss import hl2ss, hl2ss_lnm
 
 
+
+
 class HoloRosPublisher:
     """
     HoloRosPublisher Class: This class is responsible for setting up and managing the ROS publishers for the HoloLens device.
@@ -56,7 +58,7 @@ class HoloRosPublisher:
         self._depth_frame_id = f"holo_depth_optical_frame"
         self._depth_imageTopic = "/hololens/depth_camera/image_raw"
 
-    def _pv_publisher(self, enable_mrc=False):
+    def _pv_publisher(self, enable_mrc=True):
         prev_timestamp = 0
 
         if self._enable_pv:

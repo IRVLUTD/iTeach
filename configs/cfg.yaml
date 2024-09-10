@@ -1,6 +1,6 @@
 #  YOLO data params
-path: '../datasets'
-train: train.524/fetch.on.utd.campus.train.dataset.524/images 
+path: './datasets'
+train: train.524/images 
 val: test_dataset.256/images
 test:
 nc: 2
