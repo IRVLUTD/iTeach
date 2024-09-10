@@ -137,6 +137,7 @@ class ros_image_reader:
 
         # Load model
         self.device = select_device(self.device)
+        print(f"Loading weights: {weights}")
         self.model = DetectMultiBackend(weights, device=self.device, dnn=dnn, data=data, fp16=half)
         self.stride, self.names, self.pt = self.model.stride, self.model.names, self.model.pt
         self.imgsz = check_img_size(imgsz, s=self.stride)  # check image size
@@ -150,7 +151,6 @@ class ros_image_reader:
 
     def callback(self,data):
         try:
-            print(f"Current model: {self.model.weights}")
             cv_image = self.bridge.imgmsg_to_cv2(data, "rgb8")
             self.run(cv_image)
         except Exception as e:
@@ -158,9 +158,11 @@ class ros_image_reader:
 
     def update_model_weights_after_finetuning_callback(self, ros_str_msg):
         overall_best_model_ckpt = ros_str_msg.data
-        self.model = DetectMultiBackend(overall_best_model_ckpt, device=self.device, dnn=self.dnn, data=self.data, fp16=self.half)
-        print(f"New model: {self.model.weights}")
-
+        if self.model.weights != overall_best_model_ckpt:
+            self.model = DetectMultiBackend(overall_best_model_ckpt, device=self.device, dnn=self.dnn, data=self.data, fp16=self.half)
+            print(f"New model: {self.model.weights}")
+        else:
+            print("Newer model not better than current one. Hence not replacing the current model checkpoint.")
 
     def run(self, cv_image):
         # Run inference

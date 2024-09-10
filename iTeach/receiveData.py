@@ -10,13 +10,12 @@ from datetime import datetime
 
 class HololensUserDataSubscriber:
     
-    def __init__(self, model, ros_image_reader, initnode:bool = True):
+    def __init__(self, model, initnode:bool = True):
         if initnode:
             rospy.init_node("HololensOutDataSubscriber")
 
         self.dh_model = model
         self.cfg = self.dh_model._cfg
-        self.ros_image_reader = ros_image_reader
         self.bridge = CvBridge()
         
         self.image = None
@@ -77,11 +76,12 @@ class HololensUserDataSubscriber:
         }
 
 
+        # todo: fetch the overall best model from the database; won't set the dh_model, only retrieves best ckpt
+        best_ckpt = self.dh_model.select_model_ckpt()
+        self.ft_ckpt_pub.publish(best_ckpt)
+
         # as soon as the finetuning is complete; send an ack with metrics of curr model and prev best model performance
         self.ft_ack_pub.publish(self.stringify_json(pub_data))
-
-        # todo: fetch the overall best model from the database
-        self.ft_ckpt_pub.publish("/home/hololens/Projects/hololens/IRVLImageLabellingSupport/iTeachModels/ft5/weights/best.pt") #todo: best model ckpt path
 
         print(f"PUB_DATA: {pub_data}")
         print("Published ACK")

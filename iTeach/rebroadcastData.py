@@ -31,7 +31,7 @@ class ImageRebroadcaster:
         self.onceper = 30
         self.itemcount = 0
 
-        self.onceper *= 3
+        self.onceper *= 5
         
         
     def imageSub(self, rosImage):
