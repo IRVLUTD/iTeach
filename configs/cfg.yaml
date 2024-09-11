@@ -1,6 +1,6 @@
 #  YOLO data params
-path: '../datasets'
-train: train.524/fetch.on.utd.campus.train.dataset.524/images 
+path: '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets'
+train: train.524/images 
 val: test_dataset.256/images
 test:
 nc: 2
@@ -10,7 +10,7 @@ names: [door, handle]
 
 # Extra params
 PRETRAINED_CKPT_PATH: /home/hololens/Projects/hololens/IRVLImageLabellingSupport/pretrained_ckpt.pt # absolute path required
-TRAIN_RESULTS_DIR: ~/Projects/IRVLImageLabellingSupport/  # Folder path where training results get saved
+TRAIN_RESULTS_DIR: /home/hololens/Projects/hololens/IRVLImageLabellingSupport/  # Folder path where training results get saved
 
 RESUME: True # resume from previous 
 

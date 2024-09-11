@@ -10,9 +10,7 @@ import cv2
 
 class ImageRebroadcaster:
 
-    onceper = 10
-    itemcount = 0
-
+    
     rgb = None
     dep = None
     lbl = None
@@ -26,11 +24,14 @@ class ImageRebroadcaster:
         self.depSub = rospy.Subscriber("head_camera/depth/image", Image, self.depthSub)
         self.lblSub = rospy.Subscriber("pc/detections/bbox_overlayed_rgb", Image, self.labelSub)
 
-        self.imgPub = rospy.Publisher("hololens/in/robot_pov/rgb", Image, queue_size = 2) # continuous Robot RGB POV image
-        self.depPub = rospy.Publisher("hololens/in/robot_pov/depth", Image, queue_size = 2) # continuous Robot DEPTH POV image
-        self.lblPub = rospy.Publisher("hololens/in/robot_pov/detections/bbox_overlayed_rgb", Image, queue_size=2) # continuous YOLO preds overlayed rgb image
-        
-        self.onceper *= 3
+        self.imgPub = rospy.Publisher("hololens/in/robot_pov/rgb", Image, queue_size = 1) # continuous Robot RGB POV image
+        self.depPub = rospy.Publisher("hololens/in/robot_pov/depth", Image, queue_size = 1) # continuous Robot DEPTH POV image
+        self.lblPub = rospy.Publisher("hololens/in/robot_pov/detections/bbox_overlayed_rgb", Image, queue_size=1) # continuous YOLO preds overlayed rgb image
+
+        self.onceper = 30
+        self.itemcount = 0
+
+        self.onceper *= 5
         
         
     def imageSub(self, rosImage):

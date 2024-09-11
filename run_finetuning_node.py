@@ -23,6 +23,7 @@ if __name__ == "__main__":
 
     args = parse_opt()
     dh_model = finetune.DoorHandleModelFinetuner(args.config)
+    logging.info(f"Resume option is {'ON' if dh_model._cfg.RESUME else 'OFF'}")
 
     conf_thres = dh_model._cfg.CONF_THRES if dh_model._cfg.CONF_THRES else 0.7
     iou_thres = dh_model._cfg.IOU_THRES if dh_model._cfg.IOU_THRES else 0.7        
@@ -36,6 +37,7 @@ if __name__ == "__main__":
         conf_thres = conf_thres,
         iou_thres = iou_thres
     )
+
     logging.info("DoorHandle detector online...")
 
     # reboradcast with a lower frequency
@@ -45,8 +47,7 @@ if __name__ == "__main__":
     # here only do subscription from hololens
     # get the labelled samples and save
     # trigger finetuning when received true from /hololens/out/finetune_signal
-    #imgsub = receiveData.HololensUserDataSubscriber(dh_model, ros_image_reader=img_broadcaster)
-    imgsub = receiveData.HololensUserDataSubscriber(dh_model, ros_image_reader=None)
+    imgsub = receiveData.HololensUserDataSubscriber(dh_model, False)
     logging.info("Hololens user data subscriber online...")
 
 

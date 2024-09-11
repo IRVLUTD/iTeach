@@ -46,7 +46,7 @@ class DoorHandleModelFinetuner:
         self.cfg_path = cfg_path
         self.finetune_iter_num = 0
         self._cfg = self.load_yaml(self.cfg_path)
-        self.model_ckpt = self._cfg.PRETRAINED_CKPT_PATH
+        self.model_ckpt = self.select_model_ckpt()
         self.db_manager = SQLiteManager('finetune_val_results.db')
 
     def set_model_ckpt(self, model_ckpt):
@@ -57,12 +57,13 @@ class DoorHandleModelFinetuner:
 
     def select_model_ckpt(self):
         if (self._cfg.RESUME and os.path.exists(self.model_name)) or self.finetune_iter_num > 0:
-            best_ckpt_from_ft_iters = self.get_overall_best_model(self.model_name, sort_wrt_mAP50=True)
-            self.set_model_ckpt(best_ckpt_from_ft_iters)
+            ckpt = self.get_overall_best_model(self.model_name, sort_wrt_mAP50=True)
+            logger.info(f"Loaded finetune ckpt from: {ckpt}")
         else:
             logger.info(f"Getting pretrained ckpt from: {self._cfg.PRETRAINED_CKPT_PATH}")
-            self.set_model_ckpt(self._cfg.PRETRAINED_CKPT_PATH)
-
+            ckpt = self._cfg.PRETRAINED_CKPT_PATH
+        return ckpt
+    
     def get_finetune_args(self):
         args = {
             'data': self.cfg_path,
@@ -183,7 +184,9 @@ class DoorHandleModelFinetuner:
             dict: Training results in JSON format or an error response.
         """
         logger.info("Training model")
-        self.select_model_ckpt()
+        ckpt = self.select_model_ckpt()
+        self.set_model_ckpt(ckpt)
+
         args = self.get_finetune_args()
         opt, results = train_run(**args)
 
