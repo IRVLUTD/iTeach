@@ -46,8 +46,8 @@ class DoorHandleModelFinetuner:
         self.cfg_path = cfg_path
         self.finetune_iter_num = 0
         self._cfg = self.load_yaml(self.cfg_path)
-        self.model_ckpt = self.select_model_ckpt()
         self.db_manager = SQLiteManager('finetune_val_results.db')
+        self.model_ckpt = self.select_model_ckpt()
 
     def set_model_ckpt(self, model_ckpt):
         self.model_ckpt = model_ckpt
@@ -80,6 +80,7 @@ class DoorHandleModelFinetuner:
             'project': self.model_name,
             'name': 'ft',
             'exist_ok': False,
+            'batch_size': self._cfg.BATCH if self._cfg.BATCH else 16
             # 'cfg': './models/yolov5m.yaml'
         }
         return args

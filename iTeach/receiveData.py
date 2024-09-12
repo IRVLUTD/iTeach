@@ -96,14 +96,15 @@ class HololensUserDataSubscriber:
 
     def saveResults(self, img, lbl, dep):
         cwd = os.getcwd()
-        train_data_dir = os.path.abspath(os.path.expanduser(os.path.join(self.cfg.path, self.cfg.train, '..')))
+        # train_data_dir = os.path.abspath(os.path.expanduser(os.path.join(self.cfg.path, self.cfg.train, '..'))) # for hololens
+        train_data_dir = os.path.abspath(os.path.expanduser(os.path.join(self.cfg.path, self.cfg.train, '..', 'cache')))
         title = datetime.now().strftime("Hololens_%d-%m-%Y_%H-%M-%S")
         
         os.chdir(f"{train_data_dir}/images")
         cv2.imwrite(title+".jpg", img)
         
         os.chdir(f"{train_data_dir}/depth")
-        cv2.imwrite(title+".jpg", dep)
+        cv2.imwrite(title+".png", dep)
         
         os.chdir(f"{train_data_dir}/labels")
         os.chdir("./../labels")

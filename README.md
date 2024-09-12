@@ -39,6 +39,11 @@ python publish_hlpov2ros.py
 Read HoloLens IP: 10.42.0.150 from ENV
 ```
 
+# Download Pretrained ckpts
+```sh
+wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
+mkdir -p hololens_data_store/images hololens_data_store/depth hololens_data_store/labels
+```
 
 
 # IRVL Image Labelling Support
