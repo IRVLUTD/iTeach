@@ -80,6 +80,7 @@ class DoorHandleModelFinetuner:
             'project': self.model_name,
             'name': 'ft',
             'exist_ok': False,
+            'batch_size': self._cfg.BATCH if self._cfg.BATCH else 16
             # 'cfg': './models/yolov5m.yaml'
         }
         return args

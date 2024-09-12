@@ -1,6 +1,7 @@
 #  YOLO data params
 path: '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets'
-train: train.524/images 
+# train: train.524/images 
+train: hololens_data_store/images
 val: test_dataset.256/images
 test:
 nc: 2
