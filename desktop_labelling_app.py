@@ -19,7 +19,7 @@ class LabelTool():
         self.parent.resizable(width=True, height=True)
 
         # initialize global state
-        self.imageDir = '/home/jishnu/Projects/IRVLImageLabellingSupport/datasets/emulate_datasets/images'  # Default path
+        self.imageDir = '/home/jishnu/Projects/IRVLImageLabellingSupport/datasets/hololens.exp/images'  # Default path
         self.imageList = []
         self.egDir = ''
         self.egList = []
@@ -53,7 +53,7 @@ class LabelTool():
         self.ldBtn = Button(self.frame, text="Load", command=self.loadDir)
         self.ldBtn.grid(row=0, column=2, sticky=W+E)
 
-        # main panel for labeling
+        # # main panel for labeling
         self.mainPanel = Canvas(self.frame, cursor='tcross', bg='white')
         self.mainPanel.grid(row=1, column=1, rowspan=4, sticky=N+S+E+W)
         self.mainPanel.bind("<Button-1>", self.mouseClick)
@@ -62,6 +62,16 @@ class LabelTool():
         self.parent.bind("s", self.cancelBBox)
         self.parent.bind("a", self.prevImage)  # press 'a' to go backward
         self.parent.bind("d", self.nextImage)  # press 'd' to go forward
+
+        # main panel for labeling
+        # self.mainPanel = Canvas(self.frame, cursor='tcross', bg='white', width=640, height=480)  # Set fixed size here
+        # self.mainPanel.grid(row=1, column=1, rowspan=4, sticky=N+S+E+W)
+        # self.mainPanel.bind("<Button-1>", self.mouseClick)
+        # self.mainPanel.bind("<Motion>", self.mouseMove)
+        # self.parent.bind("<Escape>", self.cancelBBox)  # press <Escape> to cancel current bbox
+        # self.parent.bind("s", self.cancelBBox)
+        # self.parent.bind("a", self.prevImage)  # press 'a' to go backward
+        # self.parent.bind("d", self.nextImage)  # press 'd' to go forward
 
         # Inside the __init__ method of LabelTool
         self.lb1 = Label(self.frame, text='Bounding boxes:')
@@ -126,6 +136,8 @@ class LabelTool():
         # Update the canvas size and reload the image
         self.mainPanel.config(width=self.parent.winfo_width() - self.frame.winfo_x(),
                              height=self.parent.winfo_height() - self.frame.winfo_y())
+        # self.mainPanel = Canvas(self.frame, cursor='tcross', bg='white', width=640, height=480)  # Set fixed size here
+
         self.loadImage()
 
     def setLabelDoor(self):
@@ -186,15 +198,15 @@ class LabelTool():
             self.parent.focus()
             self.imageDir = s  # Use the path directly
         else:
-            self.imageDir = '/home/jishnu/Projects/IRVLImageLabellingSupport/datasets/hololens_data_store/images'
+            self.imageDir = '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets/hololens.exp/images'
 
         # Check if directory exists
         if not os.path.isdir(self.imageDir):
-            print('The specified directory does not exist!')
+            print(f'The specified directory; {self.imageDir} does not exist!')
             return
 
         # get image list
-        self.imageList = glob.glob(os.path.join(self.imageDir, '*.png'))
+        self.imageList = glob.glob(os.path.join(self.imageDir, '*.jpg'))
         if len(self.imageList) == 0:
             print('No .png images found in the specified dir!')
             return
@@ -243,6 +255,7 @@ class LabelTool():
                     self.listbox.insert(END, f"{bbox_label_name}: {x0} {y0} {x1} {y1}")
 
 
+
     def loadImage(self):
         if self.cur <= 0 or self.cur > len(self.imageList):
             return
@@ -251,11 +264,9 @@ class LabelTool():
         self.imagename = os.path.basename(imagePath)
         self.labelfilename = os.path.join(self.outDir, os.path.splitext(self.imagename)[0] + '.txt')
         
-        # Open and resize image according to canvas size
+        # Open and resize image to fixed size
         img = Image.open(imagePath)
-        canvas_width = self.mainPanel.winfo_width()
-        canvas_height = self.mainPanel.winfo_height()
-        img = img.resize((canvas_width, canvas_height), Image.ANTIALIAS)
+        img = img.resize((640, 480), Image.ANTIALIAS)  # Resize to fixed size
         
         # Convert image to PhotoImage
         self.tkimg = ImageTk.PhotoImage(img)
@@ -277,8 +288,16 @@ class LabelTool():
                 w = width / self.tkimg.width()
                 h = height / self.tkimg.height()
                 label = self.bboxLabels.get(i, 0)  # Get label for the bbox, default to 0
+                
+                # Round values to 4 decimal places
+                cx = round(cx, 4)
+                cy = round(cy, 4)
+                w = round(w, 4)
+                h = round(h, 4)
+                
                 file.write(f"{label} {cx} {cy} {w} {h}\n")
         messagebox.showinfo("Save", "Bounding boxes saved successfully!")
+
 
     def mouseClick(self, event):
         if self.labeling_mode is None:
