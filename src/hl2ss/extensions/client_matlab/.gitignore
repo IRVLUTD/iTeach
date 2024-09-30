@@ -1,0 +1,9 @@
+*.dll
+*.exe
+*.obj
+*.pdb
+*.mexw64
+*.mexa64
+*.asv
+*.autosave
+slprj

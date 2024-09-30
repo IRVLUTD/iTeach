@@ -1,3 +1,13 @@
+HoloLensPOVFrames/
+output/
+RGB/
+non-diversified-trained-models/
+logs/
+*.mp4
+iTeachModels*
+*.log
+*.pt
+finetune_val_results.*
 test_ecss-4f-dh-dataset.py
 coco8/
 datasets

@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_rm.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_rm_imu.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_rm_vlc.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_rm_zht.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_hook_callback.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_media_sink.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_media_type_handler.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_media_types.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_sink_writers.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_stream_sink.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="microphone_capture.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_mc.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="locator.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="personal_video.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_pv.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="spatial_input.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_media_buffers.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_si.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="lock.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="holographic_space.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="server.cpp">
+      <Filter>Source Files\server</Filter>
+    </ClCompile>
+    <ClCompile Include="research_mode.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="timestamps.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="nfo.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="neon.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="ipc_sc.cpp">
+      <Filter>Source Files\server</Filter>
+    </ClCompile>
+    <ClCompile Include="display7s.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Source Files\utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="spatial_mapping.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="scene_understanding.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\include\native\Microsoft.MixedReality.SceneUnderstanding.cpp">
+      <Filter>Libraries\SceneUnderstanding</Filter>
+    </ClCompile>
+    <ClCompile Include="ipc_sm.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="ipc_rc.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="ipc_su.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="voice_input.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="ipc_vi.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="extended_eye_tracking.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_eet.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_rm_zlt.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\AnimatedVector.cpp">
+      <Filter>Libraries\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\DrawCall.cpp">
+      <Filter>Libraries\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\FloatingSlate.cpp">
+      <Filter>Libraries\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\FloatingText.cpp">
+      <Filter>Libraries\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\MixedReality.cpp">
+      <Filter>Libraries\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\RecordedValue.cpp">
+      <Filter>Libraries\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\TrackedHands.cpp">
+      <Filter>Libraries\Cannon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\src\zdepth.cpp">
+      <Filter>Libraries\Zdepth</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\debug.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\entropy_common.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\error_private.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\fse_compress.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\fse_decompress.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\hist.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\huf_compress.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\huf_decompress.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\pool.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\threading.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\xxhash.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_common.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_literals.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_sequences.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_ddict.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_decompress.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_decompress_block.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_double_fast.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_fast.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_lazy.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_ldm.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_opt.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstdmt_compress.c">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_video_effect.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="custom_audio_effect.cpp">
+      <Filter>Source Files\sink</Filter>
+    </ClCompile>
+    <ClCompile Include="extended_audio.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_ea.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="extended_execution.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="extended_video.cpp">
+      <Filter>Source Files\devices</Filter>
+    </ClCompile>
+    <ClCompile Include="stream_ev.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="ipc_mq.cpp">
+      <Filter>Source Files\interfaces</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Wide310x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\StoreLogo.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square150x150Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Square44x44Logo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\SplashScreen.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\LockScreenLogo.scale-200.png">
+      <Filter>Assets</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{e48dc53e-40b1-40cb-970a-f89935452892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{77208849-6f99-4c42-809e-afd872b63ef1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\devices">
+      <UniqueIdentifier>{5f090863-f205-4fc0-a4a2-4801a5f211e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sink">
+      <UniqueIdentifier>{8ba447e5-bcc7-4453-a9ed-ef08b9e29295}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{8d23e6cd-1170-4e23-a4cb-c9eec0c5690c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\devices">
+      <UniqueIdentifier>{97d71bec-6303-46ef-b453-db89e887d340}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sink">
+      <UniqueIdentifier>{fe00bec6-4239-4474-a37d-29bbcdb34081}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utilities">
+      <UniqueIdentifier>{b9d42606-b835-4d74-a429-7f6ba1e94449}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries">
+      <UniqueIdentifier>{76257412-a737-46fe-b5df-75da267b6959}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Metadata">
+      <UniqueIdentifier>{d9f6e53e-c543-4fca-b3c7-4ce0b1f00737}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\utilities">
+      <UniqueIdentifier>{b1717619-c9e4-4b51-9150-698bc0766c05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\server">
+      <UniqueIdentifier>{c05be168-ec48-4b92-ac57-2ac604c70b94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\server">
+      <UniqueIdentifier>{f79784ea-758b-40b8-803d-418b1e1bc1b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\SceneUnderstanding">
+      <UniqueIdentifier>{a94c3462-d48c-4d9d-80dc-711bb512086c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Cannon">
+      <UniqueIdentifier>{a9142e27-34f6-4f6b-aea7-68f7e2e5364c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Cannon\Shaders">
+      <UniqueIdentifier>{3ddd1f38-d731-4dd3-ab2b-3fc6ff197a47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Cannon\Common">
+      <UniqueIdentifier>{0b1571a6-e253-460f-b3c6-e14e9d0f22d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Zdepth">
+      <UniqueIdentifier>{eedce1b6-fc21-40dd-a18b-6ed33a197712}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libraries\Zdepth\zstd">
+      <UniqueIdentifier>{3a4148ae-8ee1-46aa-8405-1f4e6850e6bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\interfaces">
+      <UniqueIdentifier>{80cec913-7259-403e-b12a-d26aa7032cbd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\interfaces">
+      <UniqueIdentifier>{f3e105db-3dac-4194-b4dd-8cd6f1fbc8a6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config">
+      <Filter>Metadata</Filter>
+    </None>
+    <None Include="PropertySheet.props">
+      <Filter>Metadata</Filter>
+    </None>
+    <None Include="$(MSBuildThisFileDirectory)..\..\runtimes\win10-$(SceneUnderstanding-Platform)\native\Microsoft.MixedReality.SceneUnderstanding.dll">
+      <Filter>Libraries\SceneUnderstanding</Filter>
+    </None>
+    <None Include="hl2ss_TemporaryKey.pfx">
+      <Filter>Metadata</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="types.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="research_mode.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_rm.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_rm_imu.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_rm_vlc.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_rm_zht.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="microphone_capture.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_hook_callback.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_media_sink.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_media_type_handler.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_sink_hook.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_media_types.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_sink_writers.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_stream_sink.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="locator.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_mc.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_pv.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="personal_video.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="spatial_input.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_si.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_media_buffers.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="lock.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="holographic_space.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="server.h">
+      <Filter>Header Files\server</Filter>
+    </ClInclude>
+    <ClInclude Include="ports.h">
+      <Filter>Header Files\server</Filter>
+    </ClInclude>
+    <ClInclude Include="timestamps.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="nfo.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="neon.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="ipc_sc.h">
+      <Filter>Header Files\server</Filter>
+    </ClInclude>
+    <ClInclude Include="display7s.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="log.h">
+      <Filter>Header Files\utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="spatial_mapping.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="ipc_rc.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ipc_sm.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_understanding.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="ipc_su.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="voice_input.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="ipc_vi.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="extended_eye_tracking.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_eet.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_rm_zlt.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\AnimatedVector.h">
+      <Filter>Libraries\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\DrawCall.h">
+      <Filter>Libraries\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\FloatingSlate.h">
+      <Filter>Libraries\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\FloatingText.h">
+      <Filter>Libraries\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\MixedReality.h">
+      <Filter>Libraries\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\RecordedValue.h">
+      <Filter>Libraries\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\TrackedHands.h">
+      <Filter>Libraries\Cannon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Common\FileUtilities.h">
+      <Filter>Libraries\Cannon\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Common\FilterDoubleExponential.h">
+      <Filter>Libraries\Cannon\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Common\Intersectable.h">
+      <Filter>Libraries\Cannon\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Common\Timer.h">
+      <Filter>Libraries\Cannon\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\include\zdepth.hpp">
+      <Filter>Libraries\Zdepth</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\bitstream.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\compiler.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\cpu.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\debug.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\error_private.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\hist.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\mem.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\pool.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\threading.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_internal.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_literals.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_sequences.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_ddict.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_decompress_block.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_decompress_internal.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_double_fast.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_errors.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_fast.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_internal.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_lazy.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_ldm.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_opt.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstdmt_compress.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\include\fse.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\include\huf.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\include\xxhash.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\include\zstd.h">
+      <Filter>Libraries\Zdepth\zstd</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_video_effect.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="custom_audio_effect.h">
+      <Filter>Header Files\sink</Filter>
+    </ClInclude>
+    <ClInclude Include="extended_audio.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_ea.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="extended_execution.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="extended_video.h">
+      <Filter>Header Files\devices</Filter>
+    </ClInclude>
+    <ClInclude Include="stream_ev.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ipc_mq.h">
+      <Filter>Header Files\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="plugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <Filter>Metadata</Filter>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Lit_PS.hlsl">
+      <Filter>Libraries\Cannon\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Lit_VS.hlsl">
+      <Filter>Libraries\Cannon\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Lit_VS_SPS.hlsl">
+      <Filter>Libraries\Cannon\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\LitTexture_PS.hlsl">
+      <Filter>Libraries\Cannon\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\LitTextureColorBlend_PS.hlsl">
+      <Filter>Libraries\Cannon\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Unlit_VS.hlsl">
+      <Filter>Libraries\Cannon\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Unlit_VS_SPS.hlsl">
+      <Filter>Libraries\Cannon\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\UnlitTexture_PS.hlsl">
+      <Filter>Libraries\Cannon\Shaders</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.props')" />
+  <Import Project="..\packages\Microsoft.MixedReality.EyeTracking.1.0.2\build\native\Microsoft.MixedReality.EyeTracking.props" Condition="Exists('..\packages\Microsoft.MixedReality.EyeTracking.1.0.2\build\native\Microsoft.MixedReality.EyeTracking.props')" />
+  <PropertyGroup Label="Globals">
+    <CppWinRTOptimized>true</CppWinRTOptimized>
+    <CppWinRTRootNamespaceAutoMerge>true</CppWinRTRootNamespaceAutoMerge>
+    <CppWinRTGenerateWindowsMetadata>false</CppWinRTGenerateWindowsMetadata>
+    <MinimalCoreWin>true</MinimalCoreWin>
+    <ProjectGuid>{c9cafdbc-adb4-4e28-85c8-8b175ccbb969}</ProjectGuid>
+    <ProjectName>hl2ss</ProjectName>
+    <RootNamespace>hl2ss</RootNamespace>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <AppContainerApplication>true</AppContainerApplication>
+    <ApplicationType>Windows Store</ApplicationType>
+    <ApplicationTypeRevision>10.0</ApplicationTypeRevision>
+    <WindowsTargetPlatformVersion Condition=" '$(WindowsTargetPlatformVersion)' == '' ">10.0.19041.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformMinVersion>10.0.17134.0</WindowsTargetPlatformMinVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v143</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '16.0'">v142</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '15.0'">v141</PlatformToolset>
+    <PlatformToolset Condition="'$(VisualStudioVersion)' == '14.0'">v140</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="PropertySheet.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
+    <AppxPackageSigningEnabled>True</AppxPackageSigningEnabled>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxPackageDir>C:\Users\jcds\Documents\GitHub\hl2ss\release\</AppxPackageDir>
+    <GenerateTestArtifacts>True</GenerateTestArtifacts>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>arm64</AppxBundlePlatforms>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <PackageCertificateThumbprint>D98E441A0E47A44188C1A8D182A165044B5EFA8A</PackageCertificateThumbprint>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
+      <WarningLevel>Level4</WarningLevel>
+      <AdditionalOptions>%(AdditionalOptions) /bigobj</AdditionalOptions>
+      <!--Temporarily disable cppwinrt heap enforcement to work around xaml compiler generated std::shared_ptr use -->
+      <AdditionalOptions Condition="'$(CppWinRTHeapEnforcement)'==''">/DWINRT_NO_MAKE_DETECTION %(AdditionalOptions)</AdditionalOptions>
+      <PreprocessorDefinitions>WIN32_LEAN_AND_MEAN;WINRT_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateWindowsMetadata>false</GenerateWindowsMetadata>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Debug'">
+    <ClCompile>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'">
+    <ClCompile>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Sync</ExceptionHandling>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">$(SolutionDir)..\3rdparty\HoloLens2ForCV;$(SolutionDir)..\3rdparty\Zdepth\include;$(SolutionDir)..\3rdparty\Zdepth\zstd\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">mfuuid.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\LockScreenLogo.scale-200.png" />
+    <Image Include="Assets\SplashScreen.scale-200.png" />
+    <Image Include="Assets\Square150x150Logo.scale-200.png" />
+    <Image Include="Assets\Square44x44Logo.scale-200.png" />
+    <Image Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Image Include="Assets\StoreLogo.png" />
+    <Image Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="hl2ss_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="PropertySheet.props" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\AnimatedVector.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Common\FileUtilities.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Common\FilterDoubleExponential.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Common\Intersectable.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Common\Timer.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\DrawCall.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\FloatingSlate.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\FloatingText.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\MixedReality.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\RecordedValue.h" />
+    <ClInclude Include="..\..\3rdparty\HoloLens2ForCV\Cannon\TrackedHands.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\include\zdepth.hpp" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\include\fse.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\include\huf.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\include\xxhash.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\include\zstd.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\bitstream.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\compiler.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\cpu.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\debug.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\error_private.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\hist.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\mem.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\pool.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\threading.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstdmt_compress.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_internal.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_literals.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_sequences.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_ddict.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_decompress_block.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_decompress_internal.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_double_fast.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_errors.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_fast.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_internal.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_lazy.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_ldm.h" />
+    <ClInclude Include="..\..\3rdparty\Zdepth\zstd\src\zstd_opt.h" />
+    <ClInclude Include="custom_audio_effect.h" />
+    <ClInclude Include="custom_media_buffers.h" />
+    <ClInclude Include="custom_media_sink.h" />
+    <ClInclude Include="custom_media_types.h" />
+    <ClInclude Include="custom_media_type_handler.h" />
+    <ClInclude Include="custom_sink_hook.h" />
+    <ClInclude Include="custom_sink_writers.h" />
+    <ClInclude Include="custom_stream_sink.h" />
+    <ClInclude Include="custom_hook_callback.h" />
+    <ClInclude Include="custom_video_effect.h" />
+    <ClInclude Include="display7s.h" />
+    <ClInclude Include="extended_audio.h" />
+    <ClInclude Include="extended_execution.h" />
+    <ClInclude Include="extended_eye_tracking.h" />
+    <ClInclude Include="extended_video.h" />
+    <ClInclude Include="holographic_space.h" />
+    <ClInclude Include="ipc_mq.h" />
+    <ClInclude Include="ipc_sc.h" />
+    <ClInclude Include="ipc_sm.h" />
+    <ClInclude Include="ipc_su.h" />
+    <ClInclude Include="ipc_vi.h" />
+    <ClInclude Include="locator.h" />
+    <ClInclude Include="log.h" />
+    <ClInclude Include="neon.h" />
+    <ClInclude Include="nfo.h" />
+    <ClInclude Include="personal_video.h" />
+    <ClInclude Include="ipc_rc.h" />
+    <ClInclude Include="plugin.h" />
+    <ClInclude Include="scene_understanding.h" />
+    <ClInclude Include="spatial_input.h" />
+    <ClInclude Include="spatial_mapping.h" />
+    <ClInclude Include="stream_ea.h" />
+    <ClInclude Include="stream_eet.h" />
+    <ClInclude Include="stream_ev.h" />
+    <ClInclude Include="stream_mc.h" />
+    <ClInclude Include="microphone_capture.h" />
+    <ClInclude Include="ports.h" />
+    <ClInclude Include="stream_pv.h" />
+    <ClInclude Include="research_mode.h" />
+    <ClInclude Include="stream_rm.h" />
+    <ClInclude Include="server.h" />
+    <ClInclude Include="stream_rm_zht.h" />
+    <ClInclude Include="stream_rm_imu.h" />
+    <ClInclude Include="stream_rm_vlc.h" />
+    <ClInclude Include="stream_rm_zlt.h" />
+    <ClInclude Include="stream_si.h" />
+    <ClInclude Include="timestamps.h" />
+    <ClInclude Include="types.h" />
+    <ClInclude Include="lock.h" />
+    <ClInclude Include="voice_input.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\AnimatedVector.cpp" />
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\DrawCall.cpp" />
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\FloatingSlate.cpp" />
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\FloatingText.cpp" />
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\MixedReality.cpp" />
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\RecordedValue.cpp" />
+    <ClCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\TrackedHands.cpp" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\src\zdepth.cpp" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\debug.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\entropy_common.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\error_private.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\fse_compress.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\fse_decompress.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\hist.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\huf_compress.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\huf_decompress.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\pool.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\threading.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\xxhash.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstdmt_compress.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_common.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_literals.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_compress_sequences.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_ddict.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_decompress.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_decompress_block.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_double_fast.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_fast.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_lazy.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_ldm.c" />
+    <ClCompile Include="..\..\3rdparty\Zdepth\zstd\src\zstd_opt.c" />
+    <ClCompile Include="custom_audio_effect.cpp" />
+    <ClCompile Include="custom_media_buffers.cpp" />
+    <ClCompile Include="custom_media_sink.cpp" />
+    <ClCompile Include="custom_media_types.cpp" />
+    <ClCompile Include="custom_media_type_handler.cpp" />
+    <ClCompile Include="custom_sink_writers.cpp" />
+    <ClCompile Include="custom_stream_sink.cpp" />
+    <ClCompile Include="custom_hook_callback.cpp" />
+    <ClCompile Include="custom_video_effect.cpp" />
+    <ClCompile Include="display7s.cpp" />
+    <ClCompile Include="extended_audio.cpp" />
+    <ClCompile Include="extended_eye_tracking.cpp" />
+    <ClCompile Include="extended_video.cpp" />
+    <ClCompile Include="holographic_space.cpp" />
+    <ClCompile Include="ipc_mq.cpp" />
+    <ClCompile Include="ipc_sc.cpp" />
+    <ClCompile Include="ipc_sm.cpp" />
+    <ClCompile Include="ipc_su.cpp" />
+    <ClCompile Include="ipc_vi.cpp" />
+    <ClCompile Include="log.cpp" />
+    <ClCompile Include="neon.cpp" />
+    <ClCompile Include="nfo.cpp" />
+    <ClCompile Include="research_mode.cpp" />
+    <ClCompile Include="scene_understanding.cpp" />
+    <ClCompile Include="spatial_input.cpp" />
+    <ClCompile Include="locator.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="personal_video.cpp" />
+    <ClCompile Include="spatial_mapping.cpp" />
+    <ClCompile Include="stream_ea.cpp" />
+    <ClCompile Include="stream_eet.cpp" />
+    <ClCompile Include="stream_ev.cpp" />
+    <ClCompile Include="stream_mc.cpp" />
+    <ClCompile Include="microphone_capture.cpp" />
+    <ClCompile Include="ipc_rc.cpp" />
+    <ClCompile Include="stream_rm_zlt.cpp" />
+    <ClCompile Include="stream_si.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="stream_pv.cpp" />
+    <ClCompile Include="stream_rm_imu.cpp" />
+    <ClCompile Include="stream_rm_zht.cpp" />
+    <ClCompile Include="stream_rm_vlc.cpp" />
+    <ClCompile Include="extended_execution.cpp" />
+    <ClCompile Include="timestamps.cpp" />
+    <ClCompile Include="lock.cpp" />
+    <ClCompile Include="stream_rm.cpp" />
+    <ClCompile Include="server.cpp" />
+    <ClCompile Include="voice_input.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\LitTextureColorBlend_PS.hlsl">
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\LitTexture_PS.hlsl">
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Lit_PS.hlsl">
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Lit_VS.hlsl">
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Lit_VS_SPS.hlsl">
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\UnlitTexture_PS.hlsl">
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Unlit_VS.hlsl">
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Vertex</ShaderType>
+    </FxCompile>
+    <FxCompile Include="..\..\3rdparty\HoloLens2ForCV\Cannon\Shaders\Unlit_VS_SPS.hlsl">
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">5.0</ShaderModel>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">Vertex</ShaderType>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\Microsoft.MixedReality.SceneUnderstanding.1.0.14\build\native\Microsoft.MixedReality.SceneUnderstanding.targets" Condition="Exists('..\packages\Microsoft.MixedReality.SceneUnderstanding.1.0.14\build\native\Microsoft.MixedReality.SceneUnderstanding.targets')" />
+    <Import Project="..\packages\Microsoft.MixedReality.EyeTracking.1.0.2\build\native\Microsoft.MixedReality.EyeTracking.targets" Condition="Exists('..\packages\Microsoft.MixedReality.EyeTracking.1.0.2\build\native\Microsoft.MixedReality.EyeTracking.targets')" />
+    <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.MixedReality.SceneUnderstanding.1.0.14\build\native\Microsoft.MixedReality.SceneUnderstanding.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.MixedReality.SceneUnderstanding.1.0.14\build\native\Microsoft.MixedReality.SceneUnderstanding.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.MixedReality.EyeTracking.1.0.2\build\native\Microsoft.MixedReality.EyeTracking.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.MixedReality.EyeTracking.1.0.2\build\native\Microsoft.MixedReality.EyeTracking.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.MixedReality.EyeTracking.1.0.2\build\native\Microsoft.MixedReality.EyeTracking.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.MixedReality.EyeTracking.1.0.2\build\native\Microsoft.MixedReality.EyeTracking.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.240405.15\build\native\Microsoft.Windows.CppWinRT.targets'))" />
+  </Target>
+</Project>

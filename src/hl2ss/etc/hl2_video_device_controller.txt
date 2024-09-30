@@ -1,0 +1,191 @@
+ExposureControl
+Supported: 1
+Auto: 1
+Min: 1000
+Max: 660000
+Step: 10
+Value: 1000
+
+ExposurePriorityVideoControl
+Supported: 1
+Enabled: 0
+
+FocusControl
+Supported: 1
+Min: 170
+Max: 10000
+Step: 1
+Value: 0
+Mode: 2
+Preset: 3
+WaitForFocusSupported: 0
+SupportedFocusDistances
+0
+2
+SupportedFocusModes
+0
+1
+3
+2
+SupportedFocusRanges
+0
+2
+1
+SupportedPresets
+0
+1
+2
+3
+
+VideoTemporalDenoisingControl
+Supported: 1
+Mode: 1
+SupportedModes
+0
+1
+
+WhiteBalanceControl
+Max: 7500
+Min: 2300
+Preset: 0
+Step: 25
+Supported: 1
+Value: 2300
+
+SceneModeControl
+SupportedModes
+0
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+
+IsoSpeedControl
+Auto: 1
+Max: 3200
+Min: 100
+Preset: 0
+Step: 1
+Supported: 1
+Supported Presets
+0
+3
+4
+5
+6
+7
+8
+Value: 0
+
+PersonalVideo_SetBrightness
+Supported 0
+AutoModeSupported 0
+Min 0
+Max 0
+Default 0
+Step 0
+
+PersonalVideo_SetContrast
+Supported 0
+AutoModeSupported 0
+Min 0
+Max 0
+Default 0
+Step 0
+
+PersonalVideo_ExposureCompensationControl
+Supported 1
+Min 0
+Max 0
+Value 0
+Step 1610612736
+
+PersonalVideo_Pan
+Supported 0
+AutoModeSupported 0
+Min 0
+Max 0
+Default 0
+Step 0
+
+PersonalVideo_Roll
+Supported 0
+AutoModeSupported 0
+Min 0
+Max 0
+Default 0
+Step 0
+
+PersonalVideo_Tilt
+Supported 0
+AutoModeSupported 0
+Min 0
+Max 0
+Default 0
+Step 0
+
+PersonalVideo_SetDesiredOptimization
+Value 0
+
+PersonalVideo_SetPrimaryUse
+Value 1
+
+PersonalVideo_SetZoom
+Supported 1
+Supported Modes
+0
+1
+2
+Mode 0
+Min 0
+Max 0
+Value 0
+Step 0
+
+PersonalVideo_SetOpticalImageStabilization
+Supported 1
+Supported Modes
+0
+1
+Mode 1
+
+PersonalVideo_SetHue
+Supported 0
+AutoModeSupported 0
+Min 0
+Max 0
+Default 0
+Step 0
+
+PersonalVideo_SetHdrVideo
+Supported 1
+Supported Modes
+0
+1
+2
+Mode 0
+
+PersonalVideo_SetFlashControl
+Supported 0
+
+PersonalVideo_SetTorchControl
+Supported 0
+
+PersonalVideo_SetInfraredTorch
+Supported 0
+
+PersonalVideo_SetPanelBasedOptimization
+Supported 0
+
+PersonalVideo_SetRegionsOfInterest
+AutoExposureSupported 1
+AutoWhiteBalanceSupported 0
+AutoFocusSupported 1
+Max Regions 1
