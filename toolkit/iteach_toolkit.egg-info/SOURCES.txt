@@ -1,0 +1,7 @@
+README.md
+setup.py
+iteach_toolkit.egg-info/PKG-INFO
+iteach_toolkit.egg-info/SOURCES.txt
+iteach_toolkit.egg-info/dependency_links.txt
+iteach_toolkit.egg-info/requires.txt
+iteach_toolkit.egg-info/top_level.txt

@@ -4,3 +4,6 @@
 [submodule "hl2ss"]
 	path = hl2ss
 	url = https://github.com/jdibenes/hl2ss
+[submodule "hf_demo"]
+	path = hf_demo
+	url = https://huggingface.co/spaces/IRVLUTD/DH-YOLO
