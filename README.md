@@ -1,5 +1,4 @@
 # iTeach: Interactive Teaching for Robot Perception using Mixed Reality
-==============================================================
 
 [Project Webpage](https://irvlutd.github.io/iTeach/)
 
@@ -13,6 +12,8 @@ We introduce iTeach, a Mixed Reality (MR) framework to improve robot perception 
 * **toolkit**: iteach_toolkit src code
 * **hololens_app**: contains the code for iteachlabeller app
 * **dataloader**: contains the pytorch dataloader for the new IRVLUTD DoorHandle dataset
+* **hf_demo**: contains the code for the DHYOLO HuggingFace space
+
 
 ## Getting Started
 
