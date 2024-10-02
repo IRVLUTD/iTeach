@@ -11,10 +11,11 @@ This package simplifies loading and using the dataset in machine learning workfl
 
 <img src='https://irvlutd.github.io/iTeach/assets/images/iteach/iTeach-IRVLUTD-DoorHandle-Dataset-Banner.webp'>
 
-<details>
-<summary>Area covered</summary>
-<img src='imgs/area-covered-for-irvlutd-doorhandle-dataset-creation.png'>
-</details>
+<!-- <details> -->
+<!-- <summary><center><h1>Click to see the area covered</h1></center></summary> -->
+<summary><center><h1>Area Covered</h1></center></summary>
+<img src='https://raw.githubusercontent.com/IRVLUTD/IRVLUTDDoorHandleDataset/refs/heads/main/imgs/area-covered-for-irvlutd-doorhandle-dataset-creation.png'>
+<!-- </details> -->
 
 ## Installation
 ```shell
