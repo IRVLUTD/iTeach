@@ -9,7 +9,7 @@ This Python package provides a PyTorch dataset loader for the IRVLUTD Door Handl
 This package simplifies loading and using the dataset in machine learning workflows. It is a part of the [iTeach](https://irvlutd.github.io/iTeach) project.
 
 
-TODO: A dataset banner is coming soon...🚀
+<img src='https://irvlutd.github.io/iTeach/assets/images/iteach/iTeach-IRVLUTD-DoorHandle-Dataset-Banner.webp'>
 
 <details>
 <summary>Area covered</summary>
