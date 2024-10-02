@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
-Name: iteach-toolkit
-Version: 0.0.1
+Name: iteach_toolkit
+Version: 0.0.2
 Summary: The iteach toolkit package includes the dhyolo model, designed to detect doors and handles in images.
 Home-page: https://irvlutd.github.io/iTeach
 Author: Vinaya Bomnale, Jishnu Jaykumar P
@@ -26,23 +26,22 @@ Requires-Dist: setuptools>=65.5.1
 Requires-Dist: easydict
 Requires-Dist: huggingface_hub
 
+# iTeach Toolkit Package 🛠️
 
-# iTeach Toolkit Package
+## Overview 🔍
+The `iTeach_package` is a toolkit designed for running object detection using the **DH-YOLO** model, specifically for identifying doors and handles in images. This package provides easy-to-use command-line tools for performing inference with a pre-trained DH-YOLO model.
 
-## Overview
-The `iTeach_package` is a toolkit designed for running object detection using the DH-YOLO model, specifically for identifying doors and handles in images. This package provides easy-to-use command-line tools for performing inference with a pre-trained DH-YOLO model.
-
-## Model Checkpoints
+## Model Checkpoints 📥
 Pretrained model checkpoints can be downloaded from [this link](https://utdallas.box.com/v/DHYOLO-Pretrained-Checkpoints).
 
-## Installation
+## Installation ⚙️
 To install the package, use `pip`:
 
 ```bash
 pip install iteach_toolkit
 ```
 
-## Usage
+## Usage 🖥️
 
 Below is an example of how to use the package for running inference on an image.
 
@@ -73,6 +72,6 @@ pil_img_with_bboxes = PILImg.fromarray(image_with_bboxes)
 pil_img_with_bboxes.show()
 ```
 
-## License
+## License 📜
 
 This project is licensed under the MIT License.

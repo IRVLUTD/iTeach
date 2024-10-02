@@ -1,28 +1,25 @@
-# IRVLUTD Door Handle Dataset Loader
+# IRVLUTD Door Handle Dataset Loader 📦
 
-This Python package provides a PyTorch dataset loader for the IRVLUTD Door Handle dataset, which includes:
+This Python package provides a PyTorch dataset loader for the **IRVLUTD Door Handle dataset**, which includes:
 
-- Images
-- Depth maps
-- YOLO-style labels
+- 🖼️ Images
+- 🌐 Depth maps
+- 🏷️ YOLO-style labels
 
 This package simplifies loading and using the dataset in machine learning workflows. It is a part of the [iTeach](https://irvlutd.github.io/iTeach) project.
 
-
 <img src='https://irvlutd.github.io/iTeach/assets/images/iteach/iTeach-IRVLUTD-DoorHandle-Dataset-Banner.webp'>
 
-<!-- <details> -->
-<!-- <summary><center><h1>Click to see the area covered</h1></center></summary> -->
-<summary><center><h1>Area Covered</h1></center></summary>
+<summary><center><h1>Area Covered 🌍</h1></center></summary>
 <img src='https://raw.githubusercontent.com/IRVLUTD/IRVLUTDDoorHandleDataset/refs/heads/main/imgs/area-covered-for-irvlutd-doorhandle-dataset-creation.png'>
-<!-- </details> -->
 
-## Installation
+## Installation ⚙️
 ```shell
 pip install IRVLUTDDoorHandleDataset
+
 ```
 
-## Usage
+## Usage 📖
 
 Once installed, you can use the `IRVLUTDDoorHandleDataset` class to load dataset in a PyTorch-compatible format:
 
@@ -52,7 +49,7 @@ print(f"Class Labels: {class_labels}")
 ```
 
 
-## Dataset Structure
+## Dataset Structure 📂
 Download dataset from [here](https://utdallas.box.com/v/IRVLUTD-DoorHandle-Dataset).
 
 The dataset should follow this structure:
@@ -73,6 +70,6 @@ Each sample in the dataset shares the same filename (excluding the extension) in
 
 Note: This dataloader will work with any detection dataset following the above mentioned file structure and having normalized YOLO bbox labels stored in txt files.
 
-## License
+## License 📜
 
 This project is licensed under the MIT License.
