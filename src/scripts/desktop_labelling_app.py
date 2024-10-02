@@ -4,22 +4,22 @@ from tkinter import messagebox  # Updated import for Python 3
 from PIL import Image, ImageTk
 import os
 import glob
-import random
+import argparse
 
 # colors for the bboxes
 COLORS = {0: 'red', 1: 'yellow'}  # Red for Door, Yellow for Handle
 
 class LabelTool():
-    def __init__(self, master):
+    def __init__(self, master, image_dir):
         # set up the main frame
         self.parent = master
-        self.parent.title("LabelTool")
+        self.parent.title("iTeach Desktop LabelTool")
         self.frame = Frame(self.parent)
-        self.frame.pack(fill=BOTH, expand=0)
-        self.parent.resizable(width=True, height=True)
+        self.frame.pack(fill=BOTH, expand=1)
+        # self.parent.resizable(width=True, height=True)
 
         # initialize global state
-        self.imageDir = '/home/jishnu/Projects/IRVLImageLabellingSupport/datasets/hololens.exp/images'  # Default path
+        self.imageDir = image_dir  # Default path
         self.imageList = []
         self.egDir = ''
         self.egList = []
@@ -27,7 +27,7 @@ class LabelTool():
         self.cur = 0
         self.total = 0
         self.labeling_mode = None
-        self.imagename = ''
+        self.imagename = ''     
         self.labelfilename = ''
         self.tkimg = None
 
@@ -62,17 +62,7 @@ class LabelTool():
         self.parent.bind("s", self.cancelBBox)
         self.parent.bind("a", self.prevImage)  # press 'a' to go backward
         self.parent.bind("d", self.nextImage)  # press 'd' to go forward
-
-        # main panel for labeling
-        # self.mainPanel = Canvas(self.frame, cursor='tcross', bg='white', width=640, height=480)  # Set fixed size here
-        # self.mainPanel.grid(row=1, column=1, rowspan=4, sticky=N+S+E+W)
-        # self.mainPanel.bind("<Button-1>", self.mouseClick)
-        # self.mainPanel.bind("<Motion>", self.mouseMove)
-        # self.parent.bind("<Escape>", self.cancelBBox)  # press <Escape> to cancel current bbox
-        # self.parent.bind("s", self.cancelBBox)
-        # self.parent.bind("a", self.prevImage)  # press 'a' to go backward
-        # self.parent.bind("d", self.nextImage)  # press 'd' to go forward
-
+        
         # Inside the __init__ method of LabelTool
         self.lb1 = Label(self.frame, text='Bounding boxes:')
         self.lb1.grid(row=1, column=2, sticky=W+N)
@@ -197,19 +187,19 @@ class LabelTool():
             s = self.entry.get()
             self.parent.focus()
             self.imageDir = s  # Use the path directly
-        else:
-            self.imageDir = '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets/hololens.exp/images'
 
         # Check if directory exists
         if not os.path.isdir(self.imageDir):
             print(f'The specified directory; {self.imageDir} does not exist!')
             return
 
-        # get image list
-        self.imageList = glob.glob(os.path.join(self.imageDir, '*.jpg'))
-        if len(self.imageList) == 0:
-            print('No .jpg images found in the specified dir!')
-            return
+        # Supported image file extensions
+        image_extensions = ['*.jpg', '*.jpeg', '*.png', '*.bmp', '*.gif', '*.tiff', '*.webp']
+
+        # Get the list of images for all types
+        self.imageList = []
+        for ext in image_extensions:
+            self.imageList.extend(glob.glob(os.path.join(self.imageDir, ext)))
 
         # default to the 1st image in the collection
         self.cur = 1
@@ -365,8 +355,27 @@ class LabelTool():
         else:
             messagebox.showerror("Input Error", "Invalid input. Please enter a number.")
 
-# Example usage
+
+# Function to parse arguments
+def parse_args():
+    parser = argparse.ArgumentParser(description='Labeling tool for object detection')
+    
+    # Add an argument for the image directory or any other necessary parameter
+    parser.add_argument('--image_dir', type=str, required=True, 
+                        help='Path to the directory containing images to label')
+
+    # Parse the arguments
+    args = parser.parse_args()
+    return args
+
 if __name__ == "__main__":
+    # Parse command-line arguments
+    args = parse_args()
+
+    # Initialize Tkinter and run the app
     root = Tk()
-    app = LabelTool(root)
+    
+    # Assuming LabelTool is your class and it expects an image directory as a parameter
+    app = LabelTool(root, args.image_dir)
+    
     root.mainloop()
