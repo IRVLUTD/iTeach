@@ -1,0 +1,143 @@
+﻿#include "pch-c.h"
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBACD699F03B17CECE74F15527954DA883E6ACB2F (void);
+extern void UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m71C104C13F2C90FB65B16C62FF389B8A4FF0CE96 (void);
+extern void BasicLostTrackingVisual_get_Enabled_mCD02EE427C861F583F893FF985CB3CBACB9D22D5 (void);
+extern void BasicLostTrackingVisual_set_Enabled_m8971D7F79E04E0B2E95236739B20DCBC00CB85E8 (void);
+extern void BasicLostTrackingVisual_ResetVisual_m8E7D700FA2B9331C0C4D6EB61AAFCFF1303D7CED (void);
+extern void BasicLostTrackingVisual_SetLayer_m674D9E65AC4D4F8CE4B0A1203818A4BDBA84417F (void);
+extern void BasicLostTrackingVisual_Update_m3B5F3116A07976132C9C639A9099BF6C4AC33965 (void);
+extern void BasicLostTrackingVisual__ctor_m6AE7A48010054C0F17E9DD7E84BD19EA166F132C (void);
+extern void LostTrackingService_get_TrackingLost_mC555D5537DF026AC6F62DA726899DBA254EF47F5 (void);
+extern void LostTrackingService_set_TrackingLost_m56B1A2BF192A1639E08DEC9BC0B0DC54AF063451 (void);
+extern void LostTrackingService_get_OnTrackingLost_m8D4BCCC307E2C27CDDAD687F8CAAFB8C2E43A070 (void);
+extern void LostTrackingService_set_OnTrackingLost_m68DE0A1F634DD17DFD28313C5A2DAD6A9FDE447C (void);
+extern void LostTrackingService_get_OnTrackingRestored_mA2E7F3714ECA257F43453B8CD673B9142BA60C27 (void);
+extern void LostTrackingService_set_OnTrackingRestored_m026364671D4F29DE131F1DDA698E4F2A750F0E9F (void);
+extern void LostTrackingService__ctor_m88482218DD8989AFEAD7424EAA7F09B02D21C18E (void);
+extern void LostTrackingService__ctor_m54A4ABA54C280D74FEAD1DC8917A5F81224850B9 (void);
+extern void LostTrackingService_Initialize_m27365BAE4EC68D50AE9C0C502E6ACCC7B146DD12 (void);
+extern void LostTrackingService_DisableTrackingLostVisual_m70D876C59581332EB051C9AF97600FAAC7A0E02B (void);
+extern void LostTrackingService_EnableTrackingLostVisual_m8D707A7E070DF291D006BBA5665DC07A5775147B (void);
+extern void LostTrackingService_SetTrackingLost_mD78F4D684A53D4B40810DA4902951518FAA188E9 (void);
+extern void LostTrackingService__cctor_mD807023A2A9335A740017F1518A1A1C67C0A0EC0 (void);
+extern void LostTrackingServiceProfile_get_TrackingLostVisualPrefab_m30BCBB4E4C91A9C3B021EC9F06D5F04253F66CF1 (void);
+extern void LostTrackingServiceProfile_get_TrackingLostVisualLayer_m873420F9CE1B3389F84D49E556F35B02F7377CF6 (void);
+extern void LostTrackingServiceProfile_get_TrackingLostCullingMask_m61A5A1B1C4DAFC0260C22DFDDE448A21E24BD998 (void);
+extern void LostTrackingServiceProfile_get_HaltTimeWhileTrackingLost_mC3FBBBF66B4ED7AD62C8067ECB19E5688996781C (void);
+extern void LostTrackingServiceProfile_get_HaltAudioOnTrackingLost_m77C844CF5D729877E3CC502A0BD9674526051F5D (void);
+extern void LostTrackingServiceProfile_OnValidate_m2FFAA03E1DB38C7FD2FBD0301A56B56BEA5D32C3 (void);
+extern void LostTrackingServiceProfile__ctor_m939C1A1C9076216B71DE84470359C068AF36322E (void);
+static Il2CppMethodPointer s_methodPointers[37] = 
+{
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1_Get_mBACD699F03B17CECE74F15527954DA883E6ACB2F,
+	UnitySourceGeneratedAssemblyMonoScriptTypes_v1__ctor_m71C104C13F2C90FB65B16C62FF389B8A4FF0CE96,
+	BasicLostTrackingVisual_get_Enabled_mCD02EE427C861F583F893FF985CB3CBACB9D22D5,
+	BasicLostTrackingVisual_set_Enabled_m8971D7F79E04E0B2E95236739B20DCBC00CB85E8,
+	BasicLostTrackingVisual_ResetVisual_m8E7D700FA2B9331C0C4D6EB61AAFCFF1303D7CED,
+	BasicLostTrackingVisual_SetLayer_m674D9E65AC4D4F8CE4B0A1203818A4BDBA84417F,
+	BasicLostTrackingVisual_Update_m3B5F3116A07976132C9C639A9099BF6C4AC33965,
+	BasicLostTrackingVisual__ctor_m6AE7A48010054C0F17E9DD7E84BD19EA166F132C,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	LostTrackingService_get_TrackingLost_mC555D5537DF026AC6F62DA726899DBA254EF47F5,
+	LostTrackingService_set_TrackingLost_m56B1A2BF192A1639E08DEC9BC0B0DC54AF063451,
+	LostTrackingService_get_OnTrackingLost_m8D4BCCC307E2C27CDDAD687F8CAAFB8C2E43A070,
+	LostTrackingService_set_OnTrackingLost_m68DE0A1F634DD17DFD28313C5A2DAD6A9FDE447C,
+	LostTrackingService_get_OnTrackingRestored_mA2E7F3714ECA257F43453B8CD673B9142BA60C27,
+	LostTrackingService_set_OnTrackingRestored_m026364671D4F29DE131F1DDA698E4F2A750F0E9F,
+	LostTrackingService__ctor_m88482218DD8989AFEAD7424EAA7F09B02D21C18E,
+	LostTrackingService__ctor_m54A4ABA54C280D74FEAD1DC8917A5F81224850B9,
+	LostTrackingService_Initialize_m27365BAE4EC68D50AE9C0C502E6ACCC7B146DD12,
+	LostTrackingService_DisableTrackingLostVisual_m70D876C59581332EB051C9AF97600FAAC7A0E02B,
+	LostTrackingService_EnableTrackingLostVisual_m8D707A7E070DF291D006BBA5665DC07A5775147B,
+	LostTrackingService_SetTrackingLost_mD78F4D684A53D4B40810DA4902951518FAA188E9,
+	LostTrackingService__cctor_mD807023A2A9335A740017F1518A1A1C67C0A0EC0,
+	LostTrackingServiceProfile_get_TrackingLostVisualPrefab_m30BCBB4E4C91A9C3B021EC9F06D5F04253F66CF1,
+	LostTrackingServiceProfile_get_TrackingLostVisualLayer_m873420F9CE1B3389F84D49E556F35B02F7377CF6,
+	LostTrackingServiceProfile_get_TrackingLostCullingMask_m61A5A1B1C4DAFC0260C22DFDDE448A21E24BD998,
+	LostTrackingServiceProfile_get_HaltTimeWhileTrackingLost_mC3FBBBF66B4ED7AD62C8067ECB19E5688996781C,
+	LostTrackingServiceProfile_get_HaltAudioOnTrackingLost_m77C844CF5D729877E3CC502A0BD9674526051F5D,
+	LostTrackingServiceProfile_OnValidate_m2FFAA03E1DB38C7FD2FBD0301A56B56BEA5D32C3,
+	LostTrackingServiceProfile__ctor_m939C1A1C9076216B71DE84470359C068AF36322E,
+};
+static const int32_t s_InvokerIndices[37] = 
+{
+	12757,
+	8590,
+	8279,
+	6679,
+	8590,
+	6776,
+	8590,
+	8590,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	8279,
+	6679,
+	8435,
+	6830,
+	8435,
+	6830,
+	1367,
+	1946,
+	8590,
+	8590,
+	8590,
+	6679,
+	12738,
+	8435,
+	8377,
+	8390,
+	8279,
+	8279,
+	8590,
+	8590,
+};
+IL2CPP_EXTERN_C const Il2CppCodeGenModule g_Microsoft_MixedReality_Toolkit_Extensions_Tracking_CodeGenModule;
+const Il2CppCodeGenModule g_Microsoft_MixedReality_Toolkit_Extensions_Tracking_CodeGenModule = 
+{
+	"Microsoft.MixedReality.Toolkit.Extensions.Tracking.dll",
+	37,
+	s_methodPointers,
+	0,
+	NULL,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+};

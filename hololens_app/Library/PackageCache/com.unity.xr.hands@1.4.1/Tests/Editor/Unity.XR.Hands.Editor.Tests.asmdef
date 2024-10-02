@@ -1,0 +1,33 @@
+{
+    "name": "Unity.XR.Hands.Editor.Tests",
+    "references": [
+        "Unity.XR.Hands",
+        "Unity.XR.Hands.OpenXR",
+        "Unity.XR.OpenXR",
+        "Unity.XR.OpenXR.Features"
+    ],
+    "optionalUnityReferences": [
+        "TestAssemblies"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [
+        {
+            "name": "com.unity.xr.openxr",
+            "expression": "1.0.0",
+            "define": "UNITY_OPENXR_PACKAGE"
+        }
+    ],
+    "noEngineReferences": false
+}

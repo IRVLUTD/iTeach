@@ -1,0 +1,27 @@
+{
+    "name": "Unity.XR.Hands.Editor",
+    "rootNamespace": "",
+    "references": [
+        "Unity.XR.Hands",
+        "Unity.XR.OpenXR",
+        "Unity.XR.OpenXR.Editor",
+        "Unity.XR.OpenXR.Features.MetaQuestSupport"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.unity.xr.openxr",
+            "expression": "1.6.0",
+            "define": "UNITY_OPENXR_PACKAGE"
+        }
+    ],
+    "noEngineReferences": false
+}

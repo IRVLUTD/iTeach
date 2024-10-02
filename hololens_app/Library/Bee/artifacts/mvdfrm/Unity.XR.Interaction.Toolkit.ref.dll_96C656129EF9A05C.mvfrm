@@ -1,0 +1,10 @@
+InputHelpers
+
+AttachPointVelocityTracker
+UnityEngine
+XR
+Interaction
+Toolkit
+IAttachPointVelocityProvider
+AttachPointVelocityProviderExtensions
+IAttachPointVelocityTracker

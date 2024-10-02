@@ -1,0 +1,25 @@
+{
+    "ErrorExceptions": [],
+    "WarningExceptions": [
+        {
+            "ValidationTest": "Restricted File Type Validation",
+            "ExceptionMessage": "/Runtime/universalwindows/arm32/UnityOpenXRHands.dll should not be included in packages unless absolutely necessary. Please confirm that its inclusion is deliberate and intentional.",
+            "PackageVersion": "1.3.0"
+        },
+        {
+            "ValidationTest": "Restricted File Type Validation",
+            "ExceptionMessage": "/Runtime/universalwindows/arm64/UnityOpenXRHands.dll should not be included in packages unless absolutely necessary. Please confirm that its inclusion is deliberate and intentional.",
+            "PackageVersion": "1.3.0"
+        },
+        {
+            "ValidationTest": "Restricted File Type Validation",
+            "ExceptionMessage": "/Runtime/universalwindows/x64/UnityOpenXRHands.dll should not be included in packages unless absolutely necessary. Please confirm that its inclusion is deliberate and intentional.",
+            "PackageVersion": "1.3.0"
+        },
+        {
+            "ValidationTest": "Restricted File Type Validation",
+            "ExceptionMessage": "/Runtime/windows/x64/UnityOpenXRHands.dll should not be included in packages unless absolutely necessary. Please confirm that its inclusion is deliberate and intentional.",
+            "PackageVersion": "1.3.0"
+        }
+    ]
+}
