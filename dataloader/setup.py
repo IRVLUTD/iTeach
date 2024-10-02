@@ -8,7 +8,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="IRVLUTDDoorHandleDataset",  # Package name
-    version="1.0.0",                  # Version
+    version="0.0.1",                  # Version
     author="Jishnu Jaykumar P",        # Your name
     author_email="jishnu.p@utdallas.edu",  # Your email
     description="PyTorch dataset loader for IRVLUTD Door Handle dataset",
