@@ -149,3 +149,11 @@ This error might show up in run_finetuning_node.py & receiveData.py. In a termin
 ```conda install nomkl --channel conda-forge```
 
 After this, check that all package requirements are still installed. This solution courtesy of [postylem](https://stackoverflow.com/questions/20554074/sklearn-omp-error-15-initializing-libiomp5md-dll-but-found-mk2iomp5md-dll-a).
+
+
+
+
+## Desktop Labelling App
+We have a naive desktop labelling that is used to label the incoming image samples from the HoloLens in batches. Below is a demo of the app. We used this for reporting results in the main paper.
+
+TODO: desktop-labelling app video

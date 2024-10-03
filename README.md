@@ -2,7 +2,7 @@
 
 [Project Webpage](https://irvlutd.github.io/iTeach/) | [🤗 DH-YOLO Demo](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
 
-<!-- ![](https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp) -->
+![](https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp)
 <!-- <center>
 <img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp" alt="Real World Demo" width="75%"/>
 </center> -->
