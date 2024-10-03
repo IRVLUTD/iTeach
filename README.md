@@ -36,3 +36,13 @@ For any clarification, comments, or suggestions, you can choose from the followi
 - Join the [discussion forum](https://github.com/IRVLUTD/iTeach/discussions). 💬
 - Report an [issue](https://github.com/IRVLUTD/iTeach/issues). 🛠️
 - Contact [Jishnu](https://jishnujayakumar.github.io/). 📧
+
+## Acknowledgements 🙏
+
+This work was supported by the DARPA Perceptually-enabled Task Guidance (PTG) Program under contract number HR00112220005, the Sony Research Award Program, and the National Science Foundation (NSF) under Grant No. 2346528. We thank [Sai Haneesh Allu](https://saihaneeshallu.github.io/) for his assistance with the real-world experiments. 🙌
+
+## BibTex 📚
+
+```bibtex
+Coming soon...
+```
