@@ -46,7 +46,7 @@ This work was supported by the
 We thank [Sai Haneesh Allu](https://saihaneeshallu.github.io/) for his assistance with the real-world experiments. 🙌
 
 ## BibTex 📚
-
+Please cite *iTeach* if it helps your research 🙌:
 ```bibtex
 Coming soon...
 ```
