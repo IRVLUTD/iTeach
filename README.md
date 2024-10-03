@@ -1,6 +1,6 @@
 # iTeach: Interactive Teaching for Robot Perception using Mixed Reality 🤖🌐
 
-[Project Webpage](https://irvlutd.github.io/iTeach/)
+[Project Webpage](https://irvlutd.github.io/iTeach/) | [🤗 DH-YOLO Demo](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
 
 ## Abstract 📝
 
@@ -12,7 +12,7 @@ We introduce **iTeach**, a Mixed Reality (MR) framework designed to enhance robo
 * [toolkit](./toolkit): Source code for the iTeach toolkit.
 * [hololens_app](./hololens_app): Source code for the iTeachLabeller application.
 * [dataloader](./dataloader): PyTorch dataloader for the IRVLUTD DoorHandle dataset.
-* [hf_demo](./hf_demo): Source code for the DHYOLO Hugging Face space.
+* [hf_demo](https://huggingface.co/spaces/IRVLUTD/DH-YOLO/tree/main): Source code for the DHYOLO Hugging Face space.
 
 **NOTE:** For the [toolkit](./toolkit) and [dataloader](./dataloader), execute the following commands with each new build:
 ```sh
