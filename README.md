@@ -38,8 +38,12 @@ For any clarification, comments, or suggestions, you can choose from the followi
 - Contact [Jishnu](https://jishnujayakumar.github.io/). 📧
 
 ## Acknowledgements 🙏
+This work was supported by the 
+- Sony Research Award Program
+- National Science Foundation (NSF) under Grant No. `2346528`
+- DARPA Perceptually-enabled Task Guidance (PTG) Program under contract number `HR00112220005`
 
-This work was supported by the DARPA Perceptually-enabled Task Guidance (PTG) Program under contract number HR00112220005, the Sony Research Award Program, and the National Science Foundation (NSF) under Grant No. 2346528. We thank [Sai Haneesh Allu](https://saihaneeshallu.github.io/) for his assistance with the real-world experiments. 🙌
+We thank [Sai Haneesh Allu](https://saihaneeshallu.github.io/) for his assistance with the real-world experiments. 🙌
 
 ## BibTex 📚
 
