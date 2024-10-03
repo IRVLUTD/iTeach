@@ -11,8 +11,7 @@ test:
 nc: 2
 names: [door, handle]
 
-#suffix: 'temp'
-suffix: 'supp-video'
+suffix: 'demo-experiment'
 
 
 # Extra params

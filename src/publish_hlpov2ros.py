@@ -1,5 +1,5 @@
 import os
-from HoloLens import HoloRosPublisher
+from hololens_utils import HoloRosPublisher
 
 
 if __name__ == "__main__":

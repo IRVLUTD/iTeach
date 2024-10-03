@@ -31,6 +31,40 @@ wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85b
 ```
 
 
+```sh
+## iTeach Project Setup for Robot's `~/.bashrc` 🦾
+
+To configure the robot's environment for the iTeach HoloLens project, follow these steps:
+
+### Step 1: Add the following to the robot's `~/.bashrc` file:
+
+```bash
+export ROS_HOSTNAME=10.42.0.233 # Place the robot's wlan IP when connected to laptop-hotspot
+export ROS_MASTER_URI=http://$ROS_HOSTNAME:11311 # IP when connected to irvl-laptop hotspot
+alias source_ros="source /opt/ros/$ROS_DISTRO/setup.bash"
+alias source_hololens_ws="cd ~/Desktop/Devel_Cole/catkin_ws/ && source devel/setup.bash"
+alias act_hololens_env="conda activate hololens"
+alias start_ros_tcp_connection="roslaunch ros_tcp_endpoint endpoint.launch tcp_ip:=$ROS_HOSTNAME tcp_port:=10000"
+alias setup_iTeach="source_ros && source_hololens_ws && act_hololens_env && start_ros_tcp_connection"
+alias localize="roslaunch fetch_navigation fetch_nav.launch" #(auto-nav: robot localization in the map)
+########################################## iTeach Project ########################################################
+
+echo "Connected to SSID: $(iw dev wlan0 info | grep ssid | awk '{print $2}')"
+echo "ROS_IP: " $ROS_IP
+echo "ROS_HOSTNAME: " $ROS_HOSTNAME
+echo "ROS_MASTER_URI: " $ROS_MASTER_URI
+```
+```sh
+source ~/.bashrc && setup_iTeachPC
+```
+
+<!-- setup_iTeach
+setup_iTeachPC -->
+
+
+
+
+
 # IRVL Image Labelling Support
 
 This is a selection of files based around the testing and smooth operation of the IRVL Image Labelling project.
@@ -41,9 +75,7 @@ This is a selection of files based around the testing and smooth operation of th
 
 In this folder one will find the labels, rgb, and 3d images of things labeled through the hololens. [receiveData.py](receiveData.py) publishes to this folder in real time and the images should already be properly formatted for a YOLO machine learning algorithm, this has been tested on [yolov5](https://github.com/ultralytics/yolov5).
 
-### [HoloLensImageLabellingApp](HoloLensImageLabellingApp)
 
-This is the subproject for the Unity/Hololens component of the pipeline. This folder is what should be opened when attempting to rebuild the project, not the root folder of this project. Further explanation is given in its own section.
 
 
 ## Files
@@ -60,27 +92,6 @@ This class takes output from the head camera of a fetch robot and rebroadcasts t
 
 As the name suggests and as is described in the Dataset section, this file recieves data from the hololens and stores it in its appropriate directories. The incoming ros messages are LabeledImage, LabeledDepth, and ImageLabels. It will assume that all messages received at the same time belong to the same set, and assign them the same name as is requested by yolo. This file can also be executed on its own without arguments.
 
-### [publishimage.py](publishimage.py)
-
-This file is a stand-in for a fetch robot for when one is not available. It publishes the files explained in the PublishImages folder section under the same name as the robot would, and is therefore indistinguishable other than the lack of change in images. This can only be executed on its own and takes no arguments.
-
-## Hololens Component
-
-### Overview
-
-In order for the user to label images on the move, there must be an application to facilitate it. The Root folder of the project to open is [HoloLensImageLabellingApp](HoloLensImageLabellingApp).
-
-* **Robot POV:** Bring up the most recent image taken in front of the user. drag the spheres on the edges of the frame to rotate it and drag the cubes on the corners to resize it. If the button is pressed again, the frame will be brought to the user's position without clearing existing labels.
-
-* **Discard Sample:** Dismiss the window and clear all labels present.
-
-* **Save Sample:** Send all images and detections back to the Yolo component and dismiss the frame.
-
-* **Label Door:**
-
-* **Label Handle:**
-
-* **Undo:** If an unwanted bounding box is drawn or is drawn wrong, this will remove the most recently placed box.
 
 ### Installation
 
