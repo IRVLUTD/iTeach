@@ -41,4 +41,4 @@ Assuming the app's root directory is named `iTeachLabellingApp`, you can find gu
 
 If you prefer to use the application without any modifications, you can download the prebuilt version from the following link:
 
-- [Download iTeachLabeller Prebuilt Application](https://utdallas.box.com/v/iTeachLabellerApp) 📦
+- [Download iTeachLabeller.msix](https://utdallas.box.com/v/iTeachLabellerApp) 📦
