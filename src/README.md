@@ -1,5 +1,9 @@
 # Setup
 
+![Our experimental setup](./imgs/exp-setup-with-captions.png)
+
+
+## Streaming
 #### To stream PC webcam to ROS Server
 - Install `usb_cam` [[wiki](https://wiki.ros.org/usb_cam) | [github](https://github.com/ros-drivers/usb_cam)]
 - Following will publish to `/usb_cam/image_raw` ROS topic
@@ -25,7 +29,7 @@ python publish_hlpov2ros.py
 Read HoloLens IP: 10.42.0.150 from ENV
 ```
 
-# Download Pretrained ckpts
+## Download Pretrained ckpts
 ```sh
 wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
 ```
@@ -58,11 +62,16 @@ echo "ROS_MASTER_URI: " $ROS_MASTER_URI
 source ~/.bashrc && setup_iTeachPC
 ```
 
-<!-- setup_iTeach
+<!-- todo: setup_iTeach
 setup_iTeachPC -->
 
+## Terminator 🖥️
 
+We recommend using the [Terminator](https://github.com/gnome-terminator/terminator) tool for managing multiple terminal windows efficiently.
 
+Below is an example of the Terminator layout used to run all necessary modules. Ensure that the PC is connected to both the **HoloLens** and the **robot** to handle the sub-networking aspect.
+
+![iTeach-RViz-Setup](./imgs/terminator-iteach.webp)
 
 
 # IRVL Image Labelling Support
@@ -80,17 +89,16 @@ In this folder one will find the labels, rgb, and 3d images of things labeled th
 
 ## Files
 
-### [run_finetuning_node.py](run_finetuning_node.py)
+## Files 📂
 
-This is a container class to run both rebroadcastData and receiveData without needing to open another command window. It requires that rospy be installed and accepts no command line arguments.
+### [run_finetuning_node.py](run_finetuning_node.py)
+This script serves as a container class that runs both `rebroadcastData` and `receiveData` in a single command, eliminating the need to open multiple terminal windows. It requires `rospy` to be installed and doesn't accept any command line arguments. 🐍
 
 ### [rebroadcastData.py](rebroadcastData.py)
-
-This class takes output from the head camera of a fetch robot and rebroadcasts the rgb and depth at a lower framerate. The output channels are InfrequentImage and InfrequentDepth, both of ros message type [sensor_msgs/Image](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html). This file can be executed alone with dependencies of ros and rospy, and accepts no arguments.
+This script captures output from the **Fetch robot's** head camera and rebroadcasts both the RGB and depth data at a reduced frame rate. The output topics are `InfrequentImage` and `InfrequentDepth`, both of which follow the [sensor_msgs/Image](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html) message type. It can be run independently, requiring ROS and rospy, with no additional arguments needed. 🤖
 
 ### [receiveData.py](receiveData.py)
-
-As the name suggests and as is described in the Dataset section, this file recieves data from the hololens and stores it in its appropriate directories. The incoming ros messages are LabeledImage, LabeledDepth, and ImageLabels. It will assume that all messages received at the same time belong to the same set, and assign them the same name as is requested by yolo. This file can also be executed on its own without arguments.
+As described in the **Dataset** section, this script receives data from the **HoloLens** and organizes it into the corresponding directories. The incoming ROS messages include `LabeledImage`, `LabeledDepth`, and `ImageLabels`. Messages received simultaneously are assumed to belong to the same set, and the file names are formatted according to YOLO requirements. This script can also be executed independently without any command line arguments. 📥💾
 
 
 ### Installation

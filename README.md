@@ -2,6 +2,10 @@
 
 [Project Webpage](https://irvlutd.github.io/iTeach/) | [🤗 DH-YOLO Demo](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
 
+<!-- ![](https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp) -->
+<!-- <center>
+<img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp" alt="Real World Demo" width="75%"/>
+</center> -->
 ## Abstract 📝
 
 We introduce **iTeach**, a Mixed Reality (MR) framework designed to enhance robot perception through real-time interactive teaching. By enabling human instructors to dynamically label robot RGB data, iTeach improves both the accuracy and adaptability of robot perception to new scenarios. The framework supports on-the-fly data collection and labeling, enhancing model performance and generalization. Applied to door and handle detection for household tasks, iTeach integrates a HoloLens app with an interactive YOLO model. Furthermore, we introduce the **IRVLUTD DoorHandle** dataset. **DH-YOLO**, our efficient detection model, significantly boosts the accuracy and efficiency of door and handle detection, showcasing the potential of MR to make robotic systems more capable and adaptive in real-world environments.
@@ -23,7 +27,15 @@ twine upload dist/* # Ensure you have the pypi-token
 
 ## Getting Started 🚀
 
-To get started with the codebase, navigate to the relevant directory and explore the files and subdirectories. Each directory may have its own README file with more specific information on how to use the code.
+To get started with the codebase, navigate to the relevant directory and explore the files and subdirectories. Each directory has its own README file with more specific information on how to use the code.
+
+Please check [this video](#) for a demonstration of our experiment setup.
+    **To-Do**: Video editing in progress; sample video demonstrating the experimental setup. 
+
+**Step 1**: Build and install the **iTeachLabeller** app on the HoloLens 2. [App Install Video](#) 🛠️  
+**Step 2**: Navigate to the [src](./src) directory and follow the setup instructions in its [README](./src/README.md) file. 📚  
+**Step 3**: Start interacting with the app, navigate the robot, collect faulty samples, label them, and fine-tune the model. [Real World Demo](https://www.youtube.com/watch?v=fusb4CkM_IE) 🤖
+
 
 ## Contributing 🤝
 
