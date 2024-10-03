@@ -25,11 +25,8 @@ For detailed setup instructions, refer to the [how_to_build.md](https://github.c
 
 Assuming the app's root directory is named `iTeachLabellingApp`, you can find guidance for building the app in the following video:
 
-<div style="width: 600px;">
-  <a href="https://www.youtube.com/watch?v=kvzMAMyluJU" target="_blank">
-    <img src="https://i9.ytimg.com/vi_webp/kvzMAMyluJU/mqdefault.webp?v=66fdaee4&sqp=CPTc9rcG&rs=AOn4CLDHb2Tr4BQtK3-Vvpk748-E2yBF2w" alt="Build, Install, and Run the HoloLens Unity App" width="600"/>
-  </a>
-</div>
+[![Build, Install, and Run the HoloLens Unity App](https://img.youtube.com/vi/kvzMAMyluJU/0.jpg)](https://www.youtube.com/watch?v=kvzMAMyluJU)
+
 
 ### Compilation Steps with Screenshots 📸
 - Build the project in Unity. 🔨
