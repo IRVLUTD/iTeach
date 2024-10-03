@@ -8,11 +8,18 @@ We introduce **iTeach**, a Mixed Reality (MR) framework designed to enhance robo
 
 ## Directory Structure 📁
 
-* [src](./src): Main experiment files
-* [toolkit](./toolkit): iTeach toolkit source code
-* [hololens_app](./hololens_app): Code for the iTeachLabeller app
-* [dataloader](./dataloader): PyTorch dataloader for the new IRVLUTD DoorHandle dataset
-* [hf_demo](./hf_demo): Code for the DHYOLO Hugging Face space
+* [src](./src): Contains the primary experiment files.
+* [toolkit](./toolkit): Source code for the iTeach toolkit.
+* [hololens_app](./hololens_app): Source code for the iTeachLabeller application.
+* [dataloader](./dataloader): PyTorch dataloader for the IRVLUTD DoorHandle dataset.
+* [hf_demo](./hf_demo): Source code for the DHYOLO Hugging Face space.
+
+**NOTE:** For the [toolkit](./toolkit) and [dataloader](./dataloader), execute the following commands with each new build:
+```sh
+rm -rf build/ dist/ # Also remove the corresponding .egg-info directory
+python setup.py sdist bdist_wheel # Make sure to change the version in setup.py before running this
+twine upload dist/* # Ensure you have the pypi-token
+```
 
 ## Getting Started 🚀
 

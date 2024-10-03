@@ -1,22 +1,8 @@
 # Setup
-#### iTeach Labelling app
-- Install UnityHub and select a Unity version
-	- Install mrtk
-	- Install ros connector
-- Install Visual Studio
 
-
-#### Show how to compile using screenshots
-- Build in Unity
-- Open .sln file in Visual Studio
-- Create Package
-- Use Windows device portal to install the msix file
-- Stream record using hololens portal
-
-
-#### To stream webcam to ROS Server
+#### To stream PC webcam to ROS Server
 - Install `usb_cam` [[wiki](https://wiki.ros.org/usb_cam) | [github](https://github.com/ros-drivers/usb_cam)]
-- Following will publish to `/usb_cam/image_raw`
+- Following will publish to `/usb_cam/image_raw` ROS topic
 ```sh
 # For ros1
 sudo apt install ros-<ROS-DISTRO>-usb-cam
@@ -42,7 +28,6 @@ Read HoloLens IP: 10.42.0.150 from ENV
 # Download Pretrained ckpts
 ```sh
 wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
-mkdir -p hololens_data_store/images hololens_data_store/depth hololens_data_store/labels
 ```
 
 
@@ -51,10 +36,6 @@ mkdir -p hololens_data_store/images hololens_data_store/depth hololens_data_stor
 This is a selection of files based around the testing and smooth operation of the IRVL Image Labelling project.
 
 ## Subfolders:
-
-### [PublishImages](PublishImages)
-
-This folder contains the images published by [publishimage.py](publishimage.py). It contains two files [3d.jpg](PublishImages/3d.jpg) and [rgb.jpg](PublishImages/rgb.jpg); only files with these names will be registered and sent by [publishimage.py](publishimage.py).
 
 ### [Dataset](Dataset)
 
