@@ -1,13 +1,12 @@
-# iTeach: Interactive Teaching for Robot Perception using Mixed Reality 🤖🌐
+<div style="text-align:center;">
+<h1>iTeach: Interactive Teaching for Robot Perception using Mixed Reality 🤖🌐</h1>
+<a href="https://irvlutd.github.io/iTeach/">Project Webpage</a> | <a href="https://huggingface.co/spaces/IRVLUTD/DH-YOLO">🤗 DH-YOLO Demo</a><br><br>
+</div>
+<p>We introduce <strong>iTeach</strong>, a Mixed Reality (MR) framework designed to enhance robot perception through real-time interactive teaching. By enabling human instructors to dynamically label robot RGB data, iTeach improves both the accuracy and adaptability of robot perception to new scenarios. The framework supports on-the-fly data collection and labeling, enhancing model performance and generalization. Applied to door and handle detection for household tasks, iTeach integrates a HoloLens app with an interactive YOLO model. Furthermore, we introduce the <strong>IRVLUTD DoorHandle</strong> dataset. <strong>DH-YOLO</strong>, our efficient detection model, significantly boosts the accuracy and efficiency of door and handle detection, showcasing the potential of MR to make robotic systems more capable and adaptive in real-world environments.</p> 
 
-[Project Webpage](https://irvlutd.github.io/iTeach/) | [🤗 DH-YOLO Demo](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
-
-![](https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp)
-
-## Abstract 📝
-
-We introduce **iTeach**, a Mixed Reality (MR) framework designed to enhance robot perception through real-time interactive teaching. By enabling human instructors to dynamically label robot RGB data, iTeach improves both the accuracy and adaptability of robot perception to new scenarios. The framework supports on-the-fly data collection and labeling, enhancing model performance and generalization. Applied to door and handle detection for household tasks, iTeach integrates a HoloLens app with an interactive YOLO model. Furthermore, we introduce the **IRVLUTD DoorHandle** dataset. **DH-YOLO**, our efficient detection model, significantly boosts the accuracy and efficiency of door and handle detection, showcasing the potential of MR to make robotic systems more capable and adaptive in real-world environments.
-
+<div align="center">
+<img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp" style="width:70%" alt="iTeach Overview"> 
+</div>
 
 ## Getting Started 🚀
 
