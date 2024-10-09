@@ -28,10 +28,10 @@ The iTeach system can be started in just 3 simple steps:
 
 ## Directory Structure 📁
 To begin working with the codebase, first navigate to the relevant directory and explore the files and subdirectories. Each directory includes its own README file with specific instructions on how to use the code.
-- [src](./src): Contains the primary experiment files. 🧪  
-- [toolkit](./toolkit): Source code for the iTeach toolkit. 🛠️  
-- [hololens_app](./hololens_app): Source code for the iTeachLabeller application. 📱  
-- [dataloader](./dataloader): PyTorch dataloader for the IRVLUTD DoorHandle dataset. 🗃️  
+- [src/](./src): Contains the primary experiment files. 🧪  
+- [toolkit/](./toolkit): Source code for the iTeach toolkit. 🛠️  
+- [hololens_app/](./hololens_app): Source code for the iTeachLabeller application. 📱  
+- [dataloader/](./dataloader): PyTorch dataloader for the IRVLUTD DoorHandle dataset. 🗃️  
 - [hf_demo](https://huggingface.co/spaces/IRVLUTD/DH-YOLO/tree/main): Source code for the DHYOLO Hugging Face space. 🤗  
 
 <details>
