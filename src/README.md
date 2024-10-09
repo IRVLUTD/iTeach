@@ -2,37 +2,46 @@
 
 ![Our experimental setup](./imgs/exp-setup-with-captions.png)
 
-
-## Streaming
-#### To stream PC webcam to ROS Server
-- Install `usb_cam` [[wiki](https://wiki.ros.org/usb_cam) | [github](https://github.com/ros-drivers/usb_cam)]
-- Following will publish to `/usb_cam/image_raw` ROS topic
-```sh
-# For ros1
-sudo apt install ros-<ROS-DISTRO>-usb-cam
-v4l2-ctl --list-devices # list available devices; check which one is webcam
-rosrun usb_cam usb_cam_node  _video_device:=/dev/video0 _camera_name:='usb_cam' _camera_frame_id:='usb_cam' # assuming /dev/video0 as the webcam
-```
+For a demonstration of the experiment setup, please check out [this video](https://www.youtube.com/watch?v=gJ7Is0SrNgc) 🎥. For detailed steps, refer to the video description 📋. Make sure that the respective subnets are configured correctly and devices are connected to each other via wlan or lan.
 
 
-#### To stream hololens pov to ROS Server
-1. Set env vars in `~/.bashrc` file
+
+We need to setup three things:
+1. HoloLens 2
+2. Robot [conda-env](./conda-env/robot-env.txt)
+3. PC [conda-env](./conda-env/pc-env.txt)
+
+# 1. HoloLens 2
+- Make sure HoloLens is connected to the laptop wifi hotspot
+- Note the IP of the HoloLens device to access the Windows Device Portal on the laptop for managing the device
+- Install iTeachLabeller app on the HoloLens device [App Install Video](https://www.youtube.com/watch?v=7xFtCPSMTEk)
+- To change the IP of the ROS server use the [script](./hololens_utils/HoloDevicePortal.py) to upload [ROSConnectionConfig.json](ROSConnectionConfig.json) to HoloLens device. [Laptop and HoloLens should be connected to the same network]
 ```
-export HOLO_DEVICE_IP="10.42.0.150" # hololens ip address
-export HOLO_DEVICE_USERNAME="admin" # hololens username
-export HOLO_DEVICE_PASSWORD="123456789" # hololens password
-```
-2. Run the following command to stream the hololens pov to ROS Server
-```sh
-python publish_hlpov2ros.py
-# This will show as follows: If IP addr is read correctly then the script is running fine given hololens device is ON
-Read HoloLens IP: 10.42.0.150 from ENV
+{
+    "RosIPAddress": "192.168.1.3", #change here
+    "RosPort": 10000,
+    "KeepaliveTime": 1,
+    "NetworkTimeoutSeconds": 2,
+    "SleepTimeSeconds": 0.033,
+    "ShowHud": false
+}
 ```
 
-## Download Pretrained ckpts
-```sh
-wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
+
+# 2. 🤖 Robot Setup
+- 🛠️ Ensure the robot is connected to the PC via **Ethernet** and also to the laptop's **Wi-Fi hotspot** for communication with the **HoloLens** device.
+- 🔗 Run the **ROS TCP connector** (`setup_iTeach`).
+
+The server must be running the [ROS-TCP-Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint) to establish a connection with the HoloLens. 📝 Refer to the link for installation instructions.
+
+Once everything is set up, the commands should look like this:
+
+```bash
+source devel/setup.bash
+
+rosrun ROS-TCP-Endpoint endpoint.launch tcp_ip:=<server_ip> tcp_port:=10000 # server_ip is the wlan ip of the robot when connected to laptop hotspot
 ```
+
 
 
 ```sh
@@ -61,6 +70,59 @@ echo "ROS_MASTER_URI: " $ROS_MASTER_URI
 ```sh
 source ~/.bashrc && setup_iTeachPC
 ```
+
+# 3. PC (Laptop)
+
+- Make sure that the PC has a wifi hotspot live to which the HoloLens and the Robot are connected. 
+- On a linux computer, set the ROS_IP and ROS_MASTER_URI (and not ROS_HOSTNAME).
+- configs/cfg.yml : Place the datasets in a specific folder and update path here, change necessary values here before starting the experiment.
+
+## Download Pretrained ckpts
+```sh
+wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
+``` 
+- Run run_funetuning_node.py for activating the finetuning ros node
+
+    - FerchDetect
+    - rbroadcast
+    - receive data
+    - fetectdetect
+    - 
+- Following are optional
+    - Run publish_hlpov2ros.py to publish HoloLens stream to ROS topic
+    - Run usb_cam for publishing the laptop webcam
+- run rviz to see all your desired published data
+
+setup_IteachPC
+
+
+## To setup the streaming
+#### To stream PC webcam to ROS Server
+- Install `usb_cam` [[wiki](https://wiki.ros.org/usb_cam) | [github](https://github.com/ros-drivers/usb_cam)]
+- Following will publish to `/usb_cam/image_raw` ROS topic
+```sh
+# For ros1
+sudo apt install ros-<ROS-DISTRO>-usb-cam
+v4l2-ctl --list-devices # list available devices; check which one is webcam
+rosrun usb_cam usb_cam_node  _video_device:=/dev/video0 _camera_name:='usb_cam' _camera_frame_id:='usb_cam' # assuming /dev/video0 as the webcam
+```
+
+
+#### To stream hololens pov to ROS Server
+1. Set env vars in `~/.bashrc` file
+```
+export HOLO_DEVICE_IP="10.42.0.150" # hololens ip address
+export HOLO_DEVICE_USERNAME="admin" # hololens username
+export HOLO_DEVICE_PASSWORD="123456789" # hololens password
+```
+2. Run the following command to stream the hololens pov to ROS Server
+```sh
+python publish_hlpov2ros.py
+# This will show as follows: If IP addr is read correctly then the script is running fine given hololens device is ON
+Read HoloLens IP: 10.42.0.150 from ENV
+```
+
+
 
 <!-- todo: setup_iTeach
 setup_iTeachPC -->
@@ -110,16 +172,6 @@ It is recommended that a Windows device is used to compile this part of the proj
 ### PC
 On a linux computer, set the ROS_IP and ROS_MASTER_URI (and not ROS_HOSTNAME), then run [execsupport.py](execsupport.py). See [execsupport](#execsupportpy) for individual usage and expectations.
 
-### Server
-The server needs to be running [ROS-TCP-Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint) to connect to the Hololens. See the link for installation instructions.
-
-Once it has been setup, the commands should look approximately as follows:
-
-```
-source devel/setup.bash
-
-rosrun ROS-TCP-Endppoint endpoint.launch tcp_ip:=<The server's ip> tcp_port:=10000
-```
 
 ### Hololens
 After setting the IP of the server in Unity, the project needs to be built and deployed to the hololens. Further details are provided in [Hololens Installation](#installation). Once it's deployed, just open the app from the start menu.
@@ -157,3 +209,4 @@ After this, check that all package requirements are still installed. This soluti
 We have a naive desktop labelling that is used to label the incoming image samples from the HoloLens in batches. Below is a demo of the app. We used this for reporting results in the main paper.
 
 TODO: desktop-labelling app video
+    

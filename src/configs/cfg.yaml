@@ -2,12 +2,12 @@
 path: '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets'
 # train: train.524/images 
 # train: hololens.finetuning.data.100/images
-train: 524/images
-val: test_dataset.256/images
-test:
-nc: 2
-names: [door, handle]
-suffix: 'demo-experiment'
+train: 524/images # train images
+val: test_dataset.256/images # val images
+test: # test images
+nc: 2 # num classes
+names: [door, handle] # class names
+suffix: 'demo-experiment' # experiment-alias suffix; the training/inference data will be saved to iTeachModels-<suffix>
 
 
 # Extra params

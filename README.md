@@ -13,11 +13,10 @@ We introduce **iTeach**, a Mixed Reality (MR) framework designed to enhance robo
 
 To begin working with the codebase, first navigate to the relevant directory and explore the files and subdirectories. Each directory includes its own README file with specific instructions on how to use the code.
 
-For a demonstration of the experiment setup, please check out [this video](https://www.youtube.com/watch?v=gJ7Is0SrNgc) 🎥. For detailed steps, refer to the video description 📋.
-
-**Step 1**: Build and install the **iTeachLabeller** app on the HoloLens 2. [App Install Video](https://www.youtube.com/watch?v=7xFtCPSMTEk) 🛠️  
-**Step 2**: Navigate to the [src](./src) directory and follow the setup instructions in its [README](./src/README.md) file 📚.  
-**Step 3**: Start interacting with the app—navigate the robot, collect faulty samples, label them, and fine-tune the model. [Real World Demo](https://www.youtube.com/watch?v=fusb4CkM_IE) 🤖
+To run the interactive teaching system, follow these steps:<br>
+- **Step 1**: Build and install the **iTeachLabeller** app on the HoloLens 2. Check [hololens_app](./hololens_app/) directory 🛠️.  
+- **Step 2**: Navigate to the [src](./src) directory and follow the setup instructions in its [README](./src/README.md) file 📚.  
+- **Step 3**: Start interacting with the app — navigate the robot, collect faulty samples, label them, and fine-tune the model. [Real World Demo](https://www.youtube.com/watch?v=fusb4CkM_IE) 🤖
 
 
 
