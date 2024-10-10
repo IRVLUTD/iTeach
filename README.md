@@ -19,7 +19,7 @@
 The iTeach system can be started in just 3 simple steps:
 
 **Step-1**: Build and install the **iTeachLabeller** app on the HoloLens 2.
-  - [Download App](https://utdallas.app.box.com/v/iTeachLabellerApp) 📱
+  - [App Download Link](https://utdallas.app.box.com/v/iTeachLabellerApp) 📱
   - [App Install Video](https://www.youtube.com/watch?v=7xFtCPSMTEk) 🛠️
 
 **Step-2**: Navigate to the [src](./src) directory and follow the setup instructions in its [README](./src/README.md) file 📚.  
