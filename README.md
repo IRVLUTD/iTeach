@@ -8,8 +8,9 @@
 <a href="https://irvlutd.github.io/iTeach/">Project Webpage</a> | <a href="https://huggingface.co/spaces/IRVLUTD/DH-YOLO">🤗 DH-YOLO Demo</a><br><br>
 </div>
 <p>We introduce <strong>iTeach</strong>, a Mixed Reality (MR) framework designed to enhance robot perception through real-time interactive teaching. By enabling human instructors to dynamically label robot RGB data, iTeach improves both the accuracy and adaptability of robot perception to new scenarios. The framework supports on-the-fly data collection and labeling, enhancing model performance and generalization. Applied to door and handle detection for household tasks, iTeach integrates a HoloLens app with an interactive YOLO model. Furthermore, we introduce the <strong>IRVLUTD DoorHandle</strong> dataset. <strong>DH-YOLO</strong>, our efficient detection model, significantly boosts the accuracy and efficiency of door and handle detection, showcasing the potential of MR to make robotic systems more capable and adaptive in real-world environments.</p> 
+
 <div align="center">
-<img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp" style="width:70%" alt="iTeach Overview"> 
+  <img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp" style="width:70%" alt="iTeach Overview"> 
 </div>
 
 
@@ -24,7 +25,7 @@ The iTeach system can be started in just 3 simple steps:
 **Step-2**: Navigate to the [src](./src) directory and follow the setup instructions in its [README](./src/README.md) file 📚.  
 **Step-3**: Start interacting with the app—navigate the robot, collect faulty samples, label them, and fine-tune the model. [Real World Demo](https://www.youtube.com/watch?v=fusb4CkM_IE) 🤖
 
-✨ We show a demo of setting up the experiment hardware, network, and scripts to be run in [this video](https://www.youtube.com/watch?v=gJ7Is0SrNgc) 🎥. For detailed steps, refer to the video description 📋.
+✨ We show a demo of setting up the experiment hardware, network, and scripts to be run in [this video](https://www.youtube.com/watch?v=gJ7Is0SrNgc) 🎦. For detailed steps, refer to the video description 📋.
 
 ## Directory Structure 📁
 To begin working with the codebase, first navigate to the relevant directory and explore the files and subdirectories. Each directory includes its own README file with specific instructions on how to use the code.

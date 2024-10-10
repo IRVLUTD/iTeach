@@ -51,13 +51,7 @@
 - **Functionality:** This script serves as a unified container that executes `DoorHandleModelFinetuner`, `rebroadcastData`, and `receiveData` with a single command, simplifying the management of multiple terminal windows.
 - **Requirements:** It requires `rospy` to be installed and accepts a YAML file with configuration parameters as command line arguments.
 
-
-<!-- We need to setup three things:
-1. HoloLens 2
-2. Robot [conda-env](./conda-env/robot-env.txt)
-3. PC [conda-env](./conda-env/pc-env.txt) -->
-
-# 🥽 HoloLens 2
+# 🥽 HoloLens 2  Setup
 - Ensure the HoloLens is connected to the laptop's Wi-Fi hotspot.
 - Take note of the HoloLens device's IP address to access the Windows Device Portal on your laptop for device management.
 - Install the **iTeachLabeller** app on the HoloLens device. Check out this [App Install Video 🎦](https://www.youtube.com/watch?v=7xFtCPSMTEk) for guidance!
@@ -116,14 +110,14 @@ pip install -r conda-env/pc-env.txt
 wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
 ```
 
-### 4. 📜 Scripts to Run
+# 4. 📜 Scripts to Run
 - Execute `run_finetuning_node.py` to activate the fine-tuning ROS node.
 - The following scripts are optional:
     - Run [`publish_hlpov2ros.py`](publish_hlpov2ros.py) to publish the HoloLens stream to the ROS topic `/hololens/pv_camera/image_raw`.
     - Run `usb_cam` to publish the laptop's webcam feed.
 - Run **RViz** to visualize all your desired published data.
 
-#### 4.1 Run Fine-Tuning Node
+### 4.1 Run Fine-Tuning Node
 ```shell
 export ROS_IP=10.42.0.233 # Use the ROS server WLAN IP for HL2SS
 export ROS_MASTER_URI=http://$ROS_IP:11311
@@ -134,9 +128,9 @@ conda activate iTeachPC
 python run_finetuning_node.py --config configs/cfg.yaml # Start fine-tuning node
 ```
 
-#### 4.2 To Set Up the Streaming
+### 4.2 To Set Up the Streaming
 
-##### 4.2.a To Stream PC Webcam to ROS Server
+#### 4.2.a To Stream PC Webcam to ROS Server
 - Install `usb_cam` ([[wiki](https://wiki.ros.org/usb_cam) | [GitHub](https://github.com/ros-drivers/usb_cam)]).
 - The following command will publish to the `/usb_cam/image_raw` ROS topic:
 
@@ -148,7 +142,7 @@ rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _
 ```
 
 
-##### 4.2.b To Stream HoloLens POV to ROS Server
+#### 4.2.b To Stream HoloLens POV to ROS Server
 
 1. Set environment variables in the `~/.bashrc` file:
    ```sh
@@ -165,7 +159,7 @@ rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _
 
 
 
-## 5. 🔄 Terminator
+# 5. 🔄 Terminator
 
 We recommend using the [Terminator](https://github.com/gnome-terminator/terminator) tool for managing multiple terminal windows efficiently.
 
@@ -174,7 +168,7 @@ Below is an example of the Terminator layout used to run all necessary modules. 
 ![iTeach-RViz-Setup](./imgs/terminator-iteach.webp)
 
 
-## 6. 🖥️ Desktop Labelling App
+# 6. 🖥️ Desktop Labelling App
 <div align="center">
 We have a naive desktop labelling app that is used to label the incoming image samples from the HoloLens in batches. Below is a demo of the app. We used this for reporting results in the main paper. <br> <br>
 <video width="75%" controls>
@@ -184,7 +178,7 @@ We have a naive desktop labelling app that is used to label the incoming image s
 </div>
 
 
-## 7. 🛠️ Troubleshooting Guide
+# 7. 🛠️ Troubleshooting Guide
 
 ### 👓 Rviz
 
