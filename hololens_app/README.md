@@ -41,3 +41,9 @@ Assuming the app's root directory is named `iTeachLabellingApp`, you can find gu
 
 If you prefer to use the application without any modifications, you can download the prebuilt version from the following link:
 - [Download iTeachLabeller.msix](https://utdallas.box.com/v/iTeachLabellerApp) 📦 | [App Install Video](https://www.youtube.com/watch?v=7xFtCPSMTEk) 🎥
+
+## ⚠️ Note
+
+- 🚨 It is **recommended** that a **Windows** device is used to compile this part of the project, and it has not been tested on other platforms.
+- 💻 A **Unity** version newer or equivalent to a **2022 release** and at least **Microsoft Visual Studio 2022** are required. 
+- ⚙️ Due to technical constraints, this project can only run on a **Hololens 2**.
