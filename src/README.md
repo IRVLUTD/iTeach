@@ -1,5 +1,5 @@
 # Index
-1. 📱🤖 **iTeach Demo**: Hardware & Network Setup + App in Action! 🚀🔧
+1. **iTeach Demo**: Hardware & Network Setup + App in Action!
 2. 📁 **Key Files and Directories**
 3. 🥽 **HoloLens 2 Setup**
 4. 🤖 **Robot Setup**
@@ -8,14 +8,17 @@
 7. 🖥️ **Desktop Labelling App**
 8. 🛠️ **Troubleshooting Guide**
 
+<br><br>
 
-# 📱🤖 **iTeach Demo:** Hardware & Network Setup + App in Action! 🚀🔧
+# 1. **iTeach Demo:** Hardware & Network Setup + App in Action!
 
 ![Our experimental setup](./imgs/exp-setup-with-captions.png)
 
 - For a demonstration of the experiment setup, please check out [this video](https://www.youtube.com/watch?v=gJ7Is0SrNgc) 🎦.<br>
 - For detailed steps, refer to the video description 📋. Make sure that the respective subnets are configured correctly and devices are connected to each other via WLAN or LAN.
 </div>
+
+<br><br>
 
 # 📁 2. Key Files and Directories
 ### 🗂️ [Dataset](Dataset)
@@ -68,7 +71,9 @@
 }
 ```
 
-# 2. 🤖 Robot Setup
+<br><br>
+
+# 3. 🤖 Robot Setup
 - Ensure the robot is connected to the PC via **Ethernet** and also connected to the laptop's **Wi-Fi hotspot** for communication with the **HoloLens** device.
 - Launch the **ROS TCP connector**.
     - Make sure the server is running the [ROS-TCP-Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint) to establish a connection with the HoloLens. Check the link for installation instructions.
@@ -91,13 +96,13 @@ source devel/setup.bash
 # server_ip is the WLAN IP of the robot when connected to the laptop hotspot, port should be 10000
 rosrun ROS-TCP-Endpoint endpoint.launch tcp_ip:=$ROS_HOSTNAME tcp_port:=10000
 ```
-# 3. 💻 PC (Laptop) Setup
+# 4. 💻 PC (Laptop) Setup
 
 - Ensure that the PC has an active Wi-Fi hotspot to which both the **HoloLens** and the **Robot** are connected. 
 - On a Linux computer, set the `ROS_IP` and `ROS_MASTER_URI` (but not `ROS_HOSTNAME`).
 - In [`configs/cfg.yml`](configs/cfg.yml), specify the folder for datasets and update the path accordingly. Make sure to adjust any necessary values before starting the experiment.
 
-### 3.1 Create a Conda Environment on the PC/Laptop
+### 4.1 Create a Conda Environment on the PC/Laptop
 - A sample Conda environment with dependencies for our laptop system is available in [pc-env.txt](conda-env/pc-env.txt).
 ```shell
 conda create -n iTeachPC python=3.9
@@ -105,19 +110,19 @@ conda activate iTeachPC
 pip install -r conda-env/pc-env.txt 
 ```
 
-### 3.2 Download Pretrained Checkpoints
+### 4.2 Download Pretrained Checkpoints
 ```shell
 wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
 ```
 
-# 4. 📜 Scripts to Run
+### 4.3 📜 Scripts to Run
 - Execute `run_finetuning_node.py` to activate the fine-tuning ROS node.
 - The following scripts are optional:
     - Run [`publish_hlpov2ros.py`](publish_hlpov2ros.py) to publish the HoloLens stream to the ROS topic `/hololens/pv_camera/image_raw`.
     - Run `usb_cam` to publish the laptop's webcam feed.
 - Run **RViz** to visualize all your desired published data.
 
-### 4.1 Run Fine-Tuning Node
+### 4.3.1 Run Fine-Tuning Node
 ```shell
 export ROS_IP=10.42.0.233 # Use the ROS server WLAN IP for HL2SS
 export ROS_MASTER_URI=http://$ROS_IP:11311
@@ -128,9 +133,9 @@ conda activate iTeachPC
 python run_finetuning_node.py --config configs/cfg.yaml # Start fine-tuning node
 ```
 
-### 4.2 To Set Up the Streaming
+### 4.3.2 To Set Up the Streaming
 
-#### 4.2.a To Stream PC Webcam to ROS Server
+#### 4.3.2.a To Stream PC Webcam to ROS Server
 - Install `usb_cam` ([[wiki](https://wiki.ros.org/usb_cam) | [GitHub](https://github.com/ros-drivers/usb_cam)]).
 - The following command will publish to the `/usb_cam/image_raw` ROS topic:
 
@@ -142,7 +147,7 @@ rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _
 ```
 
 
-#### 4.2.b To Stream HoloLens POV to ROS Server
+#### 4.3.2.b To Stream HoloLens POV to ROS Server
 
 1. Set environment variables in the `~/.bashrc` file:
    ```sh
@@ -157,7 +162,7 @@ rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _
    Read HoloLens IP: 10.42.0.150 from ENV
    ```
 
-
+<br><br>
 
 # 5. 🔄 Terminator
 
@@ -167,6 +172,7 @@ Below is an example of the Terminator layout used to run all necessary modules. 
 
 ![iTeach-RViz-Setup](./imgs/terminator-iteach.webp)
 
+<br><br>
 
 # 6. 🖥️ Desktop Labelling App
 <div align="center">
@@ -177,6 +183,7 @@ We have a naive desktop labelling app that is used to label the incoming image s
 </video>
 </div>
 
+<br><br>
 
 # 7. 🛠️ Troubleshooting Guide
 
