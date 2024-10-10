@@ -1,11 +1,18 @@
+# ----------------------------------------------------------------------------------------------------
+# Work done while being at the Intelligent Robotics and Vision Lab at the University of Texas, Dallas
+# Please check the licenses of the respective works utilized here before using this script.
+# 🖋️ Jikai Wang (2024)
+# ----------------------------------------------------------------------------------------------------
+
+
 import os
-from pathlib import Path
 from urllib import request, parse
 import base64
 import mimetypes
 import json
 from time import sleep
 import logging
+import argparse
 
 # REST API:
 #   - https://learn.microsoft.com/en-us/windows/mixed-reality/develop/advanced-concepts/device-portal-api-reference
@@ -235,65 +242,20 @@ class HoloDevicePortal:
 
 
 if __name__ == "__main__":
-    PROJ_ROOT = Path(__file__).resolve().parents[2]
+    args_parser = argparse.ArgumentParser("HoloLens Device Portal")
+    args_parser.add_argument(
+        "--file_path", type=str, required=True, help="File Path to Upload"
+    )
+    args = args_parser.parse_args()
 
     # Read environment variables
     host = os.getenv("HOLO_DEVICE_IP")
     user = os.getenv("HOLO_DEVICE_USERNAME")
     pwd = os.getenv("HOLO_DEVICE_PASSWORD")
-
+    app_name = "iTeachLabeller"
 
     portal = HoloDevicePortal(host, user, pwd, debug=True)
 
     device_name = portal.get_machine_name()
     print(f"Device Name: {device_name}")
-
-    battery = portal.get_battery_info()
-    print(f"Battery: {battery:.1f}%")
-
-    # app_name = "PTGDemo"
-    # print(f"App Name: {app_name}")
-    # app_fullname = portal.get_package_fullname(app_name)
-    # print(f"App Full Name: {app_fullname}")
-    # app_id = portal.get_package_id(app_name)
-    # print(f"App ID: {app_id}")
-    # is_running = portal.get_process_running(app_name)
-    # print(f"App Running: {is_running}")
-
-    # Old Name: HOLOLENS-KV5H72
-    # new_name = "HOLOLENS-KV5H72"
-    # print(f"Set New Device Name: {new_name}")
-    # code = portal.set_machine_name("HOLOLENS-KV5H72")
-    # if code == 200:
-    #     print("Set Machine Name Successfully.")
-    #     portal.reboot()
-    # else:
-    #     print("Set Machine Name Failed.")
-
-    # # start APP
-    # app_name = "PTGDemo"
-    # print(f"Launch App: {app_name}")
-    # portal.start_app(app_name)
-
-    # print("Wait for 15 secs ...")
-    # sleep(15)
-
-    # # stop APP
-    # app_name = "PTGDemo"
-    # print(f"Stop App: {app_name}")
-    # portal.stop_app(app_name)
-
-    # get known folders
-    # api: /api/filesystem/apps/knownfolders
-    # {'KnownFolders': ['Documents', 'LocalAppData', 'PublicDocuments', 'Videos', 'Music', 'Pictures', '3D Objects', 'DevelopmentFiles', 'Downloads']}
-
-    # get files in known folder
-    app_name = "PTGDemo"
-    sub_directory = "/LocalState"
-    file_path = PROJ_ROOT / "file_upload_test.json"
-    download_file_path = f"{sub_directory}/file_upload_test.json"
-    save_path = PROJ_ROOT / "file_download_test.json"
-
-    #portal.upload_file_to_app(app_name, sub_directory, file_path)
-    #portal.download_file_from_app(app_name, download_file_path, save_path)
-    #portal.delete_file_from_app(app_name, download_file_path)
+    portal.upload_file_to_app(app_name, "/LocalState", args.file_path)
