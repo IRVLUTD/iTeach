@@ -1,151 +1,254 @@
-# Setup
-#### iTeach Labelling app
-- Install UnityHub and select a Unity version
-	- Install mrtk
-	- Install ros connector
-- Install Visual Studio
+# Index
+1. [**iTeach Demo: Hardware & Network Setup + App in Action!**](#1-iteach-demo-hardware--network-setup--app-in-action)
+2. [📁 **Key Files**](#-2-key-files)
+3. [🥽 **HoloLens 2 Setup**](#3--hololens-2--setup)
+4. [🤖 **Robot Setup**](#4--robot-setup)
+5. [💻 **PC (Laptop) Setup**](#5--pc-laptop-setup)
+6. [🔄 **Terminator**](#6--terminator)
+7. [🖥️ **Desktop Labelling App**](#7-%EF%B8%8F-desktop-labelling-app)
+8. [🛠️ **Troubleshooting Guide**](#8-%EF%B8%8F-troubleshooting-guide)
+
+<br><br>
+
+# 1. **iTeach Demo:** Hardware & Network Setup + App in Action!
+
+![Our experimental setup](./imgs/exp-setup-with-captions.png)
+
+- For a demonstration of the experiment setup, please check out [this video](https://www.youtube.com/watch?v=gJ7Is0SrNgc) 🎦.<br>
+- For detailed steps, refer to the video description 📋. Make sure that the respective subnets are configured correctly and devices are connected to each other via WLAN or LAN.
+</div>
+
+<br><br>
+
+# 📁 2. Key Files
+
+### 🤖 [fetchdetect.py](./iTeach/fetchdetect.py)
+- **Functionality:** This script performs DoorHandle object detection by subscribing to the robot’s input stream from the `/head_camera/rgb/image_raw` topic.
+- **Output:** It processes the stream and publishes the bounding box (bbox) overlayed image to the `pc/detections/bbox_overlayed_rgb` topic.
 
 
-#### Show how to compile using screenshots
-- Build in Unity
-- Open .sln file in Visual Studio
-- Create Package
-- Use Windows device portal to install the msix file
-- Stream record using hololens portal
+### 📡 [rebroadcastData.py](./iTeach/rebroadcastData.py)
+- **Functionality:** This script captures the **Fetch robot's** head camera feed and rebroadcasts both RGB and depth data at a reduced frame rate.
+- **Output Topics:** It publishes to `hololens/in/robot_pov/rgb` and `hololens/in/robot_pov/depth`, following the [sensor_msgs/Image](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html) message format.
+- **Additional Subscription:** 🔄 The script subscribes to `pc/detections/bbox_overlayed_rgb` and rebroadcasts this to `hololens/in/robot_pov/detections/bbox_overlayed_rgb`. This allows detection overlays to display when the "Robot POV" button is clicked in the HoloLens app.
+- **Execution:** 🚀 It runs independently, requiring only ROS and `rospy`, with no additional arguments necessary.
 
+### 📥 [receiveData.py](./iTeach/receiveData.py)
+- **Functionality:** This script handles incoming data from the **HoloLens**, organizing it into the correct directories.
+- **Incoming Messages:** It processes ROS messages from `hololens/out/robot_pov/raw_rgb`, `hololens/out/user_labelled/depth`, and `hololens/out/user_labelled/labels`. These messages are grouped based on their timestamp to ensure they belong to the same data set.
+- **YOLO Integration:** The filenames are formatted to match the requirements of the YOLO algorithm for seamless use.
+- **Execution:** The script runs independently, without needing any command line arguments.
 
-#### To stream webcam to ROS Server
-- Install `usb_cam` [[wiki](https://wiki.ros.org/usb_cam) | [github](https://github.com/ros-drivers/usb_cam)]
-- Following will publish to `/usb_cam/image_raw`
-```sh
-# For ros1
-sudo apt install ros-<ROS-DISTRO>-usb-cam
-v4l2-ctl --list-devices # list available devices; check which one is webcam
-rosrun usb_cam usb_cam_node  _video_device:=/dev/video0 _camera_name:='usb_cam' _camera_frame_id:='usb_cam' # assuming /dev/video0 as the webcam
+### 🏋️‍♂️ [finetune.py](./iTeach/finetune.py)
+- **Purpose:** This script fine-tunes the pre-trained model using the human collected dataset from the HoloLens device, adapting it to improve performance.
+- **Execution:** Designed to optimize the model for DoorHandle detection task, it plays a key role in enhancing the system's accuracy and robustness.
+
+### 📜 [run_finetuning_node.py](./run_finetuning_node.py)
+- **Functionality:** This script serves as a unified container that executes `DoorHandleModelFinetuner`, `rebroadcastData`, and `receiveData` with a single command, simplifying the management of multiple terminal windows.
+- **Requirements:** It requires `rospy` to be installed and accepts a YAML file with configuration parameters as a command line argument.
+
+<br><br>
+
+# 3. 🥽 HoloLens 2  Setup
+- Ensure the HoloLens is connected to the laptop's Wi-Fi hotspot.
+- Take note of the HoloLens device's IP address to access the Windows Device Portal on your laptop for device management.
+- Install the **iTeachLabeller** app on the HoloLens device. Check out this [App Install Video 🎦](https://www.youtube.com/watch?v=7xFtCPSMTEk) for guidance!
+- To change the IP of the ROS server, use the [script](./hololens_utils/HoloDevicePortal.py) to upload the [ROSConnectionConfig.json](ROSConnectionConfig.json) file to the HoloLens device. **Make sure both the laptop and HoloLens are connected to the same network!** 🌐
+
+```json
+{
+    "RosIPAddress": "192.168.1.3", // change here
+    "RosPort": 10000,
+    "KeepaliveTime": 1,
+    "NetworkTimeoutSeconds": 2,
+    "SleepTimeSeconds": 0.033,
+    "ShowHud": false
+}
 ```
 
+<br><br>
 
-#### To stream hololens pov to ROS Server
-1. Set env vars in `~/.bashrc` file
-```
-export HOLO_DEVICE_IP="10.42.0.150" # hololens ip address
-export HOLO_DEVICE_USERNAME="admin" # hololens username
-export HOLO_DEVICE_PASSWORD="123456789" # hololens password
-```
-2. Run the following command to stream the hololens pov to ROS Server
-```sh
-python publish_hlpov2ros.py
-# This will show as follows: If IP addr is read correctly then the script is running fine given hololens device is ON
-Read HoloLens IP: 10.42.0.150 from ENV
-```
+# 4. 🤖 Robot Setup
+- Ensure the robot is connected to the PC via **Ethernet** and also connected to the laptop's **Wi-Fi hotspot** for communication with the **HoloLens** device.
+- Launch the **ROS TCP connector**.
+    - Make sure the server is running the [ROS-TCP-Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint) to establish a connection with the HoloLens. Check the link for installation instructions.
+- [Optional: FYI] A sample Conda environment 📦 with the necessary dependencies for the robot system can be found in [robot-env.txt](conda-env/robot-env.txt).
+- Once everything is set up, follow these steps:
+```bash
+export ROS_HOSTNAME=10.42.0.233 # Replace with the robot's WLAN IP when connected to the laptop hotspot
+export ROS_MASTER_URI=http://$ROS_HOSTNAME:11311 # IP when connected to the IRVL laptop hotspot
 
-# Download Pretrained ckpts
-```sh
-wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
-mkdir -p hololens_data_store/images hololens_data_store/depth hololens_data_store/labels
-```
+# To check the connected network SSID
+echo "Connected to SSID: $(iw dev wlan0 info | grep ssid | awk '{print $2}')"
+echo "ROS_IP: " $ROS_IP
+echo "ROS_HOSTNAME: " $ROS_HOSTNAME
+echo "ROS_MASTER_URI: " $ROS_MASTER_URI
 
-
-# IRVL Image Labelling Support
-
-This is a selection of files based around the testing and smooth operation of the IRVL Image Labelling project.
-
-## Subfolders:
-
-### [PublishImages](PublishImages)
-
-This folder contains the images published by [publishimage.py](publishimage.py). It contains two files [3d.jpg](PublishImages/3d.jpg) and [rgb.jpg](PublishImages/rgb.jpg); only files with these names will be registered and sent by [publishimage.py](publishimage.py).
-
-### [Dataset](Dataset)
-
-In this folder one will find the labels, rgb, and 3d images of things labeled through the hololens. [receiveData.py](receiveData.py) publishes to this folder in real time and the images should already be properly formatted for a YOLO machine learning algorithm, this has been tested on [yolov5](https://github.com/ultralytics/yolov5).
-
-### [HoloLensImageLabellingApp](HoloLensImageLabellingApp)
-
-This is the subproject for the Unity/Hololens component of the pipeline. This folder is what should be opened when attempting to rebuild the project, not the root folder of this project. Further explanation is given in its own section.
-
-
-## Files
-
-### [run_finetuning_node.py](run_finetuning_node.py)
-
-This is a container class to run both rebroadcastData and receiveData without needing to open another command window. It requires that rospy be installed and accepts no command line arguments.
-
-### [rebroadcastData.py](rebroadcastData.py)
-
-This class takes output from the head camera of a fetch robot and rebroadcasts the rgb and depth at a lower framerate. The output channels are InfrequentImage and InfrequentDepth, both of ros message type [sensor_msgs/Image](http://docs.ros.org/en/noetic/api/sensor_msgs/html/msg/Image.html). This file can be executed alone with dependencies of ros and rospy, and accepts no arguments.
-
-### [receiveData.py](receiveData.py)
-
-As the name suggests and as is described in the Dataset section, this file recieves data from the hololens and stores it in its appropriate directories. The incoming ros messages are LabeledImage, LabeledDepth, and ImageLabels. It will assume that all messages received at the same time belong to the same set, and assign them the same name as is requested by yolo. This file can also be executed on its own without arguments.
-
-### [publishimage.py](publishimage.py)
-
-This file is a stand-in for a fetch robot for when one is not available. It publishes the files explained in the PublishImages folder section under the same name as the robot would, and is therefore indistinguishable other than the lack of change in images. This can only be executed on its own and takes no arguments.
-
-## Hololens Component
-
-### Overview
-
-In order for the user to label images on the move, there must be an application to facilitate it. The Root folder of the project to open is [HoloLensImageLabellingApp](HoloLensImageLabellingApp).
-
-* **Robot POV:** Bring up the most recent image taken in front of the user. drag the spheres on the edges of the frame to rotate it and drag the cubes on the corners to resize it. If the button is pressed again, the frame will be brought to the user's position without clearing existing labels.
-
-* **Discard Sample:** Dismiss the window and clear all labels present.
-
-* **Save Sample:** Send all images and detections back to the Yolo component and dismiss the frame.
-
-* **Label Door:**
-
-* **Label Handle:**
-
-* **Undo:** If an unwanted bounding box is drawn or is drawn wrong, this will remove the most recently placed box.
-
-### Installation
-
-It is recommended that a Windows device is used to compile this part of the project, and has not been tested on other platforms. A Unity version newer or equivalent to a 2022 release and at least Microsoft Visual Studio 2022 are required. Due to technical constraints, this project can only run on a Hololens 2. To deploy the project after building to your local machine, follow the optional steps of [the Hololens 2 tutorial](https://learn.microsoft.com/en-us/training/modules/learn-mrtk-tutorials/1-7-exercise-hand-interaction-with-objectmanipulator) and build the project with the release version; it will lose considerable amounts of FPS when built with a debug target.
-
-## Execution
-
-### PC
-On a linux computer, set the ROS_IP and ROS_MASTER_URI (and not ROS_HOSTNAME), then run [execsupport.py](execsupport.py). See [execsupport](#execsupportpy) for individual usage and expectations.
-
-### Server
-The server needs to be running [ROS-TCP-Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint) to connect to the Hololens. See the link for installation instructions.
-
-Once it has been setup, the commands should look approximately as follows:
-
-```
+# To run the ROS TCP connector
+source /opt/ros/$ROS_DISTRO/setup.bash
 source devel/setup.bash
 
-rosrun ROS-TCP-Endppoint endpoint.launch tcp_ip:=<The server's ip> tcp_port:=10000
+# server_ip is the WLAN IP of the robot when connected to the laptop hotspot, port should be 10000
+rosrun ROS-TCP-Endpoint endpoint.launch tcp_ip:=$ROS_HOSTNAME tcp_port:=10000
 ```
 
-### Hololens
-After setting the IP of the server in Unity, the project needs to be built and deployed to the hololens. Further details are provided in [Hololens Installation](#installation). Once it's deployed, just open the app from the start menu.
+<br><br>
 
-## Troubleshooting
 
-### Rviz
+# 5. 💻 PC (Laptop) Setup
 
-For many of these troubleshooting steps, it is required to be able to see the images being passed through ROS. Rviz is recommended for this.
+- Ensure that the PC has an active Wi-Fi hotspot to which both the **HoloLens** and the **Robot** are connected. 
+- On a Linux computer, set the `ROS_IP` and `ROS_MASTER_URI` (but not `ROS_HOSTNAME`).
+- In [`configs/cfg.yml`](configs/cfg.yml), specify the folder for datasets and update the path accordingly. Make sure to adjust any necessary values before starting the experiment.
 
-### PC is not receiving images from the server
+<br>
 
-Check the ROS_IP and ROS_MASTER_URI environment variables on both the server and the PC.
+### 5.1 Create a Conda Environment on the PC/Laptop
+- A sample Conda environment 📦 with the necessary dependencies for the laptop system is available in [pc-env.txt](conda-env/pc-env.txt).
+```shell
+conda create -n iTeachPC python=3.9
+conda activate iTeachPC
+pip install -r conda-env/pc-env.txt 
+```
 
-### Hololens is not receiving images
+<br>
 
-Firstly, check that execsupport is running. If the server is receiving processed images then check that the endpoint launched properly. If both of these are true, check that the ip is set correctly in the Hololens.
+### 5.2 Download Pretrained Checkpoints
+```shell
+wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
+```
 
-### PC is not receiving relabeled images & labels
+<br>
 
-In this case, it's likely that the PC or server's ROS_HOSTNAME is set to a non-null value. Set these to ```0.0.0.0```.
+# 5.3 📜 Scripts to Run
 
-### OMP: Error #15: Initializing libiomp5md.dll, but found libiomp5md.dll already initialized.
+To set up and run the necessary scripts for fine-tuning and streaming, follow the instructions below:
 
-This error might show up in run_finetuning_node.py & receiveData.py. In a terminal in the environment that the program is running in run:
+<br>
 
-```conda install nomkl --channel conda-forge```
+## 5.3.1 Execute the Fine-Tuning Node
 
-After this, check that all package requirements are still installed. This solution courtesy of [postylem](https://stackoverflow.com/questions/20554074/sklearn-omp-error-15-initializing-libiomp5md-dll-but-found-mk2iomp5md-dll-a).
+Run the following commands to activate the fine-tuning ROS node:
+
+```shell
+export ROS_IP=10.42.0.233 # Use the ROS server WLAN IP for HL2SS
+export ROS_MASTER_URI=http://$ROS_IP:11311
+export ROS_HOSTNAME=192.168.1.4 # Use the ROS server LAN IP for HL2SS
+conda activate iTeachPC
+
+# Ensure cfg.yaml is configured correctly; assuming you are in the src/ directory
+python run_finetuning_node.py --config configs/cfg.yaml # Start fine-tuning node
+```
+
+<br>
+
+## 5.3.2 Set Up Streaming
+
+You have the option to stream either the PC webcam feed or the HoloLens POV to the ROS server. Choose one of the following methods:
+
+<br>
+
+### 5.3.2.a Stream PC Webcam to ROS Server
+
+1. **Install `usb_cam`**:
+   You can find more details on the [wiki](https://wiki.ros.org/usb_cam) or [GitHub](https://github.com/ros-drivers/usb_cam).
+
+2. **Publish to the `/usb_cam/image_raw` ROS topic**:
+   Use the following commands:
+
+```sh
+# For ROS1
+sudo apt install ros-<ROS-DISTRO>-usb-cam
+v4l2-ctl --list-devices # List available devices to identify the webcam
+rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _camera_frame_id:='usb_cam' # Adjust /dev/video0 if needed
+```
+
+<br>
+
+### 5.3.2.b Stream HoloLens POV to ROS Server
+
+1. **Set Environment Variables**:
+   Add the following lines to your `~/.bashrc` file:
+
+```sh
+export HOLO_DEVICE_IP="10.42.0.150" # HoloLens IP address when connected to the laptop/PC Wi-Fi hotspot
+export HOLO_DEVICE_USERNAME="admin" # HoloLens username
+export HOLO_DEVICE_PASSWORD="123456789" # HoloLens password
+```
+
+2. **Run the Streaming Command**:
+   Execute the command below to stream the HoloLens POV:
+
+```sh
+python publish_hlpov2ros.py
+# If the IP address is read correctly, the output should indicate that the script is running fine, given the HoloLens device is ON:
+# Read HoloLens IP: 10.42.0.150 from ENV
+```
+
+<br>
+
+## 5.3.3 Visualize Published Data with **RViz**
+
+Run the following command to open RViz and visualize all your published data:
+
+```sh
+# Requires setup from sections 5.3.2.a (PC webcam) and 5.3.2.b (HoloLens POV) 📸🔧
+# Feel free to adjust the RViz panels as needed for your visualization 🔍
+rosrun rviz rviz -d rviz/iteach.rviz 
+```
+
+<br><br>
+
+# 6. 🔄 Terminator
+
+We recommend using the [Terminator](https://github.com/gnome-terminator/terminator) tool for managing multiple terminal windows efficiently.
+
+Below is an example of the Terminator layout used to run all necessary modules. Ensure that the PC is connected to both the **HoloLens** and the **robot** to handle the sub-networking aspect.
+
+![iTeach-RViz-Setup](./imgs/terminator-iteach.webp)
+
+<br><br>
+
+# 7. 🖥️ Desktop Labelling App
+
+https://github.com/user-attachments/assets/dc82bf66-c9a2-4b24-a514-289abd44e499
+
+<div>
+We’ve developed a simple desktop labelling app 🎨, designed for tagging incoming image samples from the HoloLens in batches 📸. Below is a demo showcasing its functionality. We utilized this app to report results in the main paper 📝.
+</div>
+
+
+<br><br>
+
+
+# 8. 🛠️ Troubleshooting Guide
+
+We’re sharing potential solutions 🛠️ for the issues we faced during development. While other challenges may arise, we believe the ones we encountered will address most common scenarios 🌐. 
+
+### 1. 👓 Rviz
+
+To effectively follow the troubleshooting steps, it is essential to view the images being transmitted through ROS. **Rviz** is the recommended tool for this purpose. 👀
+
+### 2. 🖥️ PC Not Receiving Images from the Server
+
+Ensure that the `ROS_IP` and `ROS_MASTER_URI` environment variables are correctly set on both the server and the PC. 🌐
+
+### 3. 🤖 HoloLens Not Receiving Images
+
+1. Confirm that **execsupport** is active.
+2. If the server is receiving processed images, verify that the endpoint has launched correctly. ✅
+3. Ensure that the IP address is set correctly on the **HoloLens**. 💡
+
+### 4. 🖼️ PC Not Receiving Relabeled Images & Labels
+
+If this occurs, it's likely that the `ROS_HOSTNAME` on the PC or server is set to a non-null value. Change these settings to `0.0.0.0`. 🔧
+
+### 5. ⚠️ OMP: Error #15 - Initializing libiomp5md.dll
+
+You may encounter this error in `run_finetuning_node.py` and `receiveData.py`. To resolve it, open a terminal in the environment where the program is running and execute the following command:
+
+```bash
+conda install nomkl --channel conda-forge
+```
+
+After this, check that all package requirements are still installed. This solution is courtesy of [postylem](https://stackoverflow.com/questions/20554074/sklearn-omp-error-15-initializing-libiomp5md-dll-but-found-mk2iomp5md-dll). 💡

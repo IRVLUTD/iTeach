@@ -1,34 +1,26 @@
 #  YOLO data params
 path: '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets'
 # train: train.524/images 
-# train: hololens_data_store/images
-# train: hololens_data_store.bak/images
 # train: hololens.finetuning.data.100/images
-# train: hololens.exp/images
-train: 524/images
-val: test_dataset.256/images
-test:
-nc: 2
-names: [door, handle]
-
-#suffix: 'temp'
-suffix: 'supp-video'
+train: 524/images # train images
+val: test_dataset.256/images # val images
+test: # test images
+nc: 2 # num classes
+names: [door, handle] # class names
+suffix: 'demo-experiment' # experiment-alias suffix; the training/inference data will be saved to iTeachModels-<suffix>
 
 
 # Extra params
 PRETRAINED_CKPT_PATH: /home/hololens/Projects/hololens/IRVLImageLabellingSupport/pretrained_ckpt.pt # absolute path required
-# PRETRAINED_CKPT_PATH: /home/hololens/Projects/hololens/IRVLImageLabellingSupport/iTeachModels-emulate/ft2/weights/best.pt # absolute path required
-
 TRAIN_RESULTS_DIR: /home/hololens/Projects/hololens/IRVLImageLabellingSupport/  # Folder path where training results get saved
 
-RESUME: True # resume from previous 
-
+RESUME: True                  # resume from previous 
 EPOCHS: 1 #20                 # epochs for finetuning 
-BATCH: 16                   # Batch Size, default value 16
-BOX_LOSS_WEIGHT:           # Weight of bounding box loss component in loss function, default value 7.5
-CLS_LOSS_WEIGHT:           # Weight of classification loss in the total loss function, default value 0.5
-DROPOUT: 0.05               # Default value 0.0
+BATCH: 16                     # Batch Size, default value 16
+BOX_LOSS_WEIGHT:              # Weight of bounding box loss component in loss function, default value 7.5
+CLS_LOSS_WEIGHT:              # Weight of classification loss in the total loss function, default value 0.5
+DROPOUT: 0.05                 # Default value 0.0
 
 # detection post processing params
 CONF_THRES: 0.7 # 0.7 has been used for the experiments
-IOU_THRES: 0.7 # 0.7 has been used for the experiments
+IOU_THRES: 0.7  # 0.7 has been used for the experiments

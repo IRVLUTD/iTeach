@@ -1,6 +1,13 @@
 # iTeachLabeller Application for HoloLens 2 🦾
 
-This repository contains the code for the **iTeachLabeller** application, specifically designed for the **HoloLens 2**. 
+This repository contains the code for the **iTeachLabeller** application, developed specifically for **HoloLens 2**.
+
+<img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-app-select-to-main-menu-2x2.webp" alt="iTeachLabeller UI Flow" width="600"/>  <br>
+*(i) The user interface flow of the iTeachLabeller app, from startup to the main menu.*
+
+<img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iTeach-main.menu.jpg" alt="iTeachLabeller Main Menu" width="600"/>  <br>
+*(ii) Description of the main menu options in the iTeachLabeller app.*
+
 
 ## Setup Instructions ⚙️
 
@@ -18,19 +25,25 @@ For detailed setup instructions, refer to the [how_to_build.md](https://github.c
 
 Assuming the app's root directory is named `iTeachLabellingApp`, you can find guidance for building the app in the following video:
 
-[![Build, Install, and Run the HoloLens Unity App](https://i9.ytimg.com/vi_webp/kvzMAMyluJU/mqdefault.webp?v=66fdaee4&sqp=CPTc9rcG&rs=AOn4CLDHb2Tr4BQtK3-Vvpk748-E2yBF2w)](https://www.youtube.com/watch?v=kvzMAMyluJU)
+[![Build, Install, and Run the HoloLens Unity App](https://img.youtube.com/vi/kvzMAMyluJU/0.jpg)](https://www.youtube.com/watch?v=kvzMAMyluJU)
+
 
 ### Compilation Steps with Screenshots 📸
 - Build the project in Unity. 🔨
 - Open the .sln file in Visual Studio. 📂
 - Create the package. 📦
 - Use the Windows Device Portal to install the .msix file. 🚀
-- Record stream or manage the app (Open/Close/Uninstall) using the HoloLens portal. 🎤📱
+- Record stream or manage the app (Open/Close/Uninstall) using the HoloLens portal. 📱
 
 **NOTE**: Ensure to maintain a standalone system with a working Windows (Dev system + HoloLens), Unity, and Visual Studio to run simulations as well as for app building. We encountered difficulties where the same codebase successfully produced a build on one system but failed on another. To avoid issues, it is recommended to have a system where everything is version-maintained, and updates are done in a controlled manner. 🔒
 
 ## Download Prebuilt Application 📥
 
 If you prefer to use the application without any modifications, you can download the prebuilt version from the following link:
+- [Download iTeachLabeller.msix](https://utdallas.box.com/v/iTeachLabellerApp) 📦 | [App Install Video](https://www.youtube.com/watch?v=7xFtCPSMTEk) 🎥
 
-- [Download iTeachLabeller Prebuilt Application](https://utdallas.box.com/v/iTeachLabellerApp) 📦
+## ⚠️ Note
+
+- 🚨 It is **recommended** that a **Windows** device is used to compile this part of the project, and it has not been tested on other platforms.
+- 💻 A **Unity** version newer or equivalent to a **2022 release** and at least **Microsoft Visual Studio 2022** are required. 
+- ⚙️ Due to technical constraints, this project can only run on a **Hololens 2**.
