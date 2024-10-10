@@ -210,30 +210,33 @@ We have a naive desktop labelling app that is used to label the incoming image s
 
 <br><br>
 
+
 # 8. 🛠️ Troubleshooting Guide
 
-### 👓 Rviz
+## 👓 Rviz
 
 To effectively follow the troubleshooting steps, it is essential to view the images being transmitted through ROS. **Rviz** is the recommended tool for this purpose. 👀
 
-### 🖥️ PC Not Receiving Images from the Server
+## 🖥️ PC Not Receiving Images from the Server
 
 Ensure that the `ROS_IP` and `ROS_MASTER_URI` environment variables are correctly set on both the server and the PC. 🌐
 
-### 🤖 Hololens Not Receiving Images
+## 🤖 HoloLens Not Receiving Images
 
-Start by confirming that **execsupport** is active. If the server is receiving processed images, verify that the endpoint has launched correctly. ✅ If both conditions are met, ensure that the IP address is set correctly on the **Hololens**. 💡
+1. Confirm that **execsupport** is active.
+2. If the server is receiving processed images, verify that the endpoint has launched correctly. ✅
+3. Ensure that the IP address is set correctly on the **HoloLens**. 💡
 
-### 🖼️ PC Not Receiving Relabeled Images & Labels
+## 🖼️ PC Not Receiving Relabeled Images & Labels
 
 If this occurs, it's likely that the `ROS_HOSTNAME` on the PC or server is set to a non-null value. Change these settings to `0.0.0.0`. 🔧
 
-### ⚠️ OMP: Error #15 - Initializing libiomp5md.dll
+## ⚠️ OMP: Error #15 - Initializing libiomp5md.dll
 
-You may encounter this error in `run_finetuning_node.py` and `receiveData.py`. To resolve it, open a terminal in the environment where the program is running and execute:
+You may encounter this error in `run_finetuning_node.py` and `receiveData.py`. To resolve it, open a terminal in the environment where the program is running and execute the following command:
 
 ```bash
 conda install nomkl --channel conda-forge
 ```
 
-After this, check that all package requirements are still installed. This solution courtesy of [postylem](https://stackoverflow.com/questions/20554074/sklearn-omp-error-15-initializing-libiomp5md-dll-but-found-mk2iomp5md-dll-a). 💡
+After this, check that all package requirements are still installed. This solution is courtesy of [postylem](https://stackoverflow.com/questions/20554074/sklearn-omp-error-15-initializing-libiomp5md-dll-but-found-mk2iomp5md-dll). 💡
