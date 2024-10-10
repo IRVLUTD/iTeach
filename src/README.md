@@ -168,6 +168,13 @@ rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _
    Read HoloLens IP: 10.42.0.150 from ENV
    ```
 
+
+### 5.3.3 Run **RViz** to visualize all your desired published data
+```sh
+rosrun rviz rviz -d rviz/iteach.rviz
+```
+
+
 <br><br>
 
 # 6. 🔄 Terminator
