@@ -1,12 +1,12 @@
 # Index
 1. [**iTeach Demo: Hardware & Network Setup + App in Action!**](#1-iteach-demo-hardware--network-setup--app-in-action)
 2. [📁 **Key Files and Directories**](#-2-key-files-and-directories)
-3. [🥽 **HoloLens 2 Setup**](#3-hololens-2--setup)
+3. [🥽 **HoloLens 2 Setup**](#3--hololens-2--setup)
 4. [🤖 **Robot Setup**](#3--robot-setup)
-5. [💻 **PC (Laptop) Setup**](#4--pc-laptop-setup)
-6. [🔄 **Terminator**](#5--terminator)
-7. [🖥️ **Desktop Labelling App**](#6-%EF%B8%8F-desktop-labelling-app)
-8. [🛠️ **Troubleshooting Guide**](#7-%EF%B8%8F-troubleshooting-guide)
+5. [💻 **PC (Laptop) Setup**](#5--pc-laptop-setup)
+6. [🔄 **Terminator**](#6--terminator)
+7. [🖥️ **Desktop Labelling App**](#7-%EF%B8%8F-desktop-labelling-app)
+8. [🛠️ **Troubleshooting Guide**](#8-%EF%B8%8F-troubleshooting-guide)
 
 <br><br>
 
