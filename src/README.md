@@ -1,7 +1,7 @@
 # Index
 1. [**iTeach Demo**: Hardware & Network Setup + App in Action!](#1-iteach-demo-hardware--network-setup--app-in-action)
 2. [📁 **Key Files and Directories**](#-2-key-files-and-directories)
-3. [🥽 **HoloLens 2 Setup**](#-hololens-2--setup)
+3. [🥽 **HoloLens 2 Setup**](#3-hololens-2--setup)
 4. [🤖 **Robot Setup**](#3--robot-setup)
 5. [💻 **PC (Laptop) Setup**](#4--pc-laptop-setup)
 6. [🔄 **Terminator**](#5--terminator)
@@ -56,7 +56,7 @@
 
 <br><br>
 
-# 🥽 HoloLens 2  Setup
+# 3. 🥽 HoloLens 2  Setup
 - Ensure the HoloLens is connected to the laptop's Wi-Fi hotspot.
 - Take note of the HoloLens device's IP address to access the Windows Device Portal on your laptop for device management.
 - Install the **iTeachLabeller** app on the HoloLens device. Check out this [App Install Video 🎦](https://www.youtube.com/watch?v=7xFtCPSMTEk) for guidance!
@@ -75,7 +75,7 @@
 
 <br><br>
 
-# 3. 🤖 Robot Setup
+# 4. 🤖 Robot Setup
 - Ensure the robot is connected to the PC via **Ethernet** and also connected to the laptop's **Wi-Fi hotspot** for communication with the **HoloLens** device.
 - Launch the **ROS TCP connector**.
     - Make sure the server is running the [ROS-TCP-Endpoint](https://github.com/Unity-Technologies/ROS-TCP-Endpoint) to establish a connection with the HoloLens. Check the link for installation instructions.
@@ -102,13 +102,13 @@ rosrun ROS-TCP-Endpoint endpoint.launch tcp_ip:=$ROS_HOSTNAME tcp_port:=10000
 <br><br>
 
 
-# 4. 💻 PC (Laptop) Setup
+# 5. 💻 PC (Laptop) Setup
 
 - Ensure that the PC has an active Wi-Fi hotspot to which both the **HoloLens** and the **Robot** are connected. 
 - On a Linux computer, set the `ROS_IP` and `ROS_MASTER_URI` (but not `ROS_HOSTNAME`).
 - In [`configs/cfg.yml`](configs/cfg.yml), specify the folder for datasets and update the path accordingly. Make sure to adjust any necessary values before starting the experiment.
 
-### 4.1 Create a Conda Environment on the PC/Laptop
+### 5.1 Create a Conda Environment on the PC/Laptop
 - A sample Conda environment with dependencies for our laptop system is available in [pc-env.txt](conda-env/pc-env.txt).
 ```shell
 conda create -n iTeachPC python=3.9
@@ -116,19 +116,19 @@ conda activate iTeachPC
 pip install -r conda-env/pc-env.txt 
 ```
 
-### 4.2 Download Pretrained Checkpoints
+### 5.2 Download Pretrained Checkpoints
 ```shell
 wget -v -O pretrained_ckpt.pt https://utdallas.box.com/shared/static/hj1mncmm85bswn4uvbm9ytaydi7d3ws0.pt
 ```
 
-### 4.3 📜 Scripts to Run
+### 5.3 📜 Scripts to Run
 - Execute `run_finetuning_node.py` to activate the fine-tuning ROS node.
 - The following scripts are optional:
     - Run [`publish_hlpov2ros.py`](publish_hlpov2ros.py) to publish the HoloLens stream to the ROS topic `/hololens/pv_camera/image_raw`.
     - Run `usb_cam` to publish the laptop's webcam feed.
 - Run **RViz** to visualize all your desired published data.
 
-### 4.3.1 Run Fine-Tuning Node
+### 5.3.1 Run Fine-Tuning Node
 ```shell
 export ROS_IP=10.42.0.233 # Use the ROS server WLAN IP for HL2SS
 export ROS_MASTER_URI=http://$ROS_IP:11311
@@ -139,9 +139,9 @@ conda activate iTeachPC
 python run_finetuning_node.py --config configs/cfg.yaml # Start fine-tuning node
 ```
 
-### 4.3.2 To Set Up the Streaming
+### 5.3.2 To Set Up the Streaming
 
-#### 4.3.2.a To Stream PC Webcam to ROS Server
+#### 5.3.2.a To Stream PC Webcam to ROS Server
 - Install `usb_cam` ([[wiki](https://wiki.ros.org/usb_cam) | [GitHub](https://github.com/ros-drivers/usb_cam)]).
 - The following command will publish to the `/usb_cam/image_raw` ROS topic:
 
@@ -153,7 +153,7 @@ rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _
 ```
 
 
-#### 4.3.2.b To Stream HoloLens POV to ROS Server
+#### 5.3.2.b To Stream HoloLens POV to ROS Server
 
 1. Set environment variables in the `~/.bashrc` file:
    ```sh
@@ -170,7 +170,7 @@ rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _
 
 <br><br>
 
-# 5. 🔄 Terminator
+# 6. 🔄 Terminator
 
 We recommend using the [Terminator](https://github.com/gnome-terminator/terminator) tool for managing multiple terminal windows efficiently.
 
@@ -180,7 +180,7 @@ Below is an example of the Terminator layout used to run all necessary modules. 
 
 <br><br>
 
-# 6. 🖥️ Desktop Labelling App
+# 7. 🖥️ Desktop Labelling App
 <div align="center">
 We have a naive desktop labelling app that is used to label the incoming image samples from the HoloLens in batches. Below is a demo of the app. We used this for reporting results in the main paper. <br> <br>
 <video width="75%" controls>
@@ -191,7 +191,7 @@ We have a naive desktop labelling app that is used to label the incoming image s
 
 <br><br>
 
-# 7. 🛠️ Troubleshooting Guide
+# 8. 🛠️ Troubleshooting Guide
 
 ### 👓 Rviz
 
