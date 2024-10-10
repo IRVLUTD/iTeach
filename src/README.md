@@ -74,12 +74,6 @@ export HOLO_DEVICE_PASSWORD="123456789" # HoloLens password
 - Install the **iTeachLabeller** app on the HoloLens device. Check out this [App Install Video 🎦](https://www.youtube.com/watch?v=7xFtCPSMTEk) for guidance!
 - To change the IP of the ROS server, use the [script](./hololens_utils/HoloDevicePortal.py) to upload the [ROSConnectionConfig.json](ROSConnectionConfig.json) file to the HoloLens device. **Make sure both the laptop and HoloLens are connected to the same network!** 🌐
 
-```
-python hololens_utils/HoloDevicePortal.py --file_path path/to/ROSConnectionConfig.json
-```
-
-<br><br>
-
 ```json
 {
   "RosIPAddress": "192.168.1.3", // change here
@@ -89,6 +83,11 @@ python hololens_utils/HoloDevicePortal.py --file_path path/to/ROSConnectionConfi
   "SleepTimeSeconds": 0.033,
   "ShowHud": false
 }
+```
+<br>
+
+```bash
+python hololens_utils/HoloDevicePortal.py --file_path path/to/ROSConnectionConfig.json
 ```
 
 <br><br>
