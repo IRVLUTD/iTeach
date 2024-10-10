@@ -1,12 +1,12 @@
 # Index
-1. **iTeach Demo**: Hardware & Network Setup + App in Action!
-2. 📁 **Key Files and Directories**
-3. 🥽 **HoloLens 2 Setup**
-4. 🤖 **Robot Setup**
-5. 💻 **PC (Laptop) Setup**
-6. 🔄 **Terminator**
-7. 🖥️ **Desktop Labelling App**
-8. 🛠️ **Troubleshooting Guide**
+1. [**iTeach Demo**: Hardware & Network Setup + App in Action!}(#1-iteach-demo-hardware--network-setup--app-in-action)
+2. [📁 **Key Files and Directories**](#-2-key-files-and-directories)
+3. [🥽 **HoloLens 2 Setup**](#-hololens-2--setup)
+4. [🤖 **Robot Setup**](#3--robot-setup)
+5. [💻 **PC (Laptop) Setup**](#4--pc-laptop-setup)
+6. [🔄 **Terminator**](#5--terminator)
+7. [🖥️ **Desktop Labelling App**](#6-%EF%B8%8F-desktop-labelling-app)
+8. [🛠️ **Troubleshooting Guide**](#7-%EF%B8%8F-troubleshooting-guide)
 
 <br><br>
 
@@ -53,6 +53,8 @@
 ### 📜 [run_finetuning_node.py](./run_finetuning_node.py)
 - **Functionality:** This script serves as a unified container that executes `DoorHandleModelFinetuner`, `rebroadcastData`, and `receiveData` with a single command, simplifying the management of multiple terminal windows.
 - **Requirements:** It requires `rospy` to be installed and accepts a YAML file with configuration parameters as command line arguments.
+
+<br><br>
 
 # 🥽 HoloLens 2  Setup
 - Ensure the HoloLens is connected to the laptop's Wi-Fi hotspot.
