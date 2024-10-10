@@ -5,7 +5,6 @@ RGB/
 non-diversified-trained-models/
 logs/
 exp2.ft.using.hololens.14.08.out
-*.mp4
 iTeachModels*
 *.log
 *.pt
