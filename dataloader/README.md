@@ -73,3 +73,16 @@ Note: This dataloader will work with any detection dataset following the above m
 ## License 📜
 
 This project is licensed under the MIT License.
+
+## BibTex 📚
+Please cite ***iTeach*** if it helps your work or research 🙌:
+```bibtex
+@misc{padalunkal2024iteach,
+    title={iTeach: Interactive Teaching for Robot Perception using Mixed Reality},
+    author={Jishnu Jaykumar P and Cole Salvato and Vinaya Bomnale and Jikai Wang and Yu Xiang},
+    year={2024},
+    eprint={2410.09072},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO}
+}
+```
