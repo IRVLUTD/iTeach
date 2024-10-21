@@ -49,7 +49,7 @@ pil_img_with_bboxes.show()
 This project is licensed under the MIT License.
 
 ## BibTex 📚
-Please cite ***iTeach*** if it helps your work/research 🙌:
+Please cite ***iTeach*** if it helps your work or research 🙌:
 ```bibtex
 @misc{padalunkal2024iteach,
     title={iTeach: Interactive Teaching for Robot Perception using Mixed Reality},
@@ -60,3 +60,4 @@ Please cite ***iTeach*** if it helps your work/research 🙌:
     primaryClass={cs.RO}
 }
 ```
+
