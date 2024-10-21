@@ -51,7 +51,14 @@ To begin working with the codebase, first navigate to the relevant directory and
 ## BibTex 📚
 Please cite ***iTeach*** if it helps your research 🙌:
 ```bibtex
-Coming soon...
+@misc{padalunkal2024iteach,
+    title={iTeach: Interactive Teaching for Robot Perception using Mixed Reality},
+    author={Jishnu Jaykumar P and Cole Salvato and Vinaya Bomnale and Jikai Wang and Yu Xiang},
+    year={2024},
+    eprint={2410.09072},
+    archivePrefix={arXiv},
+    primaryClass={cs.RO}
+}
 ```
 
 ## Contact 📬
