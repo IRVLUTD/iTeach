@@ -115,7 +115,7 @@ source /opt/ros/$ROS_DISTRO/setup.bash
 source devel/setup.bash
 
 # server_ip is the WLAN IP of the robot when connected to the laptop hotspot, port should be 10000
-rosrun ROS-TCP-Endpoint endpoint.launch tcp_ip:=$ROS_HOSTNAME tcp_port:=10000
+roslaunch ros_tcp_endpoint endpoint.launch tcp_ip:=$ROS_HOSTNAME tcp_port:=10000
 ```
 
 <br><br>
