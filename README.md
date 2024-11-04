@@ -14,7 +14,7 @@
 </div>
 
 
-## Getting Started 🚀
+## Getting Started in only 3 steps 🚀 !!!
 
 The iTeach system can be started in just 3 simple steps:
 
