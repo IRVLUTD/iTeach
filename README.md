@@ -1,5 +1,5 @@
 <div align="center">
-<h1>iTeach: Interactive Teaching for Robot Perception using Mixed Reality 🤖🌐</h1>
+<h1>iTeach: In the Wild Interactive Teaching for Failure-Driven Adaptation of Robot Perception 🤖🌐</h1>
 <a href="https://jishnujayakumar.github.io/">Jishnu Jaykumar P</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://labs.utdallas.edu/irvl/people/">Cole Salvato</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://labs.utdallas.edu/irvl/people/">Vinaya Bomnale</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
