@@ -52,11 +52,11 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 ## 📑 Contents
 
 <p align="center">
-<a href="#-how-it-works"><img src="media/toc/01-light.svg#gh-light-mode-only" width="49%" alt="01 · How It Works: The overview video and the FS3 labelling steps"></a><a href="#-how-it-works"><img src="media/toc/01-dark.svg#gh-dark-mode-only" width="49%" alt="01 · How It Works: The overview video and the FS3 labelling steps"></a>
-<a href="#-results"><img src="media/toc/02-light.svg#gh-light-mode-only" width="49%" alt="02 · Results: Perception, manipulation and the user study"></a><a href="#-results"><img src="media/toc/02-dark.svg#gh-dark-mode-only" width="49%" alt="02 · Results: Perception, manipulation and the user study"></a>
-<a href="#-code"><img src="media/toc/03-light.svg#gh-light-mode-only" width="49%" alt="03 · Code: Which repository does what, and in what order"></a><a href="#-code"><img src="media/toc/03-dark.svg#gh-dark-mode-only" width="49%" alt="03 · Code: Which repository does what, and in what order"></a>
-<a href="#-iteach-v1-door--handle-detection-dh-yolo"><img src="media/toc/04-light.svg#gh-light-mode-only" width="49%" alt="04 · iTeach v1 · DH-YOLO: The earlier door and handle detection system"></a><a href="#-iteach-v1-door--handle-detection-dh-yolo"><img src="media/toc/04-dark.svg#gh-dark-mode-only" width="49%" alt="04 · iTeach v1 · DH-YOLO: The earlier door and handle detection system"></a>
-<a href="#-citation"><img src="media/toc/more-light.svg#gh-light-mode-only" width="49%" alt="✦ · Cite · Contact · Thanks: Citation, contact and acknowledgements"></a><a href="#-citation"><img src="media/toc/more-dark.svg#gh-dark-mode-only" width="49%" alt="✦ · Cite · Contact · Thanks: Citation, contact and acknowledgements"></a>
+<a href="#-how-it-works"><img src="media/toc/01.svg" width="49%" alt="01 · How It Works: The overview video and the FS3 labelling steps"></a>
+<a href="#-results"><img src="media/toc/02.svg" width="49%" alt="02 · Results: Perception, manipulation and the user study"></a>
+<a href="#-code"><img src="media/toc/03.svg" width="49%" alt="03 · Code: Which repository does what, and in what order"></a>
+<a href="#-iteach-v1-door--handle-detection-dh-yolo"><img src="media/toc/04.svg" width="49%" alt="04 · iTeach v1 · DH-YOLO: The earlier door and handle detection system"></a>
+<a href="#-citation"><img src="media/toc/more.svg" width="49%" alt="✦ · Cite · Contact · Thanks: Citation, contact and acknowledgements"></a>
 </p>
 
 <details>
