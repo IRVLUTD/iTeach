@@ -1,5 +1,8 @@
 # Index
 
+> Addresses below are placeholders — `<ROBOT_IP>`, `<LAPTOP_IP>`, `<HOLOLENS_IP>`,
+> `<ROBOT_WLAN_IP>`, `<HOTSPOT_GW>`. Substitute the addresses on your own network.
+
 > [!WARNING]
 > **Archived (legacy):** this README covers **iTeach v1** (door and handle detection with DH-YOLO), which is no longer maintained. **Exception:** [`hololens_utils/`](./hololens_utils) (Device Portal upload script and hl2ss helpers) is still used by the current system. For the current HumanPlay + UOIS pipeline, including its network setup, see [iTeachSkillsApp](https://github.com/IRVLUTD/iTeachSkillsApp) and [iTeach-UOIS](https://github.com/IRVLUTD/iTeach-UOIS). The networking steps below (sections 3–5) describe the **v1** setup; for the current system, use the [iTeachSkillsApp network setup](https://github.com/IRVLUTD/iTeachSkillsApp#-network-setup).
 
@@ -63,7 +66,7 @@
 Add the following lines to your `~/.bashrc` file:
 
 ```sh
-export HOLO_DEVICE_IP="10.42.0.150" # HoloLens IP address when connected to the laptop/PC Wi-Fi hotspot
+export HOLO_DEVICE_IP="<HOLOLENS_IP>" # HoloLens IP address when connected to the laptop/PC Wi-Fi hotspot
 export HOLO_DEVICE_USERNAME="<device-portal-username>" # HoloLens Windows Device Portal username
 export HOLO_DEVICE_PASSWORD="<device-portal-password>" # HoloLens Windows Device Portal password
 ```
@@ -79,7 +82,7 @@ export HOLO_DEVICE_PASSWORD="<device-portal-password>" # HoloLens Windows Device
 
 ```json
 {
-  "RosIPAddress": "192.168.1.3", // change here
+  "RosIPAddress": "<ROBOT_IP>", // change here
   "RosPort": 10000,
   "KeepaliveTime": 1,
   "NetworkTimeoutSeconds": 2,
@@ -104,7 +107,7 @@ python hololens_utils/HoloDevicePortal.py --file_path path/to/ROSConnectionConfi
 - Once everything is set up, follow these steps:
 
 ```bash
-export ROS_HOSTNAME=10.42.0.233 # Replace with the robot's WLAN IP when connected to the laptop hotspot
+export ROS_HOSTNAME=<ROBOT_WLAN_IP> # Replace with the robot's WLAN IP when connected to the laptop hotspot
 export ROS_MASTER_URI=http://$ROS_HOSTNAME:11311 # IP when connected to the IRVL laptop hotspot
 
 # To check the connected network SSID
@@ -162,9 +165,9 @@ To set up and run the necessary scripts for fine-tuning and streaming, follow th
 Run the following commands to activate the fine-tuning ROS node:
 
 ```shell
-export ROS_IP=10.42.0.233 # Use the ROS server WLAN IP for HL2SS
+export ROS_IP=<ROBOT_WLAN_IP> # Use the ROS server WLAN IP for HL2SS
 export ROS_MASTER_URI=http://$ROS_IP:11311
-export ROS_HOSTNAME=192.168.1.4 # Use the ROS server LAN IP for HL2SS
+export ROS_HOSTNAME=<LAPTOP_IP> # Use the ROS server LAN IP for HL2SS
 conda activate iTeachPC
 
 # Ensure cfg.yaml is configured correctly; assuming you are in the src/ directory
@@ -201,7 +204,7 @@ rosrun usb_cam usb_cam_node _video_device:=/dev/video0 _camera_name:='usb_cam' _
 ```sh
 python publish_hlpov2ros.py
 # If the IP address is read correctly, the output should indicate that the script is running fine, given the HoloLens device is ON:
-# Read HoloLens IP: 10.42.0.150 from ENV
+# Read HoloLens IP: <HOLOLENS_IP> from ENV
 ```
 
 <br>
