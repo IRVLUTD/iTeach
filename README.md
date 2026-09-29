@@ -286,6 +286,13 @@ The current iTeach system is split into **three repositories**, one per module. 
 
 <br>
 
+> 🗒️ **Lab setup reference** — the exact working configuration (environment exports, ROS
+> and network config, and a software-in-the-loop test harness that replays a recorded scene)
+> is archived in [`docs/handoff/`](./docs/handoff). Addresses there are placeholders;
+> substitute your own.
+
+<br>
+
 <div align="right"><sub><a href="#-contents">⬆ back to contents</a></sub></div>
 
 ---
