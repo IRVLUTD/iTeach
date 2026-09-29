@@ -1,0 +1,6 @@
+ros-noetic-cv-bridge 1.16.2-1focal.20230620.191830
+ros-noetic-desktop 1.5.0-1focal.20250521.014654
+ros-noetic-desktop-full 1.5.0-1focal.20240522.184304
+ros-noetic-ros-base 1.5.0-1focal.20240111.185459
+ros-noetic-rospy 1.16.0-1focal.20230620.184330
+ros-noetic-rospy-tutorials 0.10.2-1focal.20230620.185611

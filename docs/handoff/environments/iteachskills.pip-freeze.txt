@@ -1,0 +1,209 @@
+actionlib==1.14.0
+angles==1.9.13
+argcomplete @ file:///home/conda/feedstock_root/build_artifacts/argcomplete_1743725982721/work
+base_local_planner==1.17.3
+bondpy==1.8.6
+camera-calibration==1.17.0
+camera-calibration-parsers==1.12.0
+catkin==0.8.10
+catkin_pkg @ file:///home/conda/feedstock_root/build_artifacts/catkin_pkg_1734127209424/work
+catkin_tools @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_catkin_tools_1743747521/work
+certifi==2025.1.31
+charset-normalizer==3.4.1
+colcon-argcomplete @ file:///home/conda/feedstock_root/build_artifacts/colcon-argcomplete_1735452257783/work
+colcon-bash @ file:///home/conda/feedstock_root/build_artifacts/colcon-bash_1735646579174/work
+colcon-cd @ file:///home/conda/feedstock_root/build_artifacts/colcon-cd_1735513168658/work
+colcon-cmake @ file:///home/conda/feedstock_root/build_artifacts/colcon-cmake_1696469292972/work
+colcon-common-extensions @ file:///home/conda/feedstock_root/build_artifacts/colcon-common-extensions_1726305012941/work
+colcon-core @ file:///home/conda/feedstock_root/build_artifacts/colcon-core_1742163145772/work
+colcon-defaults @ file:///home/conda/feedstock_root/build_artifacts/colcon-defaults_1675322054387/work
+colcon-devtools @ file:///home/conda/feedstock_root/build_artifacts/colcon-devtools_1710398971697/work
+colcon-library-path==0.2.1
+colcon-metadata @ file:///home/conda/feedstock_root/build_artifacts/colcon-metadata_1597041627739/work
+colcon-output @ file:///home/conda/feedstock_root/build_artifacts/colcon-output_1676526198897/work
+colcon-package-information @ file:///home/conda/feedstock_root/build_artifacts/colcon-package-information_1710398986900/work
+colcon-package-selection @ file:///home/conda/feedstock_root/build_artifacts/colcon-package-selection_1602006931176/work
+colcon-parallel-executor @ file:///home/conda/feedstock_root/build_artifacts/colcon-parallel-executor_1736252947024/work
+colcon-pkg-config==0.1.0
+colcon-powershell @ file:///home/conda/feedstock_root/build_artifacts/colcon-powershell_1696619376643/work
+colcon-python-setup-py @ file:///home/conda/feedstock_root/build_artifacts/colcon-python-setup-py_1728887788662/work
+colcon-recursive-crawl @ file:///home/conda/feedstock_root/build_artifacts/colcon-recursive-crawl_1696534495468/work
+colcon-ros @ file:///home/conda/feedstock_root/build_artifacts/colcon-ros_1719301487783/work
+colcon-test-result==0.3.8
+colcon-zsh @ file:///home/conda/feedstock_root/build_artifacts/colcon-zsh_1735357506924/work
+colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1733218098505/work
+coloredlogs @ file:///home/conda/feedstock_root/build_artifacts/coloredlogs_1733927977068/work
+contourpy==1.3.2
+controller-manager==0.20.0
+controller-manager-msgs==0.20.0
+coverage @ file:///home/conda/feedstock_root/build_artifacts/coverage_1743381246335/work
+cv-bridge==1.16.2
+cycler==0.12.1
+defusedxml==0.7.1
+diagnostic-analysis==1.11.0
+diagnostic-common-diagnostics==1.11.0
+diagnostic-updater==1.11.0
+distlib @ file:///home/conda/feedstock_root/build_artifacts/distlib_1733238395481/work
+distro @ file:///home/conda/feedstock_root/build_artifacts/distro_1734729835256/work
+docutils @ file:///home/conda/feedstock_root/build_artifacts/docutils_1733217766141/work
+dynamic-reconfigure==1.7.3
+empy==3.3.4
+exceptiongroup @ file:///home/conda/feedstock_root/build_artifacts/exceptiongroup_1733208806608/work
+filelock==3.13.1
+fonttools==4.57.0
+fsspec==2024.6.1
+gazebo_plugins==2.9.2
+gazebo_ros==2.9.2
+gencpp==0.7.0
+geneus==3.0.0
+genlisp==0.4.18
+genmsg==0.6.0
+gennodejs==2.0.2
+genpy==0.6.15
+humanfriendly @ file:///home/conda/feedstock_root/build_artifacts/humanfriendly_1733927922002/work
+idna==3.10
+image-geometry==1.16.2
+iniconfig @ file:///home/conda/feedstock_root/build_artifacts/iniconfig_1733223141826/work
+interactive-markers==1.12.0
+Jinja2==3.1.4
+joint-state-publisher==1.15.1
+joint-state-publisher-gui==1.15.1
+kiwisolver==1.4.8
+laser_geometry==1.6.7
+MarkupSafe==2.1.5
+matplotlib==3.10.1
+message-filters==1.16.0
+moveit-commander==1.1.14
+moveit-core==1.1.14
+moveit-python==0.4.5
+moveit-ros-planning-interface==1.1.14
+moveit-ros-visualization==1.1.14
+mpmath==1.3.0
+networkx==3.3
+numpy==2.1.1
+nvidia-cublas-cu11==11.11.3.6
+nvidia-cuda-cupti-cu11==11.8.87
+nvidia-cuda-nvrtc-cu11==11.8.89
+nvidia-cuda-runtime-cu11==11.8.89
+nvidia-cudnn-cu11==9.1.0.70
+nvidia-cufft-cu11==10.9.0.58
+nvidia-curand-cu11==10.3.0.86
+nvidia-cusolver-cu11==11.4.1.48
+nvidia-cusparse-cu11==11.7.5.86
+nvidia-nccl-cu11==2.21.5
+nvidia-nvtx-cu11==11.8.86
+opencv-python==4.11.0.86
+osrf-pycommon @ file:///home/conda/feedstock_root/build_artifacts/osrf_pycommon_1626758968833/work
+packaging @ file:///home/conda/feedstock_root/build_artifacts/packaging_1733203243479/work
+pandas==2.2.3
+pillow==11.0.0
+pluggy @ file:///home/conda/feedstock_root/build_artifacts/pluggy_1733222765875/work
+psutil @ file:///home/conda/feedstock_root/build_artifacts/psutil_1740663149797/work
+py-cpuinfo==9.0.0
+pyparsing @ file:///home/conda/feedstock_root/build_artifacts/pyparsing_1743089729650/work
+pytest @ file:///home/conda/feedstock_root/build_artifacts/pytest_1740946542080/work
+pytest-cov @ file:///home/conda/feedstock_root/build_artifacts/pytest-cov_1743886866011/work
+pytest-repeat @ file:///home/conda/feedstock_root/build_artifacts/pytest-repeat_1744061180215/work
+pytest-rerunfailures @ file:///home/conda/feedstock_root/build_artifacts/pytest-rerunfailures_1733241175926/work
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1733215673016/work
+python-qt-binding==0.4.4
+pytz==2025.2
+PyYAML @ file:///home/conda/feedstock_root/build_artifacts/pyyaml_1737454647378/work
+qt-dotgraph==0.4.2
+qt-gui==0.4.2
+qt-gui-cpp==0.4.2
+qt-gui-py-common==0.4.2
+requests==2.32.3
+resource_retriever==1.12.7
+rosapi==0.11.17
+rosbag==1.16.0
+rosboost-cfg==1.15.8
+rosbridge-library==0.11.17
+rosbridge-server==0.11.17
+rosclean==1.15.8
+roscreate==1.15.8
+rosdep @ file:///home/conda/feedstock_root/build_artifacts/rosdep_1734398915406/work
+rosdistro @ file:///home/conda/feedstock_root/build_artifacts/rosdistro_1725535760414/work
+rosgraph==1.16.0
+roslaunch==1.16.0
+roslib==1.15.8
+roslint==0.12.0
+roslz4==1.16.0
+rosmake==1.15.8
+rosmaster==1.16.0
+rosmsg==1.16.0
+rosnode==1.16.0
+rosnumpy==0.0.6.2
+rosparam==1.16.0
+rospkg @ file:///home/conda/feedstock_root/build_artifacts/rospkg_1737835673703/work
+rospy==1.16.0
+rosservice==1.16.0
+rostest==1.16.0
+rostopic==1.16.0
+rosunit==1.15.8
+roswtf==1.16.0
+rqt-console==0.4.12
+rqt-image-view==0.4.17
+rqt-logger-level==0.4.12
+rqt-moveit==0.5.11
+rqt-reconfigure==0.5.5
+rqt-robot-dashboard==0.5.8
+rqt-robot-monitor==0.5.15
+rqt-runtime-monitor==0.5.10
+rqt-rviz==0.7.0
+rqt-tf-tree==0.6.4
+rqt_action==0.4.9
+rqt_bag==0.5.1
+rqt_bag_plugins==0.5.1
+rqt_dep==0.4.12
+rqt_graph==0.4.14
+rqt_gui==0.5.3
+rqt_gui_py==0.5.3
+rqt_launch==0.4.9
+rqt_msg==0.4.10
+rqt_nav_view==0.5.7
+rqt_plot==0.4.13
+rqt_pose_view==0.5.11
+rqt_publisher==0.4.10
+rqt_py_common==0.5.3
+rqt_py_console==0.4.10
+rqt_robot_steering==0.5.12
+rqt_service_caller==0.4.10
+rqt_shell==0.4.11
+rqt_srv==0.4.9
+rqt_top==0.4.10
+rqt_topic==0.4.13
+rqt_web==0.4.10
+rviz==1.14.25
+scipy==1.15.2
+seaborn==0.13.2
+sensor-msgs==1.13.1
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1733380938961/work
+smach==2.5.2
+smach-ros==2.5.2
+smclib==1.8.6
+srdfdom==0.6.4
+supervision==0.25.1
+sympy==1.13.1
+tf==1.13.2
+tf-conversions==1.13.2
+tf2-geometry-msgs==0.7.7
+tf2-kdl==0.7.7
+tf2-py==0.7.7
+tf2-ros==0.7.7
+tf2-sensor-msgs==0.7.10
+toml @ file:///home/conda/feedstock_root/build_artifacts/toml_1734091811753/work
+tomli @ file:///home/conda/feedstock_root/build_artifacts/tomli_1733256695513/work
+topic-tools==1.16.0
+torch==2.5.1+cu118
+torchvision==0.20.1+cu118
+tqdm==4.67.1
+trac_ik_python==1.6.6
+triton==3.1.0
+typing_extensions==4.12.2
+tzdata==2025.2
+ultralytics==8.3.109
+ultralytics-thop==2.0.14
+urdfdom-py==0.4.6
+urllib3==2.4.0
+xacro==1.14.18

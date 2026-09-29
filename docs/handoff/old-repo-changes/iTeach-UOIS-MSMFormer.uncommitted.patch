@@ -1,0 +1,239 @@
+diff --git a/experiments/scripts/ros_seg_transformer_test_segmentation_fetch.sh b/experiments/scripts/ros_seg_transformer_test_segmentation_fetch.sh
+index ddb8474..6daceb4 100755
+--- a/experiments/scripts/ros_seg_transformer_test_segmentation_fetch.sh
++++ b/experiments/scripts/ros_seg_transformer_test_segmentation_fetch.sh
+@@ -8,7 +8,9 @@ export CUDA_VISIBLE_DEVICES=$1
+ 
+ outdir="data/checkpoints"
+ 
+-./ros/test_images_segmentation_transformer.py --gpu $1 \
++
++# f0
++./ros/test_images_segmentation_transformer.py --gpu $1 --task_name $2 $3 \
+ --cfg experiments/cfgs/seg_resnet34_8s_embedding_cosine_rgbd_add_tabletop.yml \
+ --pretrained data/checkpoints/rgbd_pretrain/norm_RGBD_pretrained.pth \
+ --pretrained_crop data/checkpoints/rgbd_pretrain/crop_RGBD_pretrained.pth \
+@@ -16,4 +18,26 @@ outdir="data/checkpoints"
+ --network_crop_cfg MSMFormer/configs/crop_mixture_UCN.yaml \
+ --input_image RGBD_ADD \
+ --camera Fetch \
++# --no_refinement     # comment this out if you want to use labe refinement
++
++# f1
++# ./ros/test_images_segmentation_transformer.py --gpu $1 --task_name $2 $3 \
++# --cfg experiments/cfgs/seg_resnet34_8s_embedding_cosine_rgbd_add_tabletop.yml \
++# --pretrained ./new_ckpts/f1/model_final.pth \
++# --pretrained_crop data/checkpoints/rgbd_pretrain/crop_RGBD_pretrained.pth \
++# --network_cfg MSMFormer/configs/mixture_UCN.yaml \
++# --network_crop_cfg MSMFormer/configs/crop_mixture_UCN.yaml \
++# --input_image RGBD_ADD \
++# --camera Fetch \
++#--no_refinement     # comment this out if you want to use labe refinement
++
++# f2
++#./ros/test_images_segmentation_transformer.py --gpu $1 --task_name $2 $3 \
++#--cfg experiments/cfgs/seg_resnet34_8s_embedding_cosine_rgbd_add_tabletop.yml \
++#--pretrained ./new_ckpts/f2/model_final.pth \
++#--pretrained_crop data/checkpoints/rgbd_pretrain/crop_RGBD_pretrained.pth \
++#--network_cfg MSMFormer/configs/mixture_UCN.yaml \
++#--network_crop_cfg MSMFormer/configs/crop_mixture_UCN.yaml \
++#--input_image RGBD_ADD \
++#--camera Fetch \
+ #--no_refinement     # comment this out if you want to use labe refinement
+diff --git a/lib/fcn/get_network_crop.py b/lib/fcn/get_network_crop.py
+index 4afd002..e644e6b 100644
+--- a/lib/fcn/get_network_crop.py
++++ b/lib/fcn/get_network_crop.py
+@@ -33,29 +33,31 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+ dirname = os.path.dirname(__file__)
+ 
+ input_type = cfg.INPUT
++
+ if input_type == 'RGBD':
+     pretrained_path = os.path.join(dirname,
+                                    "../../data/checkpoints/seg_resnet34_8s_embedding_cosine_rgbd_add_sampling_epoch_16.checkpoint.pth")#"/home/<user>/yxl/UnseenForMeanShift/data/checkpoints/seg_resnet34_8s_embedding_cosine_rgbd_add_sampling_epoch_16.checkpoint.pth"
+     pretrained_crop_path = os.path.join(dirname,
+                                     "../../data/checkpoints/seg_resnet34_8s_embedding_cosine_rgbd_add_crop_sampling_epoch_16.checkpoint.pth") # the pretrained checkpoint from UCN
+ elif input_type == 'COLOR':
+-    pretrained_path = os.path.join(dirname, "../../data/checkpoints/seg_resnet34_8s_embedding_cosine_color_sampling_epoch_16.checkpoint.pth")
+-    pretrained_crop_path = os.path.join(dirname, "../../data/checkpoints/seg_resnet34_8s_embedding_cosine_color_crop_sampling_epoch_16.checkpoint.pth")
++    pretrained_path = os.path.join(dirname,
++                                   "../../data/checkpoints/rgb_pretrain/norm_RGB_pretrained.pth")
++    pretrained_crop_path = os.path.join(dirname,
++                                    "../../data/checkpoints/rgb_pretrain/crop_RGB_pretrained.pth") # the pretrained checkpoint from SSS
+ else:
+     # by default, we use RGBD add checkpoints.
+     pretrained_path = os.path.join(dirname,
+-                                   "../../data/checkpoints/seg_resnet34_8s_embedding_cosine_rgbd_add_sampling_epoch_16.checkpoint.pth")  # "/home/<user>/yxl/UnseenForMeanShift/data/checkpoints/seg_resnet34_8s_embedding_cosine_rgbd_add_sampling_epoch_16.checkpoint.pth"
++                                   "../../data/checkpoints/rgbd_pretrain/norm_RGBD_pretrained.pth")
+     pretrained_crop_path = os.path.join(dirname,
+-                                        "../../data/checkpoints/seg_resnet34_8s_embedding_cosine_rgbd_add_crop_sampling_epoch_16.checkpoint.pth")  # the pretrained checkpoint from UCN
+-
++                                    "../../data/checkpoints/rgbd_pretrain/crop_RGBD_pretrained.pth") # the pretrained checkpoint from SSS
+ 
+ def get_backbone(pretrained_file=pretrained_path):
+     num_classes = 2
+     pretrained = pretrained_file #"/home/<user>/yxl/UnseenForMeanShift/data/checkpoints/seg_resnet34_8s_embedding_cosine_rgbd_add_sampling_epoch_16.checkpoint.pth"  # the pretrained checkpoint from UCN
+     network_name = "seg_resnet34_8s_embedding"
+     if pretrained:
++        print("=> using pre-trained network '{}'".format(pretrained))
+         network_data = torch.load(pretrained)
+-        # print("=> using pre-trained network '{}'".format(pretrained))
+     else:
+         network_data = None
+         print("no pretrained network specified")
+diff --git a/lib/fcn/test_demo.py b/lib/fcn/test_demo.py
+index 4550e8f..dbfb169 100644
+--- a/lib/fcn/test_demo.py
++++ b/lib/fcn/test_demo.py
+@@ -34,14 +34,19 @@ dirname = os.path.dirname(__file__)
+ # weight_path_MSMFormer = os.path.join(dirname, "../../MSMFormer/output_1229_Res50_learn_10dec/model_0017499.pth") 
+ # weight_path_MSMFormer = os.path.join(dirname, "../../MSMFormer/norm_0111_RGB_mixture2_updated/model_0000319.pth")
+ 
+-cfg_file_MSMFormer = os.path.join(dirname, '../../MSMFormer/configs/UOAIS_ResNet50.yaml')
+-weight_path_MSMFormer = os.path.join(dirname, "../../data/checkpoints/OSD_RGB_MSMFormer_UOAIS_SIM.pth")
++# cfg_file_MSMFormer = os.path.join(dirname, '../../MSMFormer/configs/UOAIS_ResNet50.yaml')
++# weight_path_MSMFormer = os.path.join(dirname, "../../data/checkpoints/OSD_RGB_MSMFormer_UOAIS_SIM.pth")
+ #
+ # RGBD
+ # cfg_file_MSMFormer = os.path.join(dirname, '../../MSMFormer/configs/UOAIS_UCN.yaml')
+ # weight_path_MSMFormer = os.path.join(dirname, "../../MSMFormer/RGBD_0519_raw_lr3/model_0008441.pth")
+ #
+ #
++
++
++cfg_file_MSMFormer = os.path.join(dirname, "../../MSMFormer/configs/mixture_UCN.yaml")
++weight_path_MSMFormer = os.path.join(dirname, "../../data/checkpoints/rgbd_pretrain/norm_RGBD_pretrained.pth")
++
+ cfg_file_MSMFormer_crop = os.path.join(dirname, "../../MSMFormer/configs/crop_mixture_UCN.yaml")
+ weight_path_MSMFormer_crop = os.path.join(dirname, "../../data/checkpoints/rgbd_pretrain/crop_RGBD_pretrained.pth")
+ 
+diff --git a/lib/fcn/test_utils.py b/lib/fcn/test_utils.py
+index 305454d..26aaab3 100644
+--- a/lib/fcn/test_utils.py
++++ b/lib/fcn/test_utils.py
+@@ -27,7 +27,7 @@ import cv2 as cv
+ from matplotlib import pyplot as plt
+ from nms import nms
+  
+-USE_NMS = False # "True" is used for real world images. Generally, we set it as False.
++USE_NMS = True # "True" is used for real world images. Generally, we set it as False.
+ 
+ 
+ # Reference: https://www.reddit.com/r/computervision/comments/jb6b18/get_binary_mask_image_from_detectron2/
+diff --git a/requirement.txt b/requirement.txt
+index 9f76367..f362734 100644
+--- a/requirement.txt
++++ b/requirement.txt
+@@ -1,4 +1,4 @@
+-opencv-python == 4.2.0.34
++opencv-python 
+ transforms3d
+ pillow
+ IPython
+@@ -15,4 +15,4 @@ shapely
+ timm
+ h5py
+ submitit
+-scikit-image
+\ No newline at end of file
++scikit-image
+diff --git a/ros/test_images_segmentation_transformer.py b/ros/test_images_segmentation_transformer.py
+index 24faddc..97d4786 100755
+--- a/ros/test_images_segmentation_transformer.py
++++ b/ros/test_images_segmentation_transformer.py
+@@ -49,7 +49,7 @@ def compute_xyz(depth_img, fx, fy, px, py, height, width):
+ 
+ class ImageListener:
+ 
+-    def __init__(self, predictor, predictor_crop, cfg_transformer, cfg_transformer_crop):
++    def __init__(self, predictor, predictor_crop, cfg_transformer, cfg_transformer_crop, task_name='realworld', save_data=False):
+ 
+         self.predictor = predictor
+         self.predictor_crop = predictor_crop
+@@ -61,7 +61,10 @@ class ImageListener:
+         self.rgb_frame_id = None
+         self.rgb_frame_stamp = None
+         self.counter = 0
+-        self.output_dir = 'output/real_world'
++        self.output_dir = f'output/{task_name}'
++        self.save_data = save_data
++
++        print(self.output_dir, task_name)
+ 
+         # initialize a node
+         rospy.init_node("seg_rgb")
+@@ -129,7 +132,7 @@ class ImageListener:
+                     depth.encoding))
+             return
+ 
+-        im = ros_numpy.numpify(rgb)
++        im = ros_numpy.numpify(rgb)[:,:,::-1]
+ 
+         # rescale image if necessary
+         if cfg.TEST.SCALES_BASE[0] != 1:
+@@ -228,20 +231,30 @@ class ImageListener:
+             self.image_refined_pub.publish(rgb_msg_refined)
+             
+         # save results
+-        save_result = False
++        save_result = self.save_data
++        os.makedirs(self.output_dir, exist_ok=True)
+         if save_result:
+-            result = {'rgb': im_color, 'labels': label, 'labels_refined': label_refined}
+-            filename = os.path.join(self.output_dir, '%06d.mat' % self.counter)
+-            print(filename)
+-            scipy.io.savemat(filename, result, do_compression=True)
+-            filename = os.path.join(self.output_dir, '%06d.jpg' % self.counter)
+-            cv2.imwrite(filename, im_color)
+-            filename = os.path.join(self.output_dir, '%06d-label.jpg' % self.counter)
+-            cv2.imwrite(filename, im_label[:, :, (2, 1, 0)])
+-            filename = os.path.join(self.output_dir, '%06d-label-refined.jpg' % self.counter)
+-            cv2.imwrite(filename, im_label_refined[:, :, (2, 1, 0)])
+-            self.counter += 1
+-            sys.exit(1)
++            depth_img[np.isnan(depth_img)] = 0
++            depth_img = depth_img * 1000
++            depth_img = depth_img.astype(np.uint16)
++            try:
++                result = {'rgb': im_color, 'labels': label, 'labels_refined': label_refined, 'depth_img_mm': depth_img, 'depth_xyz': depth_blob}
++                filename = os.path.join(self.output_dir, '%06d.mat' % self.counter)
++                print(filename)
++                scipy.io.savemat(filename, result, do_compression=True)
++                filename = os.path.join(self.output_dir, '%06d-color.png' % self.counter)
++                cv2.imwrite(filename, im_color)
++                filename = os.path.join(self.output_dir, '%06d-depth.png' % self.counter)
++                cv2.imwrite(filename, depth_img)
++                filename = os.path.join(self.output_dir, '%06d-label.png' % self.counter)
++                cv2.imwrite(filename, im_label[:, :, (2, 1, 0)])
++                filename = os.path.join(self.output_dir, '%06d-label-refined.png' % self.counter)
++                cv2.imwrite(filename, im_label_refined[:, :, (2, 1, 0)])
++                self.counter += 1
++            except:
++                pass
++            
++            # sys.exit(1)
+ 
+ 
+ dirname = os.path.dirname(__file__)
+@@ -292,7 +305,11 @@ def parse_args():
+                         help='the type of image', default="Realsense", type=str)
+     parser.add_argument('--no_refinement', dest='no_refinement',
+                         help='do not use refinement',
+-                        action='store_true')                                                
++                        action='store_true')         
++    parser.add_argument('--task_name', dest='task_name',
++                    help='task name', default="realworld", type=str)
++    # Add the --save argument as a boolean flag
++    parser.add_argument('--save', action='store_true', help="Save the data")                                     
+ 
+     if len(sys.argv) == 1:
+         parser.print_help()
+@@ -335,6 +352,6 @@ if __name__ == '__main__':
+         predictor_crop, cfg_transformer_crop = get_predictor_crop(cfg_file=args.network_crop_cfg_file, weight_path=args.pretrained_crop, input_image=args.input_image)
+ 
+     # image listener
+-    listener = ImageListener(predictor, predictor_crop, cfg_transformer, cfg_transformer_crop)
++    listener = ImageListener(predictor, predictor_crop, cfg_transformer, cfg_transformer_crop, task_name=args.task_name, save_data=args.save)
+     while not rospy.is_shutdown():
+        listener.run_network()

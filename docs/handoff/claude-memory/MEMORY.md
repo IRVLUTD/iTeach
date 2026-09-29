@@ -1,0 +1,1 @@
+- [iTeach repos](iteach-repos.md) — 3 IRVLUTD repos, agreed conventions, README card generator

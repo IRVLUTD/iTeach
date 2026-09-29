@@ -1,0 +1,15 @@
+{
+  "RosIPAddress": "<ROBOT_IP>",
+  "RosPort": 10000,
+  "KeepaliveTime": 1,
+  "NetworkTimeoutSeconds": 3,
+  "SleepTimeSeconds": 0.01,
+  "ShowHud": false,
+  "VideoTopic": "/hololens_stream/compressed",
+  "LabelFrameTopic": "/head_camera/label_frame/image_raw/compressed",
+  "RecordCommandTopic": "/hololens/out/record_command",
+  "SendPromptsTopic": "/hololens/out/prompts",
+  "SummaryInfoTopic": "/hololens/out/summary_info",
+  "ImageHeight": 480,
+  "ImageWidth": 640
+}
