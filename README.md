@@ -20,6 +20,7 @@
 
 [![Project Page](https://img.shields.io/badge/Project-Page-2ea44f?style=for-the-badge)](https://irvlutd.github.io/iTeach/)
 [![arXiv](https://img.shields.io/badge/arXiv-2410.09072-b31b1b?style=for-the-badge)](https://arxiv.org/abs/2410.09072)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 [![Video](https://img.shields.io/badge/▶%20Video-Overview-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=J380k96szSM)
 [![DH-YOLO Demo](https://img.shields.io/badge/🤗%20Demo-DH--YOLO-ffcc4d?style=for-the-badge)](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
 
@@ -56,7 +57,7 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 <a href="#-results"><img src="media/toc/02.svg" width="49%" alt="02 · Results: Perception, manipulation and the user study"></a>
 <a href="#-code"><img src="media/toc/03.svg" width="49%" alt="03 · Code: Which repository does what, and in what order"></a>
 <a href="#-iteach-v1-door--handle-detection-dh-yolo"><img src="media/toc/04.svg" width="49%" alt="04 · iTeach v1 · DH-YOLO: The earlier door and handle detection system"></a>
-<a href="#-citation"><img src="media/toc/more.svg" width="49%" alt="✦ · Cite · Contact · Thanks: Citation, contact and acknowledgements"></a>
+<a href="#-license"><img src="media/toc/more.svg" width="49%" alt="✦ · License · Cite · Contact: License, citation, contact and thanks"></a>
 </p>
 
 <details>
@@ -84,7 +85,7 @@ When the perception model fails, a human spends a few seconds rearranging the ob
     <li><a href="#-directory-structure">Directory structure</a></li>
     </ul>
   </li>
-  <li><a href="#-citation">Citation</a> · <a href="#-contact">Contact</a> · <a href="#-acknowledgements">Acknowledgements</a></li>
+  <li><a href="#-license">License</a> · <a href="#-citation">Citation</a> · <a href="#-contact">Contact</a> · <a href="#-acknowledgements">Thanks</a></li>
 </ol>
 
 </details>
@@ -351,6 +352,14 @@ twine upload dist/*               # needs your PyPI token
 <div align="right"><sub><a href="#-contents">⬆ back to contents</a></sub></div>
 
 ---
+
+<br>
+
+## 📜 License
+
+Released under the [**MIT License**](LICENSE), © 2024-2026 Intelligent Robotics and Vision Lab (IRVL), The University of Texas at Dallas.
+
+<sub>Third-party code keeps its own license: the YOLOv5 code under [`src/iTeach/yolov5/`](src/iTeach/yolov5/LICENSE) (and the YOLOv5-derived DH-YOLO code) is **AGPL-3.0**.</sub>
 
 <br>
 

@@ -38,7 +38,7 @@ FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, A
 W, H = 460, 132
 MAX_TITLE, MAX_LINE = 28, 54
 
-MORE = [('📚 Citation', 'Citation'), ('📬 Contact', 'Contact'), ('🙏 Acknowledgements', 'Acknowledgements')]
+MORE = [('📜 License', 'License'), ('📚 Citation', 'Citation'), ('📬 Contact', 'Contact'), ('🙏 Acknowledgements', 'Thanks')]
 
 # repo -> [(README heading, card title, category, description, [(sub-heading, label), ...])]
 CARDS = {
@@ -52,7 +52,7 @@ CARDS = {
         ('🚪 iTeach v1: Door & Handle Detection (DH-YOLO)', 'iTeach v1 · DH-YOLO', 'ref',
          'The earlier door and handle detection system',
          [('🚀 Getting started in 3 steps', 'Getting started'), ('📁 Directory structure', 'Directory structure')]),
-        ('📚 Citation', 'Cite · Contact · Thanks', 'more', 'Citation, contact and acknowledgements', MORE),
+        ('📜 License', 'License · Cite · Contact', 'more', 'License, citation, contact and thanks', MORE),
     ],
     'iTeachSkillsApp': [
         ('🧭 System Overview', 'System Overview', 'understand', 'How the robot, laptop and HoloLens fit together',
@@ -70,7 +70,7 @@ CARDS = {
         ('🧪 Test Without the Robot', 'Test Offline', 'run', 'Try the app with a video or a recorded scene', []),
         ('📤 Output Format and Hand-off to iTeach-UOIS', 'Output Format', 'ref', 'prompts.json and the hand-off to iTeach-UOIS',
          [('`prompts.json`', 'prompts.json'), ('Scene layout expected by iTeach-UOIS', 'Scene layout')]),
-        ('📚 Citation', 'Cite · Contact · Thanks', 'more', 'Citation, contact and acknowledgements', MORE),
+        ('📜 License', 'License · Cite · Contact', 'more', 'License, citation, contact and thanks', MORE),
     ],
     'iTeach-UOIS': [
         ('📦 Datasets', 'Datasets', 'setup', 'Download the data and see where it goes', []),
@@ -84,7 +84,7 @@ CARDS = {
         ('🤖 Live ROS node on the robot', 'Live ROS Node', 'run', 'Serve predictions to the HoloLens', []),
         ('📊 Evaluation', 'Evaluation', 'run', 'Score a model on the HumanPlay test set', []),
         ('🐛 Known Error Fixes', 'Troubleshooting', 'ref', 'Fixes for common install and runtime errors', []),
-        ('🙌 Built On', 'Credits · Cite · Contact', 'more', 'Built on, citation, contact, thanks',
+        ('🙌 Built On', 'Credits · License · Cite', 'more', 'Built on, license, citation, contact, thanks',
          [('🙌 Built On', 'Built On')] + MORE),
     ],
 }
