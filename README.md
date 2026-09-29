@@ -41,9 +41,9 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 
 <div align="center">
 
-| 🎯 UOIS combined score | 🦾 Grasping | 📦 Pick-and-place | 👥 User study (12 participants) |
+| 🎯 UOIS combined score | 🦾 Grasping success | 📦 Pick & place success | 👥 User study |
 |:-:|:-:|:-:|:-:|
-| **26.1 → 80.7** | **71 → 74** / 100 | **65 → 72** / 100 | 94.9% box IoU · NASA-TLX 21/100 |
+| **26.1 → 80.7**<br><sub>+54.6 · 3.1× lift</sub> | **71 → 74** / 100<br><sub>+3 on SceneReplica</sub> | **65 → 72** / 100<br><sub>+7 on SceneReplica</sub> | **94.9%** mean box IoU<br><sub>NASA-TLX 21/100 · 12 participants</sub> |
 
 </div>
 
@@ -54,7 +54,7 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 <table>
 <tr>
 <td width="33%" valign="top"><kbd>01</kbd> <small>🔎 Understand</small><br><br><b>🎬 <a href="#-how-it-works">How It Works</a></b><br><small>The overview video and the three FS3 labelling steps</small></td>
-<td width="33%" valign="top"><kbd>02</kbd> <small>🔎 Understand</small><br><br><b>📈 <a href="#-results">Results</a></b><br><small>Qualitative UOIS gains and real-robot pick-and-place</small></td>
+<td width="33%" valign="top"><kbd>02</kbd> <small>🔎 Understand</small><br><br><b>📈 <a href="#-results">Results</a></b><br><small>Perception improves, manipulation follows, anyone can teach</small><br><small>↳ <a href="#-perception-adaptation">Perception</a> · <a href="#-manipulation-follows">Manipulation</a> · <a href="#-who-can-teach--12-participant-user-study">User study</a></small></td>
 <td width="33%" valign="top"><kbd>03</kbd> <small>🧰 Set up</small><br><br><b>🧩 <a href="#-code">Code</a></b><br><small>Which repository does what, and in which order</small><br><small>↳ <a href="#-data--checkpoints">Data & checkpoints</a> · <a href="#️-hardware">Hardware</a></small></td>
 </tr>
 <tr>
@@ -124,6 +124,20 @@ Labelling uses **FS3 (Few-Shot Semi-Supervised)**: one human-labelled frame beco
 
 ## 📈 Results
 
+<p align="center"><b>Perception improves · Manipulation follows · Anyone can teach</b></p>
+
+<br>
+
+### 🎯 Perception adaptation
+
+<div align="center">
+
+| UOIS combined score | Before | After | Gain |
+|:--|:-:|:-:|:-:|
+| MSMFormer → iTeach fine-tuned | 26.1 | **80.7** | **+54.6** · **3.1×** |
+
+</div>
+
 <p align="center">
   <img src="media/iteach-uois-qual.webp" width="90%" alt="Qualitative UOIS across iTeach fine-tuning rounds">
   <br>
@@ -132,11 +146,36 @@ Labelling uses **FS3 (Few-Shot Semi-Supervised)**: one human-labelled frame beco
 
 <br>
 
+### 🦾 Manipulation follows
+
+<div align="center">
+
+| Success / 100 (SceneReplica) | Prior best (MSMFormer) | iTeach-UOIS | Gain |
+|:--|:-:|:-:|:-:|
+| 🦾 Grasping | 71 | **74** | **+3** |
+| 📦 Pick & place | 65 | **72** | **+7** |
+
+</div>
+
 <p align="center">
   <img src="media/realworld-with-gto.webp" width="100%" alt="Real-world pick-and-place with GTO">
   <br>
-  <sub><i>Swap in iTeach-UOIS and the same real-robot pipeline (UOIS → GTO motion planning → grasp) starts handling clutter and unseen objects the pretrained baseline fails on.</i></sub>
+  <sub><i>Only the segmentation stage changes across comparisons; everything else is held fixed. Swap in iTeach-UOIS and the same real-robot pipeline (UOIS → GTO motion planning → grasp) starts handling clutter and unseen objects the pretrained baseline fails on.</i></sub>
 </p>
+
+<br>
+
+### 👥 Who can teach? · 12-participant user study
+
+<div align="center">
+
+| 👥 Participants | ✍️ Annotations | 🎯 Mean box IoU | 🧠 NASA-TLX |
+|:-:|:-:|:-:|:-:|
+| **12**<br><sub>6 expert · 6 non-expert</sub> | **240**<br><sub>12 people × 20 objects</sub> | **94.9%**<br><sub>SD 0.49 · gaze + voice prompts</sub> | **21 / 100**<br><sub>low task load</sub> |
+
+</div>
+
+<sub>Each participant ran one full teaching interaction unassisted: spot the failure in the headset, perform HumanPlay, then label the final frame with gaze and voice. <b>Expertise made no difference on any measure.</b></sub>
 
 <br>
 
