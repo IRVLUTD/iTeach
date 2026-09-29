@@ -1,5 +1,7 @@
 # Index
 
+> This README covers **iTeach v1** (door and handle detection with DH-YOLO). For the current HumanPlay + UOIS pipeline, see [iTeachSkillsApp](https://github.com/IRVLUTD/iTeachSkillsApp) and [iTeach-UOIS](https://github.com/IRVLUTD/iTeach-UOIS). The HoloLens and robot networking steps below (sections 3–5) apply to both.
+
 1. [**iTeach Demo: Hardware & Network Setup + App in Action!**](#1-iteach-demo-hardware--network-setup--app-in-action)
 2. [📁 **Key Files**](#-2-key-files)
 3. [🔧 **Set Environment Variables**](#3--set-environment-variables)
@@ -61,8 +63,8 @@ Add the following lines to your `~/.bashrc` file:
 
 ```sh
 export HOLO_DEVICE_IP="10.42.0.150" # HoloLens IP address when connected to the laptop/PC Wi-Fi hotspot
-export HOLO_DEVICE_USERNAME="admin" # HoloLens username
-export HOLO_DEVICE_PASSWORD="123456789" # HoloLens password
+export HOLO_DEVICE_USERNAME="<device-portal-username>" # HoloLens Windows Device Portal username
+export HOLO_DEVICE_PASSWORD="<device-portal-password>" # HoloLens Windows Device Portal password
 ```
 
 <br><br>
@@ -87,7 +89,7 @@ export HOLO_DEVICE_PASSWORD="123456789" # HoloLens password
 <br>
 
 ```bash
-python hololens_utils/HoloDevicePortal.py --file_path path/to/ROSConnectionConfig.json
+python hololens_utils/HoloDevicePortal.py --file_path path/to/ROSConnectionConfig.json  # --app_name defaults to iTeachLabeller; use --app_name iTechDemo for the current app
 ```
 
 <br><br>
@@ -124,7 +126,7 @@ roslaunch ros_tcp_endpoint endpoint.launch tcp_ip:=$ROS_HOSTNAME tcp_port:=10000
 
 - Ensure that the PC has an active Wi-Fi hotspot to which both the **HoloLens** and the **Robot** are connected.
 - On a Linux computer, set the `ROS_IP` and `ROS_MASTER_URI` (but not `ROS_HOSTNAME`).
-- In [`configs/cfg.yml`](configs/cfg.yml), specify the folder for datasets and update the path accordingly. Make sure to adjust any necessary values before starting the experiment.
+- In [`configs/cfg.yaml`](configs/cfg.yaml), specify the folder for datasets and update the path accordingly. Make sure to adjust any necessary values before starting the experiment.
 
 <br>
 
@@ -208,7 +210,7 @@ python publish_hlpov2ros.py
 Run the following command to open RViz and visualize all your published data:
 
 ```sh
-# Requires setup from sections 5.3.2.a (PC webcam) and 5.3.2.b (HoloLens POV) 📸🔧
+# Requires setup from sections 6.3.2.a (PC webcam) and 6.3.2.b (HoloLens POV) 📸🔧
 # Feel free to adjust the RViz panels as needed for your visualization 🔍
 rosrun rviz rviz -d rviz/iteach.rviz
 ```

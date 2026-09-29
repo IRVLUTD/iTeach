@@ -1,5 +1,5 @@
 #  YOLO data params
-path: '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets'
+path: '/path/to/IRVLImageLabellingSupport/datasets' # CHANGE ME: dataset root (absolute path)
 # train: train.524/images 
 # train: hololens.finetuning.data.100/images
 train: 524/images # train images
@@ -11,8 +11,8 @@ suffix: 'demo-experiment' # experiment-alias suffix; the training/inference data
 
 
 # Extra params
-PRETRAINED_CKPT_PATH: /home/hololens/Projects/hololens/IRVLImageLabellingSupport/pretrained_ckpt.pt # absolute path required
-TRAIN_RESULTS_DIR: /home/hololens/Projects/hololens/IRVLImageLabellingSupport/  # Folder path where training results get saved
+PRETRAINED_CKPT_PATH: /path/to/pretrained_ckpt.pt # CHANGE ME: absolute path required (see src/README.md §6.2)
+TRAIN_RESULTS_DIR: /path/to/train_results/  # CHANGE ME: folder path where training results get saved
 
 RESUME: True                  # resume from previous 
 EPOCHS: 1 #20                 # epochs for finetuning 

@@ -126,9 +126,11 @@ class HoloDevicePortal:
         return self._get(url)["Processes"]
 
     def get_package_fullname(self, package_name):
+        # Accept either the package family name (e.g. "iTechDemo_<publisherhash>")
+        # or the plain package name shown in the Device Portal (e.g. "iTechDemo").
         packages = self.get_package_list()
         for package in packages:
-            if package["PackageFamilyName"] == package_name:
+            if package_name in (package["PackageFamilyName"], package.get("Name")):
                 return package["PackageFullName"]
         return None
 
@@ -246,16 +248,26 @@ if __name__ == "__main__":
     args_parser.add_argument(
         "--file_path", type=str, required=True, help="File Path to Upload"
     )
+    args_parser.add_argument(
+        "--app_name",
+        type=str,
+        default="iTeachLabeller",
+        help="Target HoloLens app: 'iTechDemo' (current gaze + voice app) or 'iTeachLabeller' (v1)",
+    )
     args = args_parser.parse_args()
 
     # Read environment variables
     host = os.getenv("HOLO_DEVICE_IP")
     user = os.getenv("HOLO_DEVICE_USERNAME")
     pwd = os.getenv("HOLO_DEVICE_PASSWORD")
-    app_name = "iTeachLabeller"
+    app_name = args.app_name
 
     portal = HoloDevicePortal(host, user, pwd, debug=True)
 
     device_name = portal.get_machine_name()
     print(f"Device Name: {device_name}")
+    if portal.get_package_fullname(app_name) is None:
+        raise SystemExit(f"App '{app_name}' is not installed on {device_name}")
+    # Lands in LocalAppData/<package>/LocalState, i.e. Application.persistentDataPath,
+    # which the app reads before its built-in StreamingAssets copy.
     portal.upload_file_to_app(app_name, "/LocalState", args.file_path)
