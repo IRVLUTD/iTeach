@@ -20,11 +20,14 @@
 
 [![Project Page](https://img.shields.io/badge/Project-Page-2ea44f?style=for-the-badge)](https://irvlutd.github.io/iTeach/)
 [![arXiv](https://img.shields.io/badge/arXiv-2410.09072-b31b1b?style=for-the-badge)](https://arxiv.org/abs/2410.09072)
+[![Video](https://img.shields.io/badge/▶%20Video-Overview-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=J380k96szSM)
 [![DH-YOLO Demo](https://img.shields.io/badge/🤗%20Demo-DH--YOLO-ffcc4d?style=for-the-badge)](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
 
 <br>
 
-<img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp" width="80%" alt="iTeach Overview">
+<img src="media/intro.webp" width="95%" alt="iTeach overview">
+<br>
+<sub><i>A pretrained perception model fails in the wild. A co-located human performs a short HumanPlay, annotates a single frame with eye-gaze + voice, and the label is propagated across the RGB-D clip. Failure-driven samples feed an iterative fine-tuning loop, and the best checkpoint is redeployed.</i></sub>
 
 </div>
 
@@ -50,13 +53,94 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 
 <table>
 <tr>
-<td width="33%" valign="top"><kbd>01</kbd> <small>🔎 Understand</small><br><br><b>🧩 <a href="#-code">Code</a></b><br><small>Which repository does what, and in which order</small><br><small>↳ <a href="#-data--checkpoints">Data & checkpoints</a> · <a href="#️-hardware">Hardware</a></small></td>
-<td width="33%" valign="top"><kbd>02</kbd> <small>📖 Reference</small><br><br><b>🚪 <a href="#-iteach-v1-door--handle-detection-dh-yolo">iTeach v1 · DH-YOLO</a></b><br><small>The earlier door and handle detection system</small><br><small>↳ <a href="#-getting-started-in-3-steps">Getting started</a> · <a href="#-directory-structure">Directory structure</a></small></td>
+<td width="33%" valign="top"><kbd>01</kbd> <small>🔎 Understand</small><br><br><b>🎬 <a href="#-how-it-works">How It Works</a></b><br><small>The overview video and the three FS3 labelling steps</small></td>
+<td width="33%" valign="top"><kbd>02</kbd> <small>🔎 Understand</small><br><br><b>📈 <a href="#-results">Results</a></b><br><small>Qualitative UOIS gains and real-robot pick-and-place</small></td>
+<td width="33%" valign="top"><kbd>03</kbd> <small>🧰 Set up</small><br><br><b>🧩 <a href="#-code">Code</a></b><br><small>Which repository does what, and in which order</small><br><small>↳ <a href="#-data--checkpoints">Data & checkpoints</a> · <a href="#️-hardware">Hardware</a></small></td>
+</tr>
+<tr>
+<td width="33%" valign="top"><kbd>04</kbd> <small>📖 Reference</small><br><br><b>🚪 <a href="#-iteach-v1-door--handle-detection-dh-yolo">iTeach v1 · DH-YOLO</a></b><br><small>The earlier door and handle detection system</small><br><small>↳ <a href="#-getting-started-in-3-steps">Getting started</a> · <a href="#-directory-structure">Directory structure</a></small></td>
 <td width="33%" valign="top"><kbd>✦</kbd> <small>📚 MORE</small><br><br><b>📚 <a href="#-citation">Citation</a> · 📬 <a href="#-contact">Contact</a> · 🙏 <a href="#-acknowledgements">Acknowledgements</a></b><br><small>How to cite iTeach, and how to reach us</small></td>
+<td width="33%"></td>
 </tr>
 </table>
 
 <br>
+
+---
+
+<br>
+
+## 🎬 How It Works
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?v=J380k96szSM">
+    <img src="media/overview-video.jpg" width="70%" alt="iTeach overview video">
+  </a>
+  <br>
+  <sub>▶ <b><a href="https://www.youtube.com/watch?v=J380k96szSM">Watch the overview video</a></b></sub>
+</p>
+
+<br>
+
+Labelling uses **FS3 (Few-Shot Semi-Supervised)**: one human-labelled frame becomes dense supervision for the whole clip.
+
+<br>
+
+**① HumanPlay: clean up the scene**
+
+<p align="center">
+  <img src="media/humanplay.gif" width="55%" alt="HumanPlay interaction">
+  <br>
+  <sub><i>The human rearranges objects to reduce occlusion and produce a clean final frame while a short 5–10 s RGB-D sequence is recorded.</i></sub>
+</p>
+
+<br>
+
+**② Annotate hands-free: eye-gaze + voice**
+
+<p align="center">
+  <img src="media/iteach-uois-annotation.webp" width="90%" alt="FS3 annotation via eye-gaze and voice">
+  <br>
+  <sub><i>Eye-gaze places point prompts on the final frame; a voice command triggers SAM2 to convert them into bounding-box object labels.</i></sub>
+</p>
+
+<br>
+
+**③ Propagate: SAM2 video mode**
+
+<p align="center">
+  <img src="media/sam2-mask-prop.webp" width="80%" alt="SAM2 label propagation">
+  <br>
+  <sub><i>SAM2 propagates masks backwards from the final annotated frame to all earlier frames, producing dense per-frame supervision.</i></sub>
+</p>
+
+<br>
+
+<div align="right"><sub><a href="#-contents">⬆ back to contents</a></sub></div>
+
+---
+
+<br>
+
+## 📈 Results
+
+<p align="center">
+  <img src="media/iteach-uois-qual.webp" width="90%" alt="Qualitative UOIS across iTeach fine-tuning rounds">
+  <br>
+  <sub><i>Qualitative UOIS. Left → right: ground truth, pretrained MSMFormer, and iTeach fine-tuning rounds FT1, FT3, FT5. iTeach recovers missed instances and cleans up over-segmentation across tabletops, shelves, sofas, stairs and floor-level scenes.</i></sub>
+</p>
+
+<br>
+
+<p align="center">
+  <img src="media/realworld-with-gto.webp" width="100%" alt="Real-world pick-and-place with GTO">
+  <br>
+  <sub><i>Swap in iTeach-UOIS and the same real-robot pipeline (UOIS → GTO motion planning → grasp) starts handling clutter and unseen objects the pretrained baseline fails on.</i></sub>
+</p>
+
+<br>
+
+<div align="right"><sub><a href="#-contents">⬆ back to contents</a></sub></div>
 
 ---
 
@@ -111,6 +195,14 @@ The current iTeach system is split into **three repositories**, one per module. 
 
 ### 🛠️ Hardware
 
+<p align="center">
+  <img src="media/system-setup.webp" width="85%" alt="Deployment setup: Fetch robot with an RTX 4090 laptop and a human wearing a HoloLens 2">
+  <br>
+  <sub><i>Everything the system needs is in this frame: a Fetch carrying an RGB-D camera and an RTX 4090 laptop that runs inference, SAM2 and fine-tuning onboard, and a human wearing a HoloLens 2 for the live overlay and gaze + voice annotation.</i></sub>
+</p>
+
+<br>
+
 | | |
 |:--|:--|
 | 🤖 **Robot** | Fetch mobile manipulator with a head RGB-D camera |
@@ -131,6 +223,14 @@ The current iTeach system is split into **three repositories**, one per module. 
 
 > [!NOTE]
 > Everything below, and the `src/`, `toolkit/`, `dataloader/`, `hololens_app/` and `hf_demo/` folders, covers the **earlier version** of iTeach. That version is a Mixed Reality labelling loop for door and handle detection with a YOLOv5-based model (**DH-YOLO**), the **IRVLUTD DoorHandle** dataset and the **iTeachLabeller** HoloLens app. It is kept for reference and reproducibility.
+
+<br>
+
+<p align="center">
+  <img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp" width="80%" alt="iTeach v1 overview">
+  <br>
+  <sub><i>iTeach v1: Mixed Reality labelling loop for door and handle detection.</i></sub>
+</p>
 
 <br>
 
