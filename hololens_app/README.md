@@ -23,6 +23,9 @@ For detailed setup instructions, refer to the [how_to_build.md](https://github.c
 
 ## Building the Application 🏗️
 
+> [!NOTE]
+> Unity's `Library/` cache and `UserSettings/` are not tracked in git. Unity rebuilds them the first time you open the project, which can take several minutes.
+
 Assuming the app's root directory is named `iTeachLabellingApp`, you can find guidance for building the app in the following video:
 
 [![Build, Install, and Run the HoloLens Unity App](https://img.youtube.com/vi/kvzMAMyluJU/0.jpg)](https://www.youtube.com/watch?v=kvzMAMyluJU)
