@@ -6,12 +6,12 @@
 
 <br>
 
-<a href="https://jishnujayakumar.github.io/">Jishnu Jaykumar P</a> &nbsp;·&nbsp;
+<a href="https://jishnujayakumar.github.io">Jishnu Jaykumar P</a> &nbsp;·&nbsp;
 <a href="https://labs.utdallas.edu/irvl/people/">Cole Salvato</a> &nbsp;·&nbsp;
 <a href="https://labs.utdallas.edu/irvl/people/">Vinaya Bomnale</a> &nbsp;·&nbsp;
-<a href="https://labs.utdallas.edu/irvl/people/">Jikai Wang</a> &nbsp;·&nbsp;
-Ayush Bhardwaj &nbsp;·&nbsp;
-Jin-Ryong Kim &nbsp;·&nbsp;
+<a href="https://jwroboticsvision.github.io/">Jikai Wang</a> &nbsp;·&nbsp;
+<a href="https://ayush-bhardwaj.vercel.app/">Ayush Bhardwaj</a> &nbsp;·&nbsp;
+<a href="https://jessekim.com/">Jin-Ryong Kim</a> &nbsp;·&nbsp;
 <a href="https://yuxng.github.io/">Yu Xiang</a>
 
 <sub>Intelligent Robotics and Vision Lab · The University of Texas at Dallas</sub>
@@ -43,6 +43,17 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 | **26.1 → 80.7** | **71 → 74** / 100 | **65 → 72** / 100 | 94.9% box IoU · NASA-TLX 21/100 |
 
 </div>
+
+<br>
+
+## 📑 Contents
+
+<table>
+  <tr><th width="4%">#</th><th width="34%">Section</th><th>Go here to…</th></tr>
+  <tr><td align="center">1</td><td><a href="#-code"><b>🧩 Code</b></a></td><td>Find which repository does what, and in which order to use them<br><small>↳ <a href="#-data--checkpoints">Data & checkpoints</a> · <a href="#️-hardware">Hardware</a></small></td></tr>
+  <tr><td align="center">2</td><td><a href="#-iteach-v1-door--handle-detection-dh-yolo"><b>🚪 iTeach v1: Door & Handle Detection (DH-YOLO)</b></a></td><td>The earlier DH-YOLO system in this repo<br><small>↳ <a href="#-getting-started-in-3-steps">Getting started</a> · <a href="#-directory-structure">Directory structure</a></small></td></tr>
+  <tr><td align="center">·</td><td colspan="2"><a href="#-citation">📚 Citation</a> · <a href="#-contact">📬 Contact</a> · <a href="#-acknowledgements">🙏 Acknowledgements</a></td></tr>
+</table>
 
 <br>
 
@@ -109,6 +120,8 @@ The current iTeach system is split into **three repositories**, one per module. 
 
 <br>
 
+<div align="right"><sub><a href="#-contents">⬆ back to contents</a></sub></div>
+
 ---
 
 <br>
@@ -123,7 +136,7 @@ The current iTeach system is split into **three repositories**, one per module. 
 ### 🚀 Getting started in 3 steps
 
 **1 · Install the iTeachLabeller app on the HoloLens 2**
-&nbsp;&nbsp;📱 [App download](https://utdallas.app.box.com/v/iTeachLabellerApp) &nbsp;·&nbsp; 🛠️ [Install video](https://www.youtube.com/watch?v=7xFtCPSMTEk)
+&nbsp;&nbsp;📱 Build it from [`hololens_app/`](./hololens_app) &nbsp;·&nbsp; 🛠️ [Install video](https://www.youtube.com/watch?v=7xFtCPSMTEk)
 
 **2 · Set up the laptop and robot**
 &nbsp;&nbsp;📚 Follow [src/README.md](./src/README.md)
@@ -166,6 +179,8 @@ twine upload dist/*               # needs your PyPI token
 </details>
 
 <br>
+
+<div align="right"><sub><a href="#-contents">⬆ back to contents</a></sub></div>
 
 ---
 

@@ -37,10 +37,9 @@ Assuming the app's root directory is named `iTeachLabellingApp`, you can find gu
 
 **NOTE**: Ensure to maintain a standalone system with a working Windows (Dev system + HoloLens), Unity, and Visual Studio to run simulations as well as for app building. We encountered difficulties where the same codebase successfully produced a build on one system but failed on another. To avoid issues, it is recommended to have a system where everything is version-maintained, and updates are done in a controlled manner. 🔒
 
-## Download Prebuilt Application 📥
+## Prebuilt Application 📥
 
-If you prefer to use the application without any modifications, you can download the prebuilt version from the following link:
-- [Download iTeachLabeller.msix](https://utdallas.box.com/v/iTeachLabellerApp) 📦 | [App Install Video](https://www.youtube.com/watch?v=7xFtCPSMTEk) 🎥
+The prebuilt `iTeachLabeller.msix` is currently not available for download, so build the app from this folder as described above. The [App Install Video](https://www.youtube.com/watch?v=7xFtCPSMTEk) 🎥 shows how to install the package on the HoloLens.
 
 ## ⚠️ Note
 
