@@ -49,10 +49,11 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 ## 📑 Contents
 
 <table>
-  <tr><th width="4%">#</th><th width="34%">Section</th><th>Go here to…</th></tr>
-  <tr><td align="center">1</td><td><a href="#-code"><b>🧩 Code</b></a></td><td>Find which repository does what, and in which order to use them<br><small>↳ <a href="#-data--checkpoints">Data & checkpoints</a> · <a href="#️-hardware">Hardware</a></small></td></tr>
-  <tr><td align="center">2</td><td><a href="#-iteach-v1-door--handle-detection-dh-yolo"><b>🚪 iTeach v1: Door & Handle Detection (DH-YOLO)</b></a></td><td>The earlier DH-YOLO system in this repo<br><small>↳ <a href="#-getting-started-in-3-steps">Getting started</a> · <a href="#-directory-structure">Directory structure</a></small></td></tr>
-  <tr><td align="center">·</td><td colspan="2"><a href="#-citation">📚 Citation</a> · <a href="#-contact">📬 Contact</a> · <a href="#-acknowledgements">🙏 Acknowledgements</a></td></tr>
+<tr>
+<td width="33%" valign="top"><kbd>01</kbd> <small>🔎 Understand</small><br><br><b>🧩 <a href="#-code">Code</a></b><br><small>Which repository does what, and in which order</small><br><small>↳ <a href="#-data--checkpoints">Data & checkpoints</a> · <a href="#️-hardware">Hardware</a></small></td>
+<td width="33%" valign="top"><kbd>02</kbd> <small>📖 Reference</small><br><br><b>🚪 <a href="#-iteach-v1-door--handle-detection-dh-yolo">iTeach v1 · DH-YOLO</a></b><br><small>The earlier door and handle detection system</small><br><small>↳ <a href="#-getting-started-in-3-steps">Getting started</a> · <a href="#-directory-structure">Directory structure</a></small></td>
+<td width="33%" valign="top"><kbd>✦</kbd> <small>📚 MORE</small><br><br><b>📚 <a href="#-citation">Citation</a> · 📬 <a href="#-contact">Contact</a> · 🙏 <a href="#-acknowledgements">Acknowledgements</a></b><br><small>How to cite iTeach, and how to reach us</small></td>
+</tr>
 </table>
 
 <br>
