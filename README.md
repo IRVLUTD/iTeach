@@ -22,7 +22,7 @@
 [![arXiv](https://img.shields.io/badge/arXiv-2410.09072-b31b1b?style=for-the-badge)](https://arxiv.org/abs/2410.09072)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
 [![Video](https://img.shields.io/badge/▶%20Video-Overview-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=J380k96szSM)
-[![DH-YOLO Demo](https://img.shields.io/badge/🤗%20Demo-DH--YOLO-ffcc4d?style=for-the-badge)](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
+[![DH-YOLO Demo](https://img.shields.io/badge/🤗%20Legacy%20demo-DH--YOLO%20(v1)-ffcc4d?style=for-the-badge)](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
 
 <br>
 
@@ -56,7 +56,7 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 <a href="#-how-it-works"><img src="media/toc/01.svg" width="49%" alt="01 · How It Works: The overview video and the FS3 labelling steps"></a>
 <a href="#-results"><img src="media/toc/02.svg" width="49%" alt="02 · Results: Perception, manipulation and the user study"></a>
 <a href="#-code"><img src="media/toc/03.svg" width="49%" alt="03 · Code: Which repository does what, and in what order"></a>
-<a href="#-iteach-v1-door--handle-detection-dh-yolo"><img src="media/toc/04.svg" width="49%" alt="04 · iTeach v1 · DH-YOLO: The earlier door and handle detection system"></a>
+<a href="#️-legacy-archived-iteach-v1--door--handle-detection"><img src="media/toc/04.svg" width="49%" alt="04 · Legacy · iTeach v1: Archived door and handle detection (DH-YOLO)"></a>
 <a href="#-license"><img src="media/toc/more.svg" width="49%" alt="✦ · License · Cite · Contact: License, citation, contact and thanks"></a>
 </p>
 
@@ -79,7 +79,7 @@ When the perception model fails, a human spends a few seconds rearranging the ob
     <li><a href="#️-hardware">Hardware</a></li>
     </ul>
   </li>
-  <li><a href="#-iteach-v1-door--handle-detection-dh-yolo"><b>iTeach v1 · DH-YOLO</b></a> · The earlier door and handle detection system
+  <li><a href="#️-legacy-archived-iteach-v1--door--handle-detection"><b>Legacy · iTeach v1</b></a> · Archived door and handle detection (DH-YOLO)
     <ul>
     <li><a href="#-getting-started-in-3-steps">Getting started</a></li>
     <li><a href="#-directory-structure">Directory structure</a></li>
@@ -186,7 +186,7 @@ Labelling uses **FS3 (Few-Shot Semi-Supervised)**: one human-labelled frame beco
 <p align="center">
   <img src="media/realworld-with-gto.webp" width="100%" alt="Real-world pick-and-place with GTO">
   <br>
-  <sub><i>Only the segmentation stage changes across comparisons; everything else is held fixed. Swap in iTeach-UOIS and the same real-robot pipeline (UOIS → GTO motion planning → grasp) starts handling clutter and unseen objects the pretrained baseline fails on.</i></sub>
+  <sub><i>Only the segmentation stage changes; everything else is held fixed. Swap in iTeach-UOIS and the same real-robot pipeline (<a href="https://github.com/IRVLUTD/SceneReplica">SceneReplica</a>: UOIS → <a href="https://github.com/IRVLUTD/contact_graspnet">Contact-GraspNet</a> grasps → <a href="https://github.com/IRVLUTD/GraspTrajOpt">GTO</a> motion planning) starts handling clutter and unseen objects the pretrained baseline fails on. <a href="https://github.com/IRVLUTD/iTeach-UOIS#-grasping--pick-and-place-scenereplica">How to run →</a></i></sub>
 </p>
 
 <br>
@@ -232,6 +232,11 @@ The current iTeach system is split into **three repositories**, one per module. 
     <td align="center"><b>2</b></td>
     <td>🧠 <a href="https://github.com/IRVLUTD/iTeach-UOIS"><b>iTeach-UOIS</b></a></td>
     <td>Propagate SAM2 masks backwards through the clip, fine-tune MSMFormer, evaluate on iTeach-HumanPlay, and run MSMFormer as a live ROS node.</td>
+  </tr>
+  <tr>
+    <td align="center"><b>3</b></td>
+    <td>🦾 <a href="https://github.com/IRVLUTD/SceneReplica"><b>SceneReplica</b></a> <sub>(external)</sub></td>
+    <td>Grasping and pick-and-place: iTeach-UOIS segmentation → Contact-GraspNet → GTO. <a href="https://github.com/IRVLUTD/iTeach-UOIS#-grasping--pick-and-place-scenereplica">How to run →</a></td>
   </tr>
   <tr>
     <td align="center">🔧</td>
@@ -287,10 +292,10 @@ The current iTeach system is split into **three repositories**, one per module. 
 
 <br>
 
-## 🚪 iTeach v1: Door & Handle Detection (DH-YOLO)
+## 🗄️ Legacy (archived): iTeach v1 · Door & Handle Detection
 
-> [!NOTE]
-> Everything below, and the `src/`, `toolkit/`, `dataloader/`, `hololens_app/` and `hf_demo/` folders, covers the **earlier version** of iTeach. That version is a Mixed Reality labelling loop for door and handle detection with a YOLOv5-based model (**DH-YOLO**), the **IRVLUTD DoorHandle** dataset and the **iTeachLabeller** HoloLens app. It is kept for reference and reproducibility.
+> [!WARNING]
+> **Archived. No longer maintained.** Everything below, and the `src/`, `toolkit/`, `dataloader/`, `hololens_app/` and `hf_demo/` folders, covers the **earlier version** of iTeach. That version is a Mixed Reality labelling loop for door and handle detection with a YOLOv5-based model (**DH-YOLO**), the **IRVLUTD DoorHandle** dataset and the **iTeachLabeller** HoloLens app. It is kept only for reference and reproducibility. For the current system, see [Code](#-code).
 
 <br>
 

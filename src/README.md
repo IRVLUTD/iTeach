@@ -1,6 +1,7 @@
 # Index
 
-> This README covers **iTeach v1** (door and handle detection with DH-YOLO). For the current HumanPlay + UOIS pipeline, see [iTeachSkillsApp](https://github.com/IRVLUTD/iTeachSkillsApp) and [iTeach-UOIS](https://github.com/IRVLUTD/iTeach-UOIS). The HoloLens and robot networking steps below (sections 3–5) apply to both.
+> [!WARNING]
+> **Archived (legacy):** this README covers **iTeach v1** (door and handle detection with DH-YOLO), which is no longer maintained. For the current HumanPlay + UOIS pipeline, see [iTeachSkillsApp](https://github.com/IRVLUTD/iTeachSkillsApp) and [iTeach-UOIS](https://github.com/IRVLUTD/iTeach-UOIS). The HoloLens and robot networking steps below (sections 3–5) apply to both.
 
 1. [**iTeach Demo: Hardware & Network Setup + App in Action!**](#1-iteach-demo-hardware--network-setup--app-in-action)
 2. [📁 **Key Files**](#-2-key-files)

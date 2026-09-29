@@ -1,5 +1,8 @@
 # IRVLUTD Door Handle Dataset Loader 📦
 
+> [!WARNING]
+> **Archived (legacy):** this is part of **iTeach v1** (door and handle detection with DH-YOLO) and is no longer maintained. It is kept for reference and reproducibility. For the current iTeach system, see [iTeach](https://github.com/IRVLUTD/iTeach), [iTeachSkillsApp](https://github.com/IRVLUTD/iTeachSkillsApp) and [iTeach-UOIS](https://github.com/IRVLUTD/iTeach-UOIS).
+
 This Python package provides a PyTorch dataset loader for the **IRVLUTD Door Handle dataset**, which includes:
 
 - 🖼️ Images

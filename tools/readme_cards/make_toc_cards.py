@@ -32,6 +32,7 @@ CATEGORY = {
     'run':        ('RUN',        '#f0883e'),
     'ref':        ('REFERENCE',  '#bc8cff'),
     'more':       ('MORE',       '#8b949e'),
+    'legacy':     ('ARCHIVED',   '#8b949e'),
 }
 COLOURS = dict(bg='#161b22', border='#30363d', title='#f0f6fc', text='#9198a1')
 FONT = "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif"
@@ -49,8 +50,8 @@ CARDS = {
           ('👥 Who can teach? · 12-participant user study', 'User study')]),
         ('🧩 Code', 'Code', 'setup', 'Which repository does what, and in what order',
          [('📦 Data & Checkpoints', 'Data & checkpoints'), ('🛠️ Hardware', 'Hardware')]),
-        ('🚪 iTeach v1: Door & Handle Detection (DH-YOLO)', 'iTeach v1 · DH-YOLO', 'ref',
-         'The earlier door and handle detection system',
+        ('🗄️ Legacy (archived): iTeach v1 · Door & Handle Detection', 'Legacy · iTeach v1', 'legacy',
+         'Archived door and handle detection (DH-YOLO)',
          [('🚀 Getting started in 3 steps', 'Getting started'), ('📁 Directory structure', 'Directory structure')]),
         ('📜 License', 'License · Cite · Contact', 'more', 'License, citation, contact and thanks', MORE),
     ],
@@ -82,6 +83,8 @@ CARDS = {
          'Turn a new capture into labels with SAM2', []),
         ('🏋️ MSMFormer Training', 'Training', 'run', 'Fine-tune MSMFormer: RGB, RGB-D, LoRA', []),
         ('🤖 Live ROS node on the robot', 'Live ROS Node', 'run', 'Serve predictions to the HoloLens', []),
+        ('🦾 Grasping & Pick-and-Place (SceneReplica)', 'Grasping · Pick & Place', 'run',
+         'SceneReplica with Contact-GraspNet and GTO', []),
         ('📊 Evaluation', 'Evaluation', 'run', 'Score a model on the HumanPlay test set', []),
         ('🐛 Known Error Fixes', 'Troubleshooting', 'ref', 'Fixes for common install and runtime errors', []),
         ('🙌 Built On', 'Credits · License · Cite', 'more', 'Built on, license, citation, contact, thanks',

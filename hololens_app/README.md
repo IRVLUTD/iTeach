@@ -1,5 +1,8 @@
 # iTeachLabeller Application for HoloLens 2 🦾
 
+> [!WARNING]
+> **Archived (legacy):** this is part of **iTeach v1** (door and handle detection with DH-YOLO) and is no longer maintained. It is kept for reference and reproducibility. For the current iTeach system, see [iTeach](https://github.com/IRVLUTD/iTeach), [iTeachSkillsApp](https://github.com/IRVLUTD/iTeachSkillsApp) and [iTeach-UOIS](https://github.com/IRVLUTD/iTeach-UOIS).
+
 This repository contains the code for the **iTeachLabeller** application, developed specifically for **HoloLens 2**.
 
 <img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-app-select-to-main-menu-2x2.webp" alt="iTeachLabeller UI Flow" width="600"/>  <br>
