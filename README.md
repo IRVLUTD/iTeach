@@ -51,18 +51,43 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 
 ## 📑 Contents
 
-<table>
-<tr>
-<td width="33%" valign="top"><kbd>01</kbd> <small>🔎 Understand</small><br><br><b>🎬 <a href="#-how-it-works">How It Works</a></b><br><small>The overview video and the three FS3 labelling steps</small></td>
-<td width="33%" valign="top"><kbd>02</kbd> <small>🔎 Understand</small><br><br><b>📈 <a href="#-results">Results</a></b><br><small>Perception improves, manipulation follows, anyone can teach</small><br><small>↳ <a href="#-perception-adaptation">Perception</a> · <a href="#-manipulation-follows">Manipulation</a> · <a href="#-who-can-teach--12-participant-user-study">User study</a></small></td>
-<td width="33%" valign="top"><kbd>03</kbd> <small>🧰 Set up</small><br><br><b>🧩 <a href="#-code">Code</a></b><br><small>Which repository does what, and in which order</small><br><small>↳ <a href="#-data--checkpoints">Data & checkpoints</a> · <a href="#️-hardware">Hardware</a></small></td>
-</tr>
-<tr>
-<td width="33%" valign="top"><kbd>04</kbd> <small>📖 Reference</small><br><br><b>🚪 <a href="#-iteach-v1-door--handle-detection-dh-yolo">iTeach v1 · DH-YOLO</a></b><br><small>The earlier door and handle detection system</small><br><small>↳ <a href="#-getting-started-in-3-steps">Getting started</a> · <a href="#-directory-structure">Directory structure</a></small></td>
-<td width="33%" valign="top"><kbd>✦</kbd> <small>📚 MORE</small><br><br><b>📚 <a href="#-citation">Citation</a> · 📬 <a href="#-contact">Contact</a> · 🙏 <a href="#-acknowledgements">Acknowledgements</a></b><br><small>How to cite iTeach, and how to reach us</small></td>
-<td width="33%"></td>
-</tr>
-</table>
+<p align="center">
+<a href="#-how-it-works"><img src="media/toc/01-light.svg#gh-light-mode-only" width="49%" alt="01 · How It Works: The overview video and the FS3 labelling steps"></a><a href="#-how-it-works"><img src="media/toc/01-dark.svg#gh-dark-mode-only" width="49%" alt="01 · How It Works: The overview video and the FS3 labelling steps"></a>
+<a href="#-results"><img src="media/toc/02-light.svg#gh-light-mode-only" width="49%" alt="02 · Results: Perception, manipulation and the user study"></a><a href="#-results"><img src="media/toc/02-dark.svg#gh-dark-mode-only" width="49%" alt="02 · Results: Perception, manipulation and the user study"></a>
+<a href="#-code"><img src="media/toc/03-light.svg#gh-light-mode-only" width="49%" alt="03 · Code: Which repository does what, and in what order"></a><a href="#-code"><img src="media/toc/03-dark.svg#gh-dark-mode-only" width="49%" alt="03 · Code: Which repository does what, and in what order"></a>
+<a href="#-iteach-v1-door--handle-detection-dh-yolo"><img src="media/toc/04-light.svg#gh-light-mode-only" width="49%" alt="04 · iTeach v1 · DH-YOLO: The earlier door and handle detection system"></a><a href="#-iteach-v1-door--handle-detection-dh-yolo"><img src="media/toc/04-dark.svg#gh-dark-mode-only" width="49%" alt="04 · iTeach v1 · DH-YOLO: The earlier door and handle detection system"></a>
+<a href="#-citation"><img src="media/toc/more-light.svg#gh-light-mode-only" width="49%" alt="✦ · Cite · Contact · Thanks: Citation, contact and acknowledgements"></a><a href="#-citation"><img src="media/toc/more-dark.svg#gh-dark-mode-only" width="49%" alt="✦ · Cite · Contact · Thanks: Citation, contact and acknowledgements"></a>
+</p>
+
+<details>
+<summary><b>🗂️ Full index</b> <sub>(every section and subsection as text links)</sub></summary>
+<br>
+
+<ol>
+  <li><a href="#-how-it-works"><b>How It Works</b></a> · The overview video and the FS3 labelling steps</li>
+  <li><a href="#-results"><b>Results</b></a> · Perception, manipulation and the user study
+    <ul>
+    <li><a href="#-perception-adaptation">Perception</a></li>
+    <li><a href="#-manipulation-follows">Manipulation</a></li>
+    <li><a href="#-who-can-teach--12-participant-user-study">User study</a></li>
+    </ul>
+  </li>
+  <li><a href="#-code"><b>Code</b></a> · Which repository does what, and in what order
+    <ul>
+    <li><a href="#-data--checkpoints">Data & checkpoints</a></li>
+    <li><a href="#️-hardware">Hardware</a></li>
+    </ul>
+  </li>
+  <li><a href="#-iteach-v1-door--handle-detection-dh-yolo"><b>iTeach v1 · DH-YOLO</b></a> · The earlier door and handle detection system
+    <ul>
+    <li><a href="#-getting-started-in-3-steps">Getting started</a></li>
+    <li><a href="#-directory-structure">Directory structure</a></li>
+    </ul>
+  </li>
+  <li><a href="#-citation">Citation</a> · <a href="#-contact">Contact</a> · <a href="#-acknowledgements">Acknowledgements</a></li>
+</ol>
+
+</details>
 
 <br>
 

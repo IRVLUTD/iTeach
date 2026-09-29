@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="132" viewBox="0 0 460 132">
+  <defs><clipPath id="card"><rect x="1" y="1" width="458" height="130" rx="14"/></clipPath></defs>
+  <rect x="1" y="1" width="458" height="130" rx="14" fill="#161b22"/>
+  <rect x="0" y="0" width="7" height="132" fill="#58a6ff" clip-path="url(#card)"/>
+  <rect x="1" y="1" width="458" height="130" rx="14" fill="none" stroke="#30363d" stroke-width="1.5"/>
+  <circle cx="52" cy="66" r="26" fill="#58a6ff" fill-opacity="0.12" stroke="#58a6ff" stroke-width="2"/>
+  <text x="52" y="73" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#58a6ff">01</text>
+  <rect x="338.0" y="16" width="106.0" height="22" rx="11" fill="#58a6ff" fill-opacity="0.12"/>
+  <text x="391.0" y="31.5" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="0.8" fill="#58a6ff">UNDERSTAND</text>
+  <text x="96" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="21" font-weight="700" fill="#f0f6fc">How It Works</text>
+  <text x="96" y="86" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif" font-size="14" fill="#9198a1">The overview video and the FS3 labelling steps</text>
+  
+</svg>
