@@ -59,7 +59,7 @@ CARDS = {
         ('🧭 System Overview', 'System Overview', 'understand', 'How the robot, laptop and HoloLens fit together',
          [('🔁 The teaching loop', 'Loop'), ('🏗️ Architecture', 'Architecture'), ('🎬 One iTeach round', 'One round')]),
         ('🚀 Running the Live System on the Robot', 'Run on the Robot', 'run', 'A full iTeach session on the Fetch',
-         [('🌐 Network setup', 'Network setup'), ('🖥️ Terminals', 'Terminals')]),
+         [('🌐 Network setup', 'Network'), ('🖥️ Terminals', 'Terminals'), ('✅ First-run checklist', 'Checklist')]),
         ('🛠️ Build and Deploy the HoloLens 2 App', 'Build the HoloLens App', 'setup',
          'Build in Unity and install on the headset',
          [('Requirements', 'Requirements'), ('Which Unity project?', 'Which project'), ('Steps', 'Steps')]),
