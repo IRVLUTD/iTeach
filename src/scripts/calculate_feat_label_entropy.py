@@ -296,9 +296,9 @@ def main():
     """Main function to compute, print, and plot normalized harmonic mean of feature and label entropies."""
     
     root_dirs = [
-        '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets/for-label-entropy/with-diversity-goal/hololens-labelled/atomic-new-samples',
-        '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets/for-label-entropy/with-diversity-goal/desktop-app-labelled/atomic-new-samples',
-        '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets/for-label-entropy/without-diversity-goal/desktop-app-labelled/atomic-new-samples'
+        '/path/to/labelling-support/datasets/for-label-entropy/with-diversity-goal/hololens-labelled/atomic-new-samples',
+        '/path/to/labelling-support/datasets/for-label-entropy/with-diversity-goal/desktop-app-labelled/atomic-new-samples',
+        '/path/to/labelling-support/datasets/for-label-entropy/without-diversity-goal/desktop-app-labelled/atomic-new-samples'
     ]
 
     calc = FeatureLabelEntropyCalculator()

@@ -43,7 +43,7 @@ def main(model_path, image_path):
 
 if __name__ == "__main__":
     # Define the model path and image path
-    model_path = '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/src/pretrained_ckpt.pt'  # Replace with the actual path to your model
+    model_path = '/path/to/labelling-support/src/pretrained_ckpt.pt'  # Replace with the actual path to your model
     image_path = "./test_imgs/irvl-test.jpg"  # Replace with the actual path to the image you want to test
 
     # Call the main function

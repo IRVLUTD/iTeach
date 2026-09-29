@@ -104,8 +104,8 @@ class YoloVisualizer:
 
 def main():
     # Directories
-    image_dir = '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets/test_dataset.256/images/'
-    label_dir = '/home/hololens/Projects/hololens/IRVLImageLabellingSupport/datasets/test_dataset.256/labels/'
+    image_dir = '/path/to/labelling-support/datasets/test_dataset.256/images/'
+    label_dir = '/path/to/labelling-support/datasets/test_dataset.256/labels/'
     output_dir = './output/'
 
     visualizer = YoloVisualizer(image_dir, label_dir, output_dir)
