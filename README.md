@@ -241,7 +241,7 @@ The current iTeach system is split into **three repositories**, one per module. 
   <tr>
     <td align="center">🔧</td>
     <td>📍 <b>iTeach</b> <sub>(this repo)</sub> · <a href="./src/hololens_utils">src/hololens_utils</a></td>
-    <td>HoloLens Device Portal / hl2ss helpers and the robot ↔ laptop ↔ HoloLens network setup (<a href="./src/README.md">src/README.md</a>, sections 3–5).</td>
+    <td><b>Still used by the current system:</b> <code>HoloDevicePortal.py</code> uploads <code>ROSConnectionConfig.json</code> to the HoloLens, plus the hl2ss streaming helpers. The network setup is documented in <a href="https://github.com/IRVLUTD/iTeachSkillsApp#-network-setup">iTeachSkillsApp</a>.</td>
   </tr>
 </table>
 
@@ -295,7 +295,7 @@ The current iTeach system is split into **three repositories**, one per module. 
 ## 🗄️ Legacy (archived): iTeach v1 · Door & Handle Detection
 
 > [!WARNING]
-> **Archived. No longer maintained.** Everything below, and the `src/`, `toolkit/`, `dataloader/`, `hololens_app/` and `hf_demo/` folders, covers the **earlier version** of iTeach. That version is a Mixed Reality labelling loop for door and handle detection with a YOLOv5-based model (**DH-YOLO**), the **IRVLUTD DoorHandle** dataset and the **iTeachLabeller** HoloLens app. It is kept only for reference and reproducibility. For the current system, see [Code](#-code).
+> **Archived. No longer maintained.** Everything below, and the `src/` (except `src/hololens_utils/`, which the current system still uses), `toolkit/`, `dataloader/`, `hololens_app/` and `hf_demo/` folders, covers the **earlier version** of iTeach. That version is a Mixed Reality labelling loop for door and handle detection with a YOLOv5-based model (**DH-YOLO**), the **IRVLUTD DoorHandle** dataset and the **iTeachLabeller** HoloLens app. It is kept only for reference and reproducibility. For the current system, see [Code](#-code).
 
 <br>
 
