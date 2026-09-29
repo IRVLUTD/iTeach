@@ -21,7 +21,7 @@
 [![Project Page](https://img.shields.io/badge/Project-Page-2ea44f?style=for-the-badge)](https://irvlutd.github.io/iTeach/)
 [![arXiv](https://img.shields.io/badge/arXiv-2410.09072-b31b1b?style=for-the-badge)](https://arxiv.org/abs/2410.09072)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](LICENSE)
-[![Video](https://img.shields.io/badge/▶%20Video-Overview-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=J380k96szSM)
+[![Video](https://img.shields.io/badge/▶%20Video-Overview-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=UHFAgc2fWdE)
 [![DH-YOLO Demo](https://img.shields.io/badge/🤗%20Legacy%20demo-DH--YOLO%20(v1)-ffcc4d?style=for-the-badge)](https://huggingface.co/spaces/IRVLUTD/DH-YOLO)
 
 <br>
@@ -99,11 +99,11 @@ When the perception model fails, a human spends a few seconds rearranging the ob
 ## 🎬 How It Works
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=J380k96szSM">
+  <a href="https://www.youtube.com/watch?v=UHFAgc2fWdE">
     <img src="media/overview-video.jpg" width="70%" alt="iTeach overview video">
   </a>
   <br>
-  <sub>▶ <b><a href="https://www.youtube.com/watch?v=J380k96szSM">Watch the overview video</a></b></sub>
+  <sub>▶ <b><a href="https://www.youtube.com/watch?v=UHFAgc2fWdE">Watch the overview video</a></b></sub>
 </p>
 
 <br>
