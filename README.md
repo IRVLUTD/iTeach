@@ -241,6 +241,9 @@ The current iTeach system is split into **three repositories**, one per module. 
 
 <br>
 
+> [!CAUTION]
+> **Vital HoloLens step:** before each new setup, upload **`ROSConnectionConfig.json`** (with `RosIPAddress` set to your robot) to the HoloLens **`LocalAppData` → `iTechDemo_…` → `LocalState`** folder through the **Windows Device Portal** web tool. Otherwise the app cannot reach ROS. [Step-by-step guide →](https://github.com/IRVLUTD/iTeachSkillsApp#-point-the-app-at-your-ros-server)
+
 > [!TIP]
 > **Setting up the whole system?** Start with the [system diagram and five-terminal setup](https://github.com/IRVLUTD/iTeachSkillsApp#-system-overview) in iTeachSkillsApp. It covers the ROS topics, the voice commands, and how to point the HoloLens at your robot with `ROSConnectionConfig.json`.
 
