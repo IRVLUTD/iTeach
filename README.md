@@ -307,7 +307,7 @@ The current iTeach system is split into **three repositories**, one per module. 
 <br>
 
 <p align="center">
-  <img src="https://irvlutd.github.io/iTeach/assets/images/iteach/iteach-overview.webp" width="80%" alt="iTeach v1 overview">
+  <img src="media/iteach-v1-overview.webp" width="80%" alt="iTeach v1 overview">
   <br>
   <sub><i>iTeach v1: Mixed Reality labelling loop for door and handle detection.</i></sub>
 </p>
